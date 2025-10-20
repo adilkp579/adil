@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Heels - Store.in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Arial, sans-serif; }
+        :root {
+            --primary:#000; --secondary:#1a1a1a; --accent:#e74c3c; --text:#fff;
+            --glass:rgba(255,255,255,0.1); --glass-border:rgba(255,255,255,0.2);
+            --card-bg:rgba(255,255,255,0.05); --success:#2ed573;
+        }
+        body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:90px; }
+        .top-header { background:var(--primary); padding:.8rem 2rem; display:flex; justify-content:space-between; align-items:center; position:fixed; width:100%; top:0; z-index:1000; border-bottom:1px solid var(--glass-border); }
+        .logo { font-size:1.8rem; font-weight:800; color:var(--text); text-decoration:none; }
+        .logo-dot { color:var(--accent); }
+        .header-icons { display:flex; gap:1rem; align-items:center; }
+        .search-bar { background:var(--glass); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:20px; padding:.4rem 1.2rem; display:flex; align-items:center; gap:.6rem; width:5cm; min-width:5cm; height:35px; transition:all .3s ease; }
+        .search-bar:focus-within { border-color:var(--accent); }
+        .search-bar input { background:transparent; border:none; color:var(--text); font-size:.9rem; width:100%; outline:none; padding:0; }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.9rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:.9rem; }
+        .icon-btn { background:var(--glass); border:1px solid var(--glass-border); border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center; color:var(--text); text-decoration:none; transition:all .3s ease; font-size:.9rem; position:relative; }
+        .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
+        .cart-badge { position:absolute; top:-5px; right:-5px; background:var(--accent); color:white; border-radius:50%; width:18px; height:18px; font-size:.7rem; display:none; align-items:center; justify-content:center; font-weight:600; }
+        .main-content { margin-top:70px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
+        .category-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem; }
+        .category-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1.5rem; text-align:center; transition:all .3s ease; cursor:pointer; text-decoration:none; color:var(--text); display:block; }
+        .category-card:hover { transform:translateY(-5px); border-color:var(--accent); }
+        .category-icon { font-size:2.2rem; color:var(--text); margin-bottom:1rem; }
+        .category-name { font-size:1.2rem; font-weight:600; margin-bottom:.5rem; }
+        .category-count { color:rgba(255,255,255,.7); font-size:.9rem; }
+        .section-title { font-size:1.5rem; margin-bottom:1rem; color:var(--text); font-weight:600; text-align:left; padding:0 .5rem; }
+        .products-section { margin:2rem 0; }
+        .dynamic-products { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:.5rem; }
+        .dynamic-product-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1rem; text-align:center; transition:all .3s ease; cursor:pointer; }
+        .dynamic-product-card:hover { transform:translateY(-3px); border-color:var(--accent); }
+        .dynamic-product-image { width:100%; height:140px; border-radius:8px; margin-bottom:.8rem; background-size:cover; background-position:center; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
+        .dynamic-product-image i { font-size:1.8rem; color:var(--text); }
+        .dynamic-product-card h3 { font-size:1rem; margin-bottom:.5rem; font-weight:600; line-height:1.3; }
+        .product-price { font-size:1.2rem; color:var(--accent); font-weight:700; margin-bottom:.8rem; }
+        .btn { background:linear-gradient(45deg,#e74c3c,#c0392b); color:white; border:none; padding:.6rem 1.2rem; border-radius:20px; font-size:.8rem; font-weight:600; cursor:pointer; transition:all .3s ease; text-decoration:none; display:inline-block; width:100%; }
+        .btn:hover { transform:translateY(-2px); box-shadow:0 5px 15px rgba(231,76,60,.4); }
+        .blank-state { text-align:center; padding:3rem 1rem; color:rgba(255,255,255,.5); }
+        .blank-icon { font-size:3rem; margin-bottom:1rem; color:var(--glass-border); }
+        .blank-text { font-size:1.1rem; margin-bottom:.5rem; }
+        .blank-subtext { font-size:.8rem; color:rgba(255,255,255,.3); }
+        .hidden { display:none !important; }
+        .success-message { position:fixed; top:100px; right:2rem; background:var(--success); color:white; padding:1rem 2rem; border-radius:10px; box-shadow:0 10px 25px rgba(46,213,115,.4); display:none; z-index:1001; animation:slideIn .3s ease; }
+        @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
+        
+        /* Updated Navigation Bar Styles */
+        .bottom-nav { 
+            position:fixed; 
+            bottom:0; 
+            left:0; 
+            width:100%; 
+            background:var(--primary); 
+            backdrop-filter:blur(20px); 
+            border-top:1px solid var(--glass-border); 
+            display:flex; 
+            justify-content:space-around; 
+            padding:1.1rem 0;
+            z-index:1000; 
+            height:80px;
+        }
+        
+        .nav-item { 
+            display:flex; 
+            flex-direction:column; 
+            align-items:center; 
+            justify-content:center; 
+            text-decoration:none; 
+            color:var(--text); 
+            transition:all .3s ease; 
+            padding:.6rem;
+            border-radius:10px; 
+            flex:1; 
+            max-width:78px;
+            height:100%; 
+        }
+        
+        .nav-item.active { color:var(--accent); background:var(--glass); }
+        .nav-item:hover { color:var(--accent); transform:translateY(-2px); }
+        
+        .nav-icon { 
+            font-size:1.1rem; /* Reduced from 1.2rem to 1.1rem */
+            margin-bottom:.3rem; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            height:1.8rem; /* Reduced from 2rem to 1.8rem */
+            color:var(--text); 
+        }
+        
+        .nav-label { 
+            font-size:.75rem;
+            font-weight:500; 
+            text-align:center; 
+        }
+        
+        .loading { text-align:center; padding:2rem; color:var(--accent); }
+        .hero-section { text-align:center; padding:2rem 1rem; background:#ffffff; border-radius:12px; margin-bottom:2rem; }
+        .hero-title { font-size:2.2rem; font-weight:800; margin-bottom:1rem; background:linear-gradient(45deg, #000, #e74c3c); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .hero-subtitle { font-size:1rem; color:#333; max-width:500px; margin:0 auto 1.5rem; line-height:1.5; }
+        .hero-btn { display:inline-block; background:linear-gradient(45deg,#e74c3c,#c0392b); color:white; padding:.8rem 2rem; border-radius:30px; text-decoration:none; font-weight:600; transition:all .3s ease; margin-top:1rem; }
+        .hero-btn:hover { transform:translateY(-3px); box-shadow:0 10px 20px rgba(231,76,60,.4); }
+        .featured-section { margin:2rem 0; }
+        .trending-section { margin:2rem 0; }
+        
+        /* Heel Icon Section */
+        .heel-icon-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+        }
+        
+        .heel-main-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .heel-icon-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        /* Heel Products */
+        .heel-products { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem; }
+        .heel-product-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1rem; text-align:center; transition:all .3s ease; }
+        .heel-product-card:hover { transform:translateY(-5px); border-color:var(--accent); }
+        .heel-product-image { width:100%; height:140px; border-radius:8px; margin-bottom:.8rem; background-size:cover; background-position:center; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
+        .heel-product-image i { font-size:2.5rem; color:var(--text); }
+        .heel-product-card h3 { font-size:1rem; margin-bottom:.5rem; font-weight:600; line-height:1.3; }
+        .heel-product-price { font-size:1.2rem; color:var(--accent); font-weight:700; margin-bottom:.8rem; }
+        .heel-product-colors { display:flex; justify-content:center; gap:.5rem; margin-bottom:.8rem; }
+        .color-option { width:20px; height:20px; border-radius:50%; border:2px solid var(--glass-border); cursor:pointer; transition:all .3s ease; }
+        .color-option.active { border-color:var(--accent); transform:scale(1.2); }
+        .color-option:hover { transform:scale(1.1); }
+        
+        /* Custom Heel Icons */
+        .heel-icon-stiletto { 
+            position: relative; 
+            width: 60px; 
+            height: 60px; 
+        }
+        .heel-icon-stiletto:before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 4px;
+            top: 40px;
+            left: 10px;
+        }
+        .heel-icon-stiletto:after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: currentColor;
+            border-radius: 2px;
+            top: 15px;
+            left: 17px;
+            transform: skew(-15deg);
+        }
+        .heel-icon-stiletto span {
+            position: absolute;
+            width: 5px;
+            height: 25px;
+            background: currentColor;
+            border-radius: 2px;
+            top: 15px;
+            left: 27px;
+            transform: rotate(-15deg);
+        }
+        
+        .heel-icon-block { 
+            position: relative; 
+            width: 60px; 
+            height: 60px; 
+        }
+        .heel-icon-block:before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 4px;
+            top: 40px;
+            left: 10px;
+        }
+        .heel-icon-block:after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: currentColor;
+            border-radius: 2px;
+            top: 15px;
+            left: 17px;
+            transform: skew(-10deg);
+        }
+        .heel-icon-block span {
+            position: absolute;
+            width: 12px;
+            height: 25px;
+            background: currentColor;
+            border-radius: 2px;
+            top: 15px;
+            left: 25px;
+            transform: rotate(-10deg);
+        }
+        
+        .heel-icon-wedge { 
+            position: relative; 
+            width: 60px; 
+            height: 60px; 
+        }
+        .heel-icon-wedge:before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 4px;
+            top: 40px;
+            left: 10px;
+        }
+        .heel-icon-wedge:after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: currentColor;
+            border-radius: 2px;
+            top: 10px;
+            left: 15px;
+            transform: skew(-5deg);
+            clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+        }
+        
+        .heel-icon-platform { 
+            position: relative; 
+            width: 60px; 
+            height: 60px; 
+        }
+        .heel-icon-platform:before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 4px;
+            top: 40px;
+            left: 10px;
+        }
+        .heel-icon-platform:after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: currentColor;
+            border-radius: 2px;
+            top: 15px;
+            left: 17px;
+            transform: skew(-10deg);
+        }
+        .heel-icon-platform span:first-child {
+            position: absolute;
+            width: 35px;
+            height: 5px;
+            background: currentColor;
+            border-radius: 2px;
+            top: 35px;
+            left: 12px;
+        }
+        .heel-icon-platform span:last-child {
+            position: absolute;
+            width: 8px;
+            height: 25px;
+            background: currentColor;
+            border-radius: 2px;
+            top: 15px;
+            left: 26px;
+            transform: rotate(-10deg);
+        }
+        
+        /* Trending Products Rotating Section */
+        .trending-rotating-section {
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .trending-container {
+            position: relative;
+            height: 200px;
+            background: var(--glass);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .trending-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .trending-slide.active {
+            opacity: 1;
+        }
+        
+        .trending-product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            max-width: 20%;
+        }
+        
+        .trending-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .trending-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+        
+        .trending-price {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .trending-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .trending-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .trending-indicator.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+        
+        @media(max-width:768px){ 
+            .top-header{padding:.6rem 1rem;} 
+            .logo{font-size:1.5rem;} 
+            .main-content{margin-top:60px;padding:.8rem;} 
+            .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
+            .category-grid{grid-template-columns:repeat(2,1fr);gap:.8rem;} 
+            .dynamic-products{grid-template-columns:repeat(2,1fr);gap:.8rem;} 
+            .dynamic-product-card{padding:.8rem;} 
+            .dynamic-product-image{height:120px;} 
+            .section-title{font-size:1.3rem;margin-bottom:.8rem;} 
+            
+            /* Mobile-specific navigation adjustments */
+            .bottom-nav{
+                padding:1rem 0;
+                height:75px;
+            } 
+            
+            .nav-item{
+                padding:.5rem;
+                max-width:72px;
+            } 
+            
+            .nav-icon{
+                font-size:1rem; /* Reduced from 1.1rem to 1rem */
+                height:1.6rem; /* Reduced from 1.8rem to 1.6rem */
+            } 
+            
+            .nav-label{
+                font-size:.7rem;
+            } 
+            
+            .icon-btn{width:32px;height:32px;} 
+            .success-message{top:80px;right:1rem;left:1rem;text-align:center;} 
+            .hero-title{font-size:1.8rem;} 
+            .category-icon {
+                font-size: 2rem;
+            }
+            .dynamic-product-image i {
+                font-size: 1.6rem;
+            }
+            .trending-container {
+                height: 150px;
+            }
+            .trending-image {
+                width: 60px;
+                height: 60px;
+            }
+            .trending-name {
+                font-size: 0.7rem;
+            }
+            .trending-price {
+                font-size: 0.8rem;
+            }
+            .heel-product-image {
+                height: 120px;
+            }
+            .heel-product-image i {
+                font-size: 2rem;
+            }
+            .heel-icon-stiletto, .heel-icon-block, .heel-icon-wedge, .heel-icon-platform {
+                transform: scale(0.8);
+            }
+            .heel-main-icon {
+                font-size: 3rem;
+            }
+            .heel-icon-text {
+                font-size: 1rem;
+            }
+        }
+        
+        @media(min-width:1200px){ 
+            .search-bar{width:6cm;min-width:6cm;} 
+            .category-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
+            .dynamic-products{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
+            .heel-products{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
+        }
+        
+        .container{max-width:600px;margin:0 auto;background:var(--primary);}
+        html{background:var(--primary);}
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <a href="womenfootwear.html" class="logo">store<span class="logo-dot">.</span>in</a>
+        <div class="header-icons">
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search heels...">
+            </div>
+            <a href="cart.html" class="icon-btn">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </a>
+            <a href="profile.html" class="icon-btn">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i> <span id="messageText">Product added to cart!</span>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h1 class="hero-title">ELEGANT HEELS COLLECTION</h1>
+                <p class="hero-subtitle">Discover our stunning collection of high-quality heels. From classic stilettos to comfortable block heels, find your perfect pair.</p>
+                <a href="#featured" class="hero-btn">SHOP NOW</a>
+            </section>
+
+            <!-- Heel Icon Section -->
+            <section class="heel-icon-section">
+                <div class="heel-main-icon">
+                    <i class="fas fa-female"></i>
+                </div>
+                <div class="heel-icon-text">Elevate Your Style</div>
+            </section>
+
+            <!-- Featured Heels -->
+            <section class="featured-section" id="featured">
+                <h2 class="section-title">Featured Heels</h2>
+                <div class="heel-products">
+                    <div class="heel-product-card" data-id="201">
+                        <div class="heel-product-image" style="background-color: #e84393;">
+                            <div class="heel-icon-stiletto"></div>
+                        </div>
+                        <h3>Classic Stiletto Heels</h3>
+                        <div class="heel-product-price">$89.99</div>
+                        <div class="heel-product-colors">
+                            <div class="color-option active" style="background-color: #e84393;"></div>
+                            <div class="color-option" style="background-color: #000;"></div>
+                            <div class="color-option" style="background-color: #ffeaa7;"></div>
+                        </div>
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="heel-product-card" data-id="202">
+                        <div class="heel-product-image" style="background-color: #a29bfe;">
+                            <div class="heel-icon-block"></div>
+                        </div>
+                        <h3>Comfort Block Heels</h3>
+                        <div class="heel-product-price">$79.99</div>
+                        <div class="heel-product-colors">
+                            <div class="color-option active" style="background-color: #a29bfe;"></div>
+                            <div class="color-option" style="background-color: #000;"></div>
+                            <div class="color-option" style="background-color: #e84393;"></div>
+                        </div>
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="heel-product-card" data-id="203">
+                        <div class="heel-product-image" style="background-color: #00b894;">
+                            <div class="heel-icon-wedge"></div>
+                        </div>
+                        <h3>Elegant Wedge Heels</h3>
+                        <div class="heel-product-price">$69.99</div>
+                        <div class="heel-product-colors">
+                            <div class="color-option active" style="background-color: #00b894;"></div>
+                            <div class="color-option" style="background-color: #ffeaa7;"></div>
+                            <div class="color-option" style="background-color: #e84393;"></div>
+                        </div>
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="heel-product-card" data-id="204">
+                        <div class="heel-product-image" style="background-color: #fd79a8;">
+                            <div class="heel-icon-platform"></div>
+                        </div>
+                        <h3>Chunky Platform Heels</h3>
+                        <div class="heel-product-price">$99.99</div>
+                        <div class="heel-product-colors">
+                            <div class="color-option active" style="background-color: #fd79a8;"></div>
+                            <div class="color-option" style="background-color: #000;"></div>
+                            <div class="color-option" style="background-color: #ffeaa7;"></div>
+                        </div>
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trending Heels -->
+            <section class="trending-rotating-section">
+                <h2 class="section-title">Trending Heels</h2>
+                <div class="trending-container" id="trendingContainer">
+                    <!-- Slides will be populated by JavaScript -->
+                </div>
+                <div class="trending-indicators" id="trendingIndicators">
+                    <!-- Indicators will be populated by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="womenfootwear.html" class="nav-item">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="womenshoes.html" class="nav-item">
+             🥿
+            <span class="nav-label">Shoes</span>
+        </a>
+        <a href="womenheels.html" class="nav-item active">
+            👠
+            <span class="nav-label">Heels</span>
+        </a>
+        <a href="womensandals.html" class="nav-item">
+            👡
+            <span class="nav-label">Sandals</span>
+        </a>
+        <a href="womenslippers.html" class="nav-item">
+            🩴
+            <span class="nav-label">Slippers</span>
+        </a>
+    </nav>
+
+    <script>
+        // Trending Heels Data
+        const trendingHeels = [
+            [
+                { name: "Classic Stiletto", price: "$89.99", color: "#e84393", icon: "stiletto" },
+                { name: "Comfort Block", price: "$79.99", color: "#a29bfe", icon: "block" },
+                { name: "Elegant Wedge", price: "$69.99", color: "#00b894", icon: "wedge" },
+                { name: "Chunky Platform", price: "$99.99", color: "#fd79a8", icon: "platform" },
+                { name: "Designer Heels", price: "$129.99", color: "#fdcb6e", icon: "stiletto" }
+            ],
+            [
+                { name: "Evening Heels", price: "$109.99", color: "#74b9ff", icon: "stiletto" },
+                { name: "Office Block", price: "$84.99", color: "#636e72", icon: "block" },
+                { name: "Casual Wedge", price: "$59.99", color: "#fd79a8", icon: "wedge" },
+                { name: "Party Platform", price: "$119.99", color: "#fdcb6e", icon: "platform" },
+                { name: "Ankle Strap", price: "$94.99", color: "#e17055", icon: "stiletto" }
+            ],
+            [
+                { name: "Luxury Stiletto", price: "$149.99", color: "#6c5ce7", icon: "stiletto" },
+                { name: "Comfort Heels", price: "$74.99", color: "#00b894", icon: "block" },
+                { name: "Summer Wedge", price: "$64.99", color: "#ffeaa7", icon: "wedge" },
+                { name: "Designer Platform", price: "$139.99", color: "#dfe6e9", icon: "platform" },
+                { name: "Strappy Heels", price: "$89.99", color: "#e84393", icon: "stiletto" }
+            ]
+        ];
+
+        // Initialize trending heels rotation
+        function initTrendingHeels() {
+            const container = document.getElementById('trendingContainer');
+            const indicators = document.getElementById('trendingIndicators');
+            
+            // Create slides
+            trendingHeels.forEach((slideProducts, index) => {
+                const slide = document.createElement('div');
+                slide.className = `trending-slide ${index === 0 ? 'active' : ''}`;
+                
+                slideProducts.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.className = 'trending-product';
+                    
+                    let iconHTML = '';
+                    switch(product.icon) {
+                        case 'stiletto':
+                            iconHTML = '<div class="heel-icon-stiletto"></div>';
+                            break;
+                        case 'block':
+                            iconHTML = '<div class="heel-icon-block"></div>';
+                            break;
+                        case 'wedge':
+                            iconHTML = '<div class="heel-icon-wedge"></div>';
+                            break;
+                        case 'platform':
+                            iconHTML = '<div class="heel-icon-platform"></div>';
+                            break;
+                    }
+                    
+                    productElement.innerHTML = `
+                        <div class="trending-image" style="background-color: ${product.color};">
+                            ${iconHTML}
+                        </div>
+                        <div class="trending-name">${product.name}</div>
+                        <div class="trending-price">${product.price}</div>
+                    `;
+                    
+                    slide.appendChild(productElement);
+                });
+                
+                container.appendChild(slide);
+            });
+            
+            // Create indicators
+            trendingHeels.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = `trending-indicator ${index === 0 ? 'active' : ''}`;
+                indicator.addEventListener('click', () => showSlide(index));
+                indicators.appendChild(indicator);
+            });
+            
+            // Auto rotate slides
+            let currentSlide = 0;
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % trendingHeels.length;
+                showSlide(currentSlide);
+            }, 4000);
+        }
+        
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.trending-slide');
+            const indicators = document.querySelectorAll('.trending-indicator');
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        // Update cart badge
+        function updateCartBadge(){
+            try{
+                const cart = JSON.parse(localStorage.getItem('storeCart')) || [];
+                const cartBadge = document.getElementById('cartBadge');
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                if(totalItems > 0){ 
+                    cartBadge.textContent = totalItems > 9 ? '9+' : totalItems; 
+                    cartBadge.style.display = 'flex'; 
+                } else {
+                    cartBadge.style.display = 'none';
+                }
+            } catch(err) { 
+                console.error('Error updating cart badge:', err); 
+            }
+        }
+
+        // Show success message
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('successMessage');
+            const messageText = document.getElementById('messageText');
+            messageText.textContent = message;
+            successMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        // Add to cart functionality
+        function addToCart(productId, productName, price) {
+            try {
+                let cart = JSON.parse(localStorage.getItem('storeCart')) || [];
+                
+                // Check if product already exists in cart
+                const existingItem = cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: productId,
+                        name: productName,
+                        price: price,
+                        quantity: 1
+                    });
+                }
+                
+                localStorage.setItem('storeCart', JSON.stringify(cart));
+                updateCartBadge();
+                showSuccessMessage(`${productName} added to cart!`);
+            } catch (err) {
+                console.error('Error adding to cart:', err);
+            }
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartBadge();
+            initTrendingHeels();
+            
+            // Add event listeners to color options
+            const colorOptions = document.querySelectorAll('.color-option');
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const parentCard = this.closest('.heel-product-card');
+                    const cardImage = parentCard.querySelector('.heel-product-image');
+                    
+                    // Update active color
+                    const allOptions = parentCard.querySelectorAll('.color-option');
+                    allOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update product image color
+                    cardImage.style.backgroundColor = this.style.backgroundColor;
+                });
+            });
+            
+            // Add event listeners to "Add to Cart" buttons
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.heel-product-card');
+                    const productId = productCard.getAttribute('data-id');
+                    const productName = productCard.querySelector('h3').textContent;
+                    const productPrice = productCard.querySelector('.heel-product-price').textContent;
+                    
+                    addToCart(productId, productName, productPrice);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
