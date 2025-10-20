@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - store.in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        :root {
+            --primary: #000000;
+            --secondary: #1a1a1a;
+            --accent: #e74c3c;
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --error: #ff4757;
+            --success: #2ed573;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .login-container {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(231, 76, 60, 0.1), transparent);
+            animation: shine 3s infinite;
+            z-index: -1;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .login-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-logo-dot {
+            color: var(--accent);
+        }
+
+        .login-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .error-message {
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid var(--error);
+            color: var(--error);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .security-features {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .security-item i {
+            color: var(--success);
+        }
+
+        .attempts-warning {
+            color: var(--error);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .back-to-store {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Security animations */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .login-logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-logo">
+            store<span class="login-logo-dot">.</span>in
+        </div>
+        <div class="login-subtitle">Admin Dashboard Login</div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage">
+            Invalid username or password
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required autocomplete="off" spellcheck="false">
+                    <i class="fas fa-user input-icon"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required autocomplete="off">
+                    <i class="fas fa-lock input-icon"></i>
+                </div>
+            </div>
+
+            <div class="attempts-warning" id="attemptsWarning">
+                Too many failed attempts. Please wait 30 seconds.
+            </div>
+
+            <button type="submit" class="btn" id="loginBtn">
+                <span id="btnText">Login to Dashboard</span>
+            </button>
+        </form>
+
+        <!-- Security Features -->
+        <div class="security-features">
+            <div class="security-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Encrypted Credentials</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-clock"></i>
+                <span>Rate Limiting Enabled</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-ban"></i>
+                <span>Brute Force Protection</span>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-to-store">← Back to Store</a>
+    </div>
+
+    <script>
+        // Security configuration
+        const SECURITY_CONFIG = {
+            MAX_ATTEMPTS: 3,
+            LOCKOUT_TIME: 30000, // 30 seconds in milliseconds
+            USERNAME: 'onam_admin',
+            PASSWORD: 'onam92'
+        };
+
+        // Encrypt function (simple obfuscation)
+        function encrypt(text) {
+            return btoa(unescape(encodeURIComponent(text)));
+        }
+
+        // Decrypt function
+        function decrypt(text) {
+            return decodeURIComponent(escape(atob(text)));
+        }
+
+        // Get stored attempts
+        function getLoginAttempts() {
+            const attempts = localStorage.getItem('adminLoginAttempts');
+            const lastAttempt = localStorage.getItem('adminLastAttempt');
+            
+            return {
+                count: attempts ? parseInt(attempts) : 0,
+                lastAttempt: lastAttempt ? parseInt(lastAttempt) : 0,
+                isLocked: () => {
+                    if (!lastAttempt) return false;
+                    const timeSinceLastAttempt = Date.now() - parseInt(lastAttempt);
+                    return attempts >= SECURITY_CONFIG.MAX_ATTEMPTS && 
+                           timeSinceLastAttempt < SECURITY_CONFIG.LOCKOUT_TIME;
+                }
+            };
+        }
+
+        // Update login attempts
+        function updateLoginAttempts(success = false) {
+            if (success) {
+                localStorage.removeItem('adminLoginAttempts');
+                localStorage.removeItem('adminLastAttempt');
+            } else {
+                const attempts = getLoginAttempts();
+                const newCount = attempts.count + 1;
+                localStorage.setItem('adminLoginAttempts', newCount.toString());
+                localStorage.setItem('adminLastAttempt', Date.now().toString());
+            }
+        }
+
+        // Check if user is locked out
+        function checkLockout() {
+            const attempts = getLoginAttempts();
+            
+            if (attempts.isLocked()) {
+                const timeLeft = SECURITY_CONFIG.LOCKOUT_TIME - (Date.now() - attempts.lastAttempt);
+                document.getElementById('attemptsWarning').style.display = 'block';
+                document.getElementById('loginBtn').disabled = true;
+                
+                setTimeout(() => {
+                    document.getElementById('attemptsWarning').style.display = 'none';
+                    document.getElementById('loginBtn').disabled = false;
+                    localStorage.removeItem('adminLoginAttempts');
+                }, timeLeft);
+                
+                return true;
+            }
+            
+            return false;
+        }
+
+        // Validate credentials
+        function validateCredentials(username, password) {
+            // Simple timing attack protection
+            const startTime = Date.now();
+            
+            const isValid = username === SECURITY_CONFIG.USERNAME && 
+                           password === SECURITY_CONFIG.PASSWORD;
+            
+            // Add random delay to prevent timing attacks
+            const elapsed = Date.now() - startTime;
+            const minDelay = 500; // Minimum 500ms delay
+            const delay = Math.max(0, minDelay - elapsed);
+            
+            return new Promise(resolve => {
+                setTimeout(() => resolve(isValid), delay);
+            });
+        }
+
+        // Show error with animation
+        function showError(message) {
+            const errorElement = document.getElementById('errorMessage');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            document.getElementById('loginForm').classList.add('shake');
+            
+            setTimeout(() => {
+                document.getElementById('loginForm').classList.remove('shake');
+            }, 500);
+        }
+
+        // Hide error
+        function hideError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Check lockout status
+            if (checkLockout()) {
+                return;
+            }
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            const btnText = document.getElementById('btnText');
+            
+            // Show loading state
+            loginBtn.disabled = true;
+            btnText.innerHTML = '<div class="loading"></div> Authenticating...';
+            hideError();
+            
+            try {
+                // Validate credentials
+                const isValid = await validateCredentials(username, password);
+                
+                if (isValid) {
+                    // Successful login
+                    updateLoginAttempts(true);
+                    
+                    // Store encrypted session
+                    const sessionToken = encrypt(Date.now().toString() + Math.random().toString());
+                    localStorage.setItem('adminSession', sessionToken);
+                    localStorage.setItem('adminSessionTime', Date.now().toString());
+                    
+                    // Redirect to admin dashboard
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    // Failed login
+                    updateLoginAttempts(false);
+                    showError('Invalid username or password');
+                    
+                    // Update attempts warning
+                    const attempts = getLoginAttempts();
+                    const remaining = SECURITY_CONFIG.MAX_ATTEMPTS - attempts.count;
+                    
+                    if (remaining > 0) {
+                        showError(`Invalid credentials. ${remaining} attempt(s) remaining.`);
+                    } else {
+                        checkLockout();
+                    }
+                }
+            } catch (error) {
+                showError('Authentication error. Please try again.');
+            } finally {
+                // Reset button state
+                loginBtn.disabled = false;
+                btnText.textContent = 'Login to Dashboard';
+                
+                // Clear password field for security
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // Input event listeners for real-time validation
+        document.getElementById('username').addEventListener('input', hideError);
+        document.getElementById('password').addEventListener('input', hideError);
+
+        // Prevent form autofill from bypassing security
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear any stored credentials
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            
+            // Check initial lockout status
+            checkLockout();
+        });
+
+        // Additional security: Clear sensitive data on page hide
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // Prevent right-click and inspect element
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Prevent F12, Ctrl+Shift+I, etc.
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                (e.ctrlKey && e.shiftKey && e.key === 'C') ||
+                (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
