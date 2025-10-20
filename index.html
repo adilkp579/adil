@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>store.in - Fashion Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Arial, sans-serif; }
+        :root {
+            --primary:#000; --secondary:#1a1a1a; --accent:#e74c3c; --text:#fff;
+            --glass:rgba(255,255,255,0.1); --glass-border:rgba(255,255,255,0.2);
+            --card-bg:rgba(255,255,255,0.05); --success:#2ed573;
+        }
+        body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:80px; }
+        
+        /* Featured Brands Slider Styles */
+        .featured-slider-container {
+            margin-top: 70px;
+            padding: 1rem;
+        }
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .featured-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 15px;
+        }
+        .product-card {
+            flex: 0 0 calc(20% - 12px);
+            background: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-color: #555;
+            background: #2a2a2a;
+        }
+        .product-image {
+            height: 180px;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 10px;
+        }
+        .brand-name {
+            font-size: 10px;
+            color: #aaa;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .product-title {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #fff;
+            line-height: 1.2;
+        }
+        .product-description {
+            font-size: 10px;
+            color: #bbb;
+            line-height: 1.2;
+        }
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 8px;
+        }
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            background: #444;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .slider-dot.active {
+            background: var(--accent);
+        }
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(30, 30, 30, 0.9);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            transition: all 0.3s ease;
+            border: 1px solid #444;
+        }
+        .slider-arrow:hover {
+            background: var(--accent);
+        }
+        .slider-arrow.prev {
+            left: 5px;
+        }
+        .slider-arrow.next {
+            right: 5px;
+        }
+        
+        /* Search Results Styles */
+        .search-results-section {
+            margin: 2rem 0;
+            display: none;
+        }
+        .search-results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 1rem 0;
+        }
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #aaa;
+            font-style: italic;
+            grid-column: 1 / -1;
+        }
+        .search-highlight {
+            background-color: var(--accent);
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 1024px) {
+            .product-card {
+                flex: 0 0 calc(33.333% - 10px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .product-card {
+                flex: 0 0 calc(50% - 10px);
+            }
+            .product-image {
+                height: 140px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-card {
+                flex: 0 0 calc(100% - 10px);
+            }
+            .product-image {
+                height: 120px;
+            }
+        }
+
+        /* Rest of your existing styles */
+        .top-header { background:var(--primary); padding:.8rem 2rem; display:flex; justify-content:space-between; align-items:center; position:fixed; width:100%; top:0; z-index:1000; border-bottom:1px solid var(--glass-border); }
+        .logo { font-size:1.8rem; font-weight:800; color:var(--text); text-decoration:none; }
+        .logo-dot { color:var(--accent); }
+        .header-icons { display:flex; gap:1rem; align-items:center; }
+        .search-bar { background:var(--glass); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:20px; padding:.4rem 1.2rem; display:flex; align-items:center; gap:.6rem; width:5cm; min-width:5cm; height:35px; transition:all .3s ease; }
+        .search-bar:focus-within { border-color:var(--accent); }
+        .search-bar input { background:transparent; border:none; color:var(--text); font-size:.9rem; width:100%; outline:none; padding:0; }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.9rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:.9rem; }
+        .icon-btn { background:var(--glass); border:1px solid var(--glass-border); border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center; color:var(--text); text-decoration:none; transition:all .3s ease; font-size:.9rem; position:relative; }
+        .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
+        .cart-badge { position:absolute; top:-5px; right:-5px; background:var(--accent); color:white; border-radius:50%; width:18px; height:18px; font-size:.7rem; display:none; align-items:center; justify-content:center; font-weight:600; }
+        .main-content { margin-top:0; padding:1rem; background:var(--primary); min-height:calc(100vh - 150px); }
+        .categories-section { margin: 2rem 0; }
+        .categories-title { font-size:1.5rem; margin-bottom:1rem; color:var(--text); font-weight:600; text-align:left; padding:0 .5rem; }
+        .scroll-container { display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 15px; padding-bottom: 15px; margin-bottom: 25px; }
+        .scroll-container::-webkit-scrollbar { height: 8px; }
+        .scroll-container::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 5px; }
+        
+        /* Category Cards with Square Design */
+        .category-card { 
+            flex: 0 0 auto; 
+            width: 100px; 
+            height: 100px; 
+            text-align: center; 
+            border-radius: 15px; 
+            background: linear-gradient(to bottom, #ffb3b3, #ffe6e6); 
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1); 
+            padding: 0; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            cursor: pointer; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .category-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+        
+        /* Category Images - Same dimensions as card */
+        .category-image { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        /* Category Labels */
+        .category-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .success-message { position:fixed; top:100px; right:2rem; background:var(--success); color:white; padding:1rem 2rem; border-radius:10px; box-shadow:0 10px 25px rgba(46,213,115,.4); display:none; z-index:1001; animation:slideIn .3s ease; }
+        @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
+        .bottom-nav { position:fixed; bottom:0; left:0; width:100%; background:var(--primary); backdrop-filter:blur(20px); border-top:1px solid var(--glass-border); display:flex; justify-content:space-around; padding:1rem 0; z-index:1000; }
+        .nav-item { display:flex; flex-direction:column; align-items:center; text-decoration:none; color:var(--text); transition:all .3s ease; padding:.5rem .8rem; border-radius:10px; flex:1; max-width:70px; }
+        .nav-item.active { color:var(--accent); background:var(--glass); }
+        .nav-item:hover { color:var(--accent); transform:translateY(-2px); }
+        .nav-icon { font-size:1.2rem; margin-bottom:.3rem; }
+        .nav-label { font-size:.7rem; font-weight:500; text-align:center; }
+        
+        @media(max-width:768px){ 
+            .top-header{padding:.6rem 1rem;} 
+            .logo{font-size:1.5rem;} 
+            .main-content{margin-top:0;padding:.8rem;} 
+            .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
+            .categories-title{font-size:1.3rem;margin-bottom:.8rem;}
+            .bottom-nav{padding:.8rem 0;} 
+            .nav-item{padding:.4rem .5rem; max-width:65px;} 
+            .nav-icon{font-size:1.1rem;} 
+            .nav-label{font-size:.65rem;} 
+            .icon-btn{width:32px;height:32px;} 
+            .success-message{top:80px;right:1rem;left:1rem;text-align:center;}
+            .category-card { width: 100px; height: 130px; }
+        }
+        @media(max-width:480px){
+            .category-card { width: 100px; height: 130px; }
+            .category-label { font-size: 10px; }
+        }
+        @media(min-width:1200px){ 
+            .search-bar{width:6cm;min-width:6cm;} 
+        }
+        .container{max-width:600px;margin:0 auto;background:var(--primary);}
+        html{background:var(--primary);}
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <a href="index.html" class="logo">store<span class="logo-dot">.</span>in</a>
+        <div class="header-icons">
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search for brands, products...">
+            </div>
+            <a href="cart.html" class="icon-btn">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </a>
+            <a href="profile.html" class="icon-btn">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Search Results Section -->
+    <section class="search-results-section" id="searchResults">
+        <h2 class="categories-title">Search Results</h2>
+        <div class="search-results-container" id="searchResultsContainer">
+            <!-- Search results will be populated here -->
+        </div>
+    </section>
+
+    <!-- Featured Brands Slider Section -->
+    <section class="featured-slider-container">
+        <div class="featured-header">
+            <h2 class="featured-title">FEATURED BRANDS</h2>
+        </div>
+        
+        <div class="slider-container">
+            <div class="slider-arrow prev">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            
+            <div class="slider">
+                <!-- Product 1 - Peter England -->
+                <div class="product-card" onclick="navigateToBrand('1.html')">
+                    <div class="product-image">
+                        <img src="images/peterengland.jpeg" alt="Western Wear">
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">Peter England</div>
+                        <h3 class="product-title">Classic Western Collection</h3>
+                        <p class="product-description">Premium affordable formal</p>
+                    </div>
+                </div>
+                
+                <!-- Product 2 - Armani -->
+                <div class="product-card" onclick="navigateToBrand('2.html')">
+                    <div class="product-image">
+                        <img src="images/armaani.jpeg" alt="Construct">
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">ARMANI</div>
+                        <h3 class="product-title">Emporio Armani</h3>
+                        <p class="product-description">The difference between style and fashion is quality</p>
+                    </div>
+                </div>
+                
+                <!-- Product 3 - Adidas -->
+                <div class="product-card" onclick="navigateToBrand('3.html')">
+                    <div class="product-image">
+                        <img src="images/adidas.jpeg" alt="Denim Collection">
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">adidas</div>
+                        <h3 class="product-title">Impossible is Nothing</h3>
+                        <p class="product-description">Stylish and collection</p>
+                    </div>
+                </div>
+                
+                <!-- Product 4 - H&M -->
+                <div class="product-card" onclick="navigateToBrand('4.html')">
+                    <div class="product-image">
+                        <img src="images/h&m.jpeg" alt="Utility Gear">
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">H&M</div>
+                        <h3 class="product-title">Utility Work Gear</h3>
+                        <p class="product-description">Highly Effective Yet Gentle utility clothing</p>
+                    </div>
+                </div>
+                
+                <!-- Product 5 - Nike -->
+                <div class="product-card" onclick="navigateToBrand('5.html')">
+                    <div class="product-image">
+                        <img src="images/nike.jpeg" alt="Western Style">
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">NIKE</div>
+                        <h3 class="product-title">Western Accessories</h3>
+                        <p class="product-description">Complete your western look</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-arrow next">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </section>
+
+    <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i> <span id="messageText">Product added to cart!</span>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Fashion Categories Section -->
+            <section class="categories-section">
+                <h2 class="categories-title"> </h2>
+                
+                <!-- First Line of Categories - 10 Products -->
+                <div class="scroll-container">
+                    <div class="category-card" onclick="navigateToCategory('menshirts.html')">
+                        <img src="images/1" alt="Shirts" class="category-image">
+                        <div class="category-label">Shirts</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('ment-shirts.html')">
+                        <img src="images/T-shirt.jpeg" alt="T-Shirts" class="category-image">
+                        <div class="category-label">T-Shirts</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('menpants.html')">
+                        <img src="images/pants.jpeg " alt="Jeans" class="category-image">
+                        <div class="category-label">Jeans</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('menshoes.html')">
+                        <img src="images/manshoes.jpeg " alt="Casual Shoes" class="category-image">
+                        <div class="category-label">Casual Shoes</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('menwatches.html')">
+                        <img src="images/menwatch.jpeg" alt="Watches" class="category-image">
+                        <div class="category-label">Watches</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('menjackets.html')">
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8amFja2V0c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jackets" class="category-image">
+                        <div class="category-label">Jackets</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('mensunglasses.html')">
+                        <img src="images/sunglass.jpeg" alt="Sunglasses" class="category-image">
+                        <div class="category-label">Sunglasses</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('menfragrances.html')">
+                        <img src="images/menperfuem.jpeg" alt="Backpacks" class="category-image">
+                        <div class="category-label">Perfume</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('menwallets.html')">
+                        <img src="images/wallet.jpeg" alt="Belts" class="category-image">
+                        <div class="category-label">wallets</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('menhats.html')">
+                        <img src="images/mencap.jpeg" alt="Hats" class="category-image">
+                        <div class="category-label">cap</div>
+                    </div>
+                </div>
+
+                <!-- Second Line of Categories - 10 Products -->
+                <div class="scroll-container">
+                    <div class="category-card" onclick="navigateToCategory('womenparty-styles.html')">
+                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHJlc3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Dress" class="category-image">
+                        <div class="category-label">Party Dress</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womenmakeup.html')">
+                        <img src="images/traditional.jpeg" alt="Lipstick" class="category-image">
+                        <div class="category-label">Traditional</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womenhaircare.html')">
+                        <img src="images/heel.jpeg" alt="Hair Care" class="category-image">
+                        <div class="category-label">heels</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womenwatch.html')">
+                        <img src="images/womenwatch.jpeg" alt="Trousers" class="category-image">
+                        <div class="category-label">Watches</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womenjewellery.html')">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8amV3ZWxsZXJ5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Jewellery" class="category-image">
+                        <div class="category-label">Jewellery</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womenfragrances.html')">
+                        <img src="images/fragrance.jpeg" alt="Heels" class="category-image">
+                        <div class="category-label">Fragrance</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womensarees.html')">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FyZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Sarees" class="category-image">
+                        <div class="category-label">Sarees</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womenwallets.html')">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGFuZGJhZ3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Handbags" class="category-image">
+                        <div class="category-label">Handbags</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womenscarves.html')">
+                        <img src="images/kurtas.jpeg" alt="Scarves" class="category-image">
+                        <div class="category-label">kurtas</div>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womenmakeup.html')">
+                        <img src="images/makeups.jpeg" alt="Swimwear" class="category-image">
+                        <div class="category-label">makeups</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active"><i class="fas fa-home nav-icon"></i><span class="nav-label">Home</span></a>
+        <a href="men.html" class="nav-item"><i class="fas fa-male nav-icon"></i><span class="nav-label">Men</span></a>
+        <a href="women.html" class="nav-item"><i class="fas fa-female nav-icon"></i><span class="nav-label">Women</span></a>
+        <a href="kids.html" class="nav-item"><i class="fas fa-child nav-icon"></i><span class="nav-label">Kids</span></a>
+        <a href="track.html" class="nav-item"><i class="fas fa-map-marker-alt nav-icon"></i><span class="nav-label">Track</span></a>
+    </nav>
+
+    <script>
+        // Featured Brands Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize slider
+            const slider = document.querySelector('.slider');
+            const productCards = document.querySelectorAll('.product-card');
+            const prevArrow = document.querySelector('.slider-arrow.prev');
+            const nextArrow = document.querySelector('.slider-arrow.next');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            let currentSlide = 0;
+            const totalSlides = Math.ceil(productCards.length / getVisibleProducts());
+            
+            function getVisibleProducts() {
+                if (window.innerWidth < 480) return 1;
+                if (window.innerWidth < 768) return 2;
+                if (window.innerWidth < 1024) return 3;
+                return 5;
+            }
+            
+            function updateSlider() {
+                const visibleProducts = getVisibleProducts();
+                const slideWidth = 100 / visibleProducts;
+                const translateX = -currentSlide * (slideWidth * visibleProducts);
+                slider.style.transform = `translateX(${translateX}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            if (prevArrow) {
+                prevArrow.addEventListener('click', function() {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                    } else {
+                        currentSlide = totalSlides - 1;
+                    }
+                    updateSlider();
+                });
+            }
+            
+            if (nextArrow) {
+                nextArrow.addEventListener('click', function() {
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                    } else {
+                        currentSlide = 0;
+                    }
+                    updateSlider();
+                });
+            }
+            
+            // Add click events to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+            
+            // Auto rotate slides every 5 seconds
+            setInterval(() => {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                } else {
+                    currentSlide = 0;
+                }
+                updateSlider();
+            }, 5000);
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                updateSlider();
+            });
+            
+            // Initialize slider
+            updateSlider();
+        });
+
+        // Brand navigation function - navigates to brand page
+        function navigateToBrand(brandPage) {
+            window.location.href = brandPage;
+        }
+
+        // Category navigation function - directly navigates without message
+        function navigateToCategory(page) {
+            window.location.href = page;
+        }
+
+        // Enhanced Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchResultsSection = document.getElementById('searchResults');
+        const searchResultsContainer = document.getElementById('searchResultsContainer');
+        const featuredSection = document.querySelector('.featured-slider-container');
+        const categoriesSection = document.querySelector('.categories-section');
+        
+        searchInput.addEventListener('input', function(){
+            const searchText = this.value.trim().toLowerCase();
+            
+            if (searchText.length === 0) {
+                // Show all products when search is empty
+                showAllProducts();
+                hideSearchResults();
+                return;
+            }
+            
+            // Perform search
+            const results = performSearch(searchText);
+            displaySearchResults(results, searchText);
+        });
+
+        function performSearch(searchText) {
+            const results = [];
+            
+            // Search in featured brands
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const brandName = card.querySelector('.brand-name').textContent.toLowerCase();
+                const productTitle = card.querySelector('.product-title').textContent.toLowerCase();
+                const productDesc = card.querySelector('.product-description').textContent.toLowerCase();
+                const dataBrand = card.getAttribute('data-brand').toLowerCase();
+                const dataCategory = card.getAttribute('data-category').toLowerCase();
+                const dataTitle = card.getAttribute('data-title').toLowerCase();
+                
+                const matches = brandName.includes(searchText) || 
+                               productTitle.includes(searchText) || 
+                               productDesc.includes(searchText) ||
+                               dataBrand.includes(searchText) ||
+                               dataCategory.includes(searchText) ||
+                               dataTitle.includes(searchText);
+                
+                if (matches) {
+                    results.push({
+                        type: 'product',
+                        element: card.cloneNode(true),
+                        relevance: calculateRelevance(brandName, productTitle, productDesc, dataBrand, dataCategory, dataTitle, searchText)
+                    });
+                }
+            });
+            
+            // Search in categories
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                const categoryLabel = card.querySelector('.category-label').textContent.toLowerCase();
+                const dataCategory = card.getAttribute('data-category').toLowerCase();
+                
+                const matches = categoryLabel.includes(searchText) || dataCategory.includes(searchText);
+                
+                if (matches) {
+                    results.push({
+                        type: 'category',
+                        element: card.cloneNode(true),
+                        relevance: calculateRelevance(categoryLabel, dataCategory, searchText)
+                    });
+                }
+            });
+            
+            // Sort by relevance
+            results.sort((a, b) => b.relevance - a.relevance);
+            
+            return results;
+        }
+
+        function calculateRelevance(...fields) {
+            // Simple relevance calculation - count matches in fields
+            let relevance = 0;
+            const searchText = arguments[arguments.length - 1]; // Last argument is search text
+            
+            for (let i = 0; i < arguments.length - 1; i++) {
+                if (arguments[i].includes(searchText)) {
+                    relevance += 1;
+                }
+            }
+            
+            return relevance;
+        }
+
+        function displaySearchResults(results, searchText) {
+            // Hide main sections
+            if (featuredSection) featuredSection.style.display = 'none';
+            if (categoriesSection) categoriesSection.style.display = 'none';
+            
+            // Show search results section
+            searchResultsSection.style.display = 'block';
+            searchResultsContainer.innerHTML = '';
+            
+            if (results.length === 0) {
+                // No results found
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = `No results found for "${searchText}"`;
+                searchResultsContainer.appendChild(noResults);
+            } else {
+                // Display results
+                results.forEach(result => {
+                    // Highlight search text in results
+                    highlightSearchText(result.element, searchText);
+                    searchResultsContainer.appendChild(result.element);
+                });
+            }
+        }
+
+        function highlightSearchText(element, searchText) {
+            // Highlight text in product cards
+            const brandName = element.querySelector('.brand-name');
+            const productTitle = element.querySelector('.product-title');
+            const productDesc = element.querySelector('.product-description');
+            const categoryLabel = element.querySelector('.category-label');
+            
+            [brandName, productTitle, productDesc, categoryLabel].forEach(el => {
+                if (el) {
+                    const text = el.textContent;
+                    const regex = new RegExp(`(${searchText})`, 'gi');
+                    const highlighted = text.replace(regex, '<span class="search-highlight">$1</span>');
+                    el.innerHTML = highlighted;
+                }
+            });
+        }
+
+        function hideSearchResults() {
+            searchResultsSection.style.display = 'none';
+            
+            // Show main sections
+            if (featuredSection) featuredSection.style.display = 'block';
+            if (categoriesSection) categoriesSection.style.display = 'block';
+        }
+
+        function showAllProducts() {
+            // Show all featured brand products
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            // Show all category products
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.style.display = 'block';
+            });
+        }
+
+        function updateCartBadge(){
+            try{
+                const cart = JSON.parse(localStorage.getItem('storeCart')) || [];
+                const cartBadge = document.getElementById('cartBadge');
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                if(totalItems > 0){ 
+                    cartBadge.textContent = totalItems > 9 ? '9+' : totalItems; 
+                    cartBadge.style.display = 'flex'; 
+                } else {
+                    cartBadge.style.display = 'none';
+                }
+            } catch(err) { 
+                console.error('Error updating cart badge:', err); 
+            }
+        }
+
+        // Bottom nav
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e){
+                if (!this.classList.contains('active')) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    window.location.href = this.getAttribute('href');
+                }
+            });
+        });
+
+        function setActiveNav(){
+            const current = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
+                if(nav.getAttribute('href') === current) {
+                    nav.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            setActiveNav();
+            updateCartBadge();
+        });
+    </script>
+</body>
+</html>
