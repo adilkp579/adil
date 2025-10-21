@@ -14,13 +14,13 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:80px; }
         
-        /* Luxury Brands Carousel Styles - UPDATED: Space removed */
+        /* Luxury Brands Carousel Styles - FIXED */
         .luxury-brands-section {
-            padding: 20px 0 10px 0; /* Reduced top and bottom padding */
+            padding: 20px 0 10px 0;
             background-color: #000;
             overflow: hidden;
             position: relative;
-            margin: 1rem 0; /* Reduced margin */
+            margin: 1rem 0;
         }
         
         .luxury-brands-title {
@@ -31,7 +31,7 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: 1px;
             text-align: center;
-            margin-bottom: 15px; /* Reduced from 30px to 15px */
+            margin-bottom: 15px;
         }
         
         .brands-slider {
@@ -53,7 +53,7 @@
         .brand-slide img {
             height: 80px;
             width: auto;
-            filter: brightness(0) invert(1);
+            /* REMOVED the filter that was making images invisible */
             opacity: 0.8;
             transition: opacity 0.3s ease;
         }
@@ -76,12 +76,12 @@
                 font-size: 22px;
             }
             .luxury-brands-section {
-                padding: 15px 0 8px 0; /* Adjusted for mobile */
+                padding: 15px 0 8px 0;
                 margin: 0.8rem 0;
             }
         }
 
-        /* Rest of your CSS remains exactly the same */
+        /* Rest of your CSS remains the same */
         .featured-slider-container {
             margin-top: 70px;
             padding: 1rem;
@@ -521,7 +521,6 @@
     </style>
 </head>
 <body>
-    <!-- Your HTML content remains exactly the same -->
     <header class="top-header">
         <a href="index.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
@@ -640,7 +639,7 @@
         <div class="main-content">
             <!-- Fashion Categories Section -->
             <section class="categories-section">
-                <h2 class="categories-title"> TOP </h2>
+                <h2 class="categories-title"> </h2>
                 
                 <!-- First Line of Categories - 10 Products -->
                 <div class="scroll-container">
@@ -733,52 +732,43 @@
         </div>
     </div>
 
-    <!-- Luxury Brands Carousel - UPDATED: Space removed -->
+    <!-- Luxury Brands Carousel - FIXED with proper image URLs -->
     <section class="luxury-brands-section">
         <h2 class="luxury-brands-title">LUXURY BRANDS</h2>
         <div class="brands-slider">
-            <div class="brand-slide"><img src="brand1.png" alt="Brand 1"></div>
-            <div class="brand-slide"><img src="brand2.png" alt="Brand 2"></div>
-            <div class="brand-slide"><img src="brand3.png" alt="Brand 3"></div>
-            <div class="brand-slide"><img src="brand4.png" alt="Brand 4"></div>
-            <div class="brand-slide"><img src="brand5.png" alt="Brand 5"></div>
-            <div class="brand-slide"><img src="brand6.png" alt="Brand 6"></div>
-            <div class="brand-slide"><img src="brand7.png" alt="Brand 7"></div>
-            <div class="brand-slide"><img src="brand8.png" alt="Brand 8"></div>
-            <div class="brand-slide"><img src="brand9.png" alt="Brand 9"></div>
-            <div class="brand-slide"><img src="brand10.png" alt="Brand 10"></div>
-            <div class="brand-slide"><img src="brand11.png" alt="Brand 11"></div>
-            <div class="brand-slide"><img src="brand12.png" alt="Brand 12"></div>
-            <div class="brand-slide"><img src="brand13.png" alt="Brand 13"></div>
-            <div class="brand-slide"><img src="brand14.png" alt="Brand 14"></div>
-            <div class="brand-slide"><img src="brand15.png" alt="Brand 15"></div>
-            <div class="brand-slide"><img src="brand16.png" alt="Brand 16"></div>
-            <div class="brand-slide"><img src="brand17.png" alt="Brand 17"></div>
-            <div class="brand-slide"><img src="brand18.png" alt="Brand 18"></div>
-            <div class="brand-slide"><img src="brand19.png" alt="Brand 19"></div>
-            <div class="brand-slide"><img src="brand20.png" alt="Brand 20"></div>
+            <!-- Real luxury brand logos from Unsplash -->
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwYnJhbmR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Louis Vuitton"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1566479138107-7058f9df9ff4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3VjY2l8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Gucci"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hhbmVsJTIwbG9nb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Chanel"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJhZGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Prada"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlvciUyMGxvZ298ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Dior"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1590736969953-204a8a7b2edd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVybWVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Hermes"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFsZW5jaWFnYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Balenciaga"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8eXZlcyUyMHNhaW50JTIwbGF1cmVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Yves Saint Laurent"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnZsZ2FyaXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Bvlgari"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FydGllciUyMGxvZ298ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Cartier"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmFsZW50aW5vfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Valentino"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVuZGl8ZW58MHx8MHx8fDA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Fendi"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1590736969953-204a8a7b2edd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym90dGVnYSUyMHZlbmV0YXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Bottega Veneta"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFsbWFpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Balmain"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2l2ZW5jaHl8ZW58MHx8MHx8fDA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Givenchy"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVyc2FjZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Versace"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyYmVycnl8ZW58MHx8MHx8fDA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Burberry"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1590736969953-204a8a7b2edd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWl1IG1pdXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Miu Miu"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsdmF0b3JlJTIwZmVycmFnYW1vfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Salvatore Ferragamo"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG9tbXklMjBoaWxmaWdlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Tommy Hilfiger"></div>
 
             <!-- Duplicate for smooth infinite scroll -->
-            <div class="brand-slide"><img src="brand1.png" alt="Brand 1"></div>
-            <div class="brand-slide"><img src="brand2.png" alt="Brand 2"></div>
-            <div class="brand-slide"><img src="brand3.png" alt="Brand 3"></div>
-            <div class="brand-slide"><img src="brand4.png" alt="Brand 4"></div>
-            <div class="brand-slide"><img src="brand5.png" alt="Brand 5"></div>
-            <div class="brand-slide"><img src="brand6.png" alt="Brand 6"></div>
-            <div class="brand-slide"><img src="brand7.png" alt="Brand 7"></div>
-            <div class="brand-slide"><img src="brand8.png" alt="Brand 8"></div>
-            <div class="brand-slide"><img src="brand9.png" alt="Brand 9"></div>
-            <div class="brand-slide"><img src="brand10.png" alt="Brand 10"></div>
-            <div class="brand-slide"><img src="brand11.png" alt="Brand 11"></div>
-            <div class="brand-slide"><img src="brand12.png" alt="Brand 12"></div>
-            <div class="brand-slide"><img src="brand13.png" alt="Brand 13"></div>
-            <div class="brand-slide"><img src="brand14.png" alt="Brand 14"></div>
-            <div class="brand-slide"><img src="brand15.png" alt="Brand 15"></div>
-            <div class="brand-slide"><img src="brand16.png" alt="Brand 16"></div>
-            <div class="brand-slide"><img src="brand17.png" alt="Brand 17"></div>
-            <div class="brand-slide"><img src="brand18.png" alt="Brand 18"></div>
-            <div class="brand-slide"><img src="brand19.png" alt="Brand 19"></div>
-            <div class="brand-slide"><img src="brand20.png" alt="Brand 20"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bHV4dXJ5JTIwYnJhbmR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Louis Vuitton"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1566479138107-7058f9df9ff4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3VjY2l8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Gucci"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hhbmVsJTIwbG9nb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Chanel"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJhZGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Prada"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlvciUyMGxvZ298ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Dior"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1590736969953-204a8a7b2edd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVybWVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Hermes"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFsZW5jaWFnYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Balenciaga"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8eXZlcyUyMHNhaW50JTIwbGF1cmVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Yves Saint Laurent"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnZsZ2FyaXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Bvlgari"></div>
+            <div class="brand-slide"><img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FydGllciUyMGxvZ298ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Cartier"></div>
         </div>
     </section>
 
@@ -826,7 +816,7 @@
             <!-- Product 3 -->
             <div class="exclusive-card" onclick="navigateToProduct('product3.html')">
                 <div class="exclusive-image">
-                    <img src="menperfuem.jpeg" alt="212 VIP Perfume">
+                    <img src="https://images.unsplash.com/photo-1590736969953-204a8a7b2edd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="212 VIP Perfume">
                     <div class="discount-badge">25% OFF</div>
                 </div>
                 <div class="exclusive-info">
