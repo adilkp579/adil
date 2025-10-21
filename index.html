@@ -14,7 +14,7 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:80px; }
         
-        /* Featured Brands Slider Styles */
+        /* Featured Brands Slider Styles - Updated with requested width settings */
         .featured-slider-container {
             margin-top: 70px;
             padding: 1rem;
@@ -26,9 +26,11 @@
             margin-bottom: 20px;
         }
         .featured-title {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            color: var(--text);
+            background: linear-gradient(45deg, #d4af37, #ffdf00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             letter-spacing: 1px;
         }
         .slider-container {
@@ -42,29 +44,26 @@
             gap: 15px;
         }
         .product-card {
-            flex: 0 0 calc(20% - 12px);
-            background: var(--secondary);
-            border-radius: 8px;
+            flex: 0 0 calc(20% - 12px); /* width of each card relative to slider */
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            border: 1px solid #333;
+            transition: all 0.4s ease;
             cursor: pointer;
         }
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            border-color: #555;
-            background: #2a2a2a;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.35);
         }
         .product-image {
-            height: 180px;
-            background-color: #2a2a2a;
+            height: 200px;
+            background: linear-gradient(145deg, #111, #1a1a1a);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
         }
         .product-image img {
             width: 100%;
@@ -72,26 +71,28 @@
             object-fit: cover;
         }
         .product-info {
-            padding: 10px;
+            padding: 15px;
+            text-align: center;
         }
         .brand-name {
-            font-size: 10px;
-            color: #aaa;
-            margin-bottom: 3px;
+            font-size: 13px;
+            color: #c0a957;
+            margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .product-title {
-            font-size: 12px;
+            font-size: 17px;
             font-weight: 600;
-            margin-bottom: 4px;
-            color: #fff;
-            line-height: 1.2;
+            color: #f1f1f1;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
         .product-description {
-            font-size: 10px;
+            font-size: 14px;
             color: #bbb;
-            line-height: 1.2;
+            line-height: 1.4;
+            margin-bottom: 14px;
         }
         .slider-nav {
             display: flex;
@@ -108,7 +109,7 @@
             transition: background 0.3s ease;
         }
         .slider-dot.active {
-            background: var(--accent);
+            background: #ffdf00;
         }
         .slider-arrow {
             position: absolute;
@@ -127,10 +128,11 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
             z-index: 10;
             transition: all 0.3s ease;
-            border: 1px solid #444;
+            border: 1px solid rgba(212, 175, 55, 0.5);
         }
         .slider-arrow:hover {
-            background: var(--accent);
+            background: #ffdf00;
+            color: #000;
         }
         .slider-arrow.prev {
             left: 5px;
@@ -139,6 +141,30 @@
             right: 5px;
         }
         
+        @media (max-width: 1024px) {
+            .product-card {
+                flex: 0 0 calc(33.333% - 10px); /* 3 cards per row */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .product-card {
+                flex: 0 0 calc(50% - 10px); /* 2 cards per row */
+            }
+            .product-image {
+                height: 140px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-card {
+                flex: 0 0 calc(100% - 10px); /* 1 card per row */
+            }
+            .product-image {
+                height: 120px;
+            }
+        }
+
         /* Search Results Styles */
         .search-results-section {
             margin: 2rem 0;
@@ -162,30 +188,6 @@
             color: white;
             padding: 2px 4px;
             border-radius: 3px;
-        }
-        
-        @media (max-width: 1024px) {
-            .product-card {
-                flex: 0 0 calc(33.333% - 10px);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .product-card {
-                flex: 0 0 calc(50% - 10px);
-            }
-            .product-image {
-                height: 140px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .product-card {
-                flex: 0 0 calc(100% - 10px);
-            }
-            .product-image {
-                height: 120px;
-            }
         }
 
         /* Rest of your existing styles */
@@ -261,6 +263,126 @@
         .nav-icon { font-size:1.2rem; margin-bottom:.3rem; }
         .nav-label { font-size:.7rem; font-weight:500; text-align:center; }
         
+        /* Exclusive Collection Styles */
+        .exclusive-section {
+            margin: 1.5rem 0;
+            padding: 0 1rem;
+        }
+        .exclusive-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .exclusive-title {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #d4af37, #ffdf00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        .exclusive-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding: 10px 0;
+            scrollbar-width: none;
+        }
+        .exclusive-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .exclusive-card {
+            min-width: 220px;
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .exclusive-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.35);
+        }
+        .exclusive-image {
+            height: 200px;
+            background: linear-gradient(145deg, #111, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .exclusive-image img {
+            width: 110%;
+            height: 110%;
+            object-fit: contain;
+        }
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(45deg, #d4af37, #ffdf00);
+            color: #000;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+        .exclusive-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .exclusive-brand {
+            font-size: 13px;
+            color: #c0a957;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .exclusive-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: #f1f1f1;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .exclusive-price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffdf00;
+        }
+        .original-price {
+            font-size: 14px;
+            color: #888;
+            text-decoration: line-through;
+        }
+        .shop-now {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #000;
+            background: linear-gradient(45deg, #d4af37, #ffdf00);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        .shop-now:hover {
+            background: linear-gradient(45deg, #ffdf00, #ffe78a);
+            transform: scale(1.03);
+        }
+        
         @media(max-width:768px){ 
             .top-header{padding:.6rem 1rem;} 
             .logo{font-size:1.5rem;} 
@@ -274,10 +396,14 @@
             .icon-btn{width:32px;height:32px;} 
             .success-message{top:80px;right:1rem;left:1rem;text-align:center;}
             .category-card { width: 100px; height: 130px; }
+            .exclusive-card { min-width: 180px; }
+            .exclusive-image { height: 160px; }
         }
         @media(max-width:480px){
             .category-card { width: 100px; height: 130px; }
             .category-label { font-size: 10px; }
+            .exclusive-card { min-width: 160px; }
+            .exclusive-image { height: 140px; }
         }
         @media(min-width:1200px){ 
             .search-bar{width:6cm;min-width:6cm;} 
@@ -312,7 +438,7 @@
         </div>
     </section>
 
-    <!-- Featured Brands Slider Section -->
+    <!-- Featured Brands Slider Section - Updated with requested width settings -->
     <section class="featured-slider-container">
         <div class="featured-header">
             <h2 class="featured-title">FEATURED BRANDS</h2>
@@ -327,7 +453,7 @@
                 <!-- Product 1 - Peter England -->
                 <div class="product-card" onclick="navigateToBrand('1.html')">
                     <div class="product-image">
-                        <img src="peterengland.jpeg" alt="Western Wear">
+                        <img src="images/peterengland.jpeg" alt="Western Wear">
                     </div>
                     <div class="product-info">
                         <div class="brand-name">Peter England</div>
@@ -339,7 +465,7 @@
                 <!-- Product 2 - Armani -->
                 <div class="product-card" onclick="navigateToBrand('2.html')">
                     <div class="product-image">
-                        <img src="armaani.jpeg" alt="Construct">
+                        <img src="images/armaani.jpeg" alt="Construct">
                     </div>
                     <div class="product-info">
                         <div class="brand-name">ARMANI</div>
@@ -351,7 +477,7 @@
                 <!-- Product 3 - Adidas -->
                 <div class="product-card" onclick="navigateToBrand('3.html')">
                     <div class="product-image">
-                        <img src="adidas.jpeg" alt="Denim Collection">
+                        <img src="images/adidas.jpeg" alt="Denim Collection">
                     </div>
                     <div class="product-info">
                         <div class="brand-name">adidas</div>
@@ -363,7 +489,7 @@
                 <!-- Product 4 - H&M -->
                 <div class="product-card" onclick="navigateToBrand('4.html')">
                     <div class="product-image">
-                        <img src="h&m.jpeg" alt="Utility Gear">
+                        <img src="images/h&m.jpeg" alt="Utility Gear">
                     </div>
                     <div class="product-info">
                         <div class="brand-name">H&M</div>
@@ -375,7 +501,7 @@
                 <!-- Product 5 - Nike -->
                 <div class="product-card" onclick="navigateToBrand('5.html')">
                     <div class="product-image">
-                        <img src="nike.jpeg" alt="Western Style">
+                        <img src="images/nike.jpeg" alt="Western Style">
                     </div>
                     <div class="product-info">
                         <div class="brand-name">NIKE</div>
@@ -410,23 +536,23 @@
                 <!-- First Line of Categories - 10 Products -->
                 <div class="scroll-container">
                     <div class="category-card" onclick="navigateToCategory('menshirts.html')">
-                        <img src="1" alt="Shirts" class="category-image">
+                        <img src="images/1" alt="Shirts" class="category-image">
                         <div class="category-label">Shirts</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('ment-shirts.html')">
-                        <img src="T-shirt.jpeg" alt="T-Shirts" class="category-image">
+                        <img src="images/T-shirt.jpeg" alt="T-Shirts" class="category-image">
                         <div class="category-label">T-Shirts</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('menpants.html')">
-                        <img src="pants.jpeg " alt="Jeans" class="category-image">
+                        <img src="images/pants.jpeg " alt="Jeans" class="category-image">
                         <div class="category-label">Jeans</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('menshoes.html')">
-                        <img src="manshoes.jpeg " alt="Casual Shoes" class="category-image">
+                        <img src="images/manshoes.jpeg " alt="Casual Shoes" class="category-image">
                         <div class="category-label">Casual Shoes</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('menwatches.html')">
-                        <img src="menwatch.jpeg" alt="Watches" class="category-image">
+                        <img src="images/menwatch.jpeg" alt="Watches" class="category-image">
                         <div class="category-label">Watches</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('menjackets.html')">
@@ -434,19 +560,19 @@
                         <div class="category-label">Jackets</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('mensunglasses.html')">
-                        <img src="sunglass.jpeg" alt="Sunglasses" class="category-image">
+                        <img src="images/sunglass.jpeg" alt="Sunglasses" class="category-image">
                         <div class="category-label">Sunglasses</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('menfragrances.html')">
-                        <img src="menperfuem.jpeg" alt="Backpacks" class="category-image">
+                        <img src="images/menperfuem.jpeg" alt="Backpacks" class="category-image">
                         <div class="category-label">Perfume</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('menwallets.html')">
-                        <img src="wallet.jpeg" alt="Belts" class="category-image">
+                        <img src="images/wallet.jpeg" alt="Belts" class="category-image">
                         <div class="category-label">wallets</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('menhats.html')">
-                        <img src="mencap.jpeg" alt="Hats" class="category-image">
+                        <img src="images/mencap.jpeg" alt="Hats" class="category-image">
                         <div class="category-label">cap</div>
                     </div>
                 </div>
@@ -458,15 +584,15 @@
                         <div class="category-label">Party Dress</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('womenmakeup.html')">
-                        <img src="traditional.jpeg" alt="Lipstick" class="category-image">
+                        <img src="images/traditional.jpeg" alt="Lipstick" class="category-image">
                         <div class="category-label">Traditional</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('womenhaircare.html')">
-                        <img src="heel.jpeg" alt="Hair Care" class="category-image">
+                        <img src="images/heel.jpeg" alt="Hair Care" class="category-image">
                         <div class="category-label">heels</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('womenwatch.html')">
-                        <img src="womenwatch.jpeg" alt="Trousers" class="category-image">
+                        <img src="images/womenwatch.jpeg" alt="Trousers" class="category-image">
                         <div class="category-label">Watches</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('womenjewellery.html')">
@@ -474,7 +600,7 @@
                         <div class="category-label">Jewellery</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('womenfragrances.html')">
-                        <img src="fragrance.jpeg" alt="Heels" class="category-image">
+                        <img src="images/fragrance.jpeg" alt="Heels" class="category-image">
                         <div class="category-label">Fragrance</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('womensarees.html')">
@@ -486,17 +612,111 @@
                         <div class="category-label">Handbags</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('womenscarves.html')">
-                        <img src="kurtas.jpeg" alt="Scarves" class="category-image">
+                        <img src="images/kurtas.jpeg" alt="Scarves" class="category-image">
                         <div class="category-label">kurtas</div>
                     </div>
                     <div class="category-card" onclick="navigateToCategory('womenmakeup.html')">
-                        <img src="makeups.jpeg" alt="Swimwear" class="category-image">
+                        <img src="images/makeups.jpeg" alt="Swimwear" class="category-image">
                         <div class="category-label">makeups</div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
+
+    <!-- Exclusive Collection Section -->
+    <section class="exclusive-section">
+        <div class="exclusive-header">
+            <h2 class="exclusive-title">Exclusive Collection</h2>
+        </div>
+
+        <div class="exclusive-slider" id="exclusiveSlider">
+            <!-- Product 1 -->
+            <div class="exclusive-card" onclick="navigateToProduct('product1.html')">
+                <div class="exclusive-image">
+                    <div class="discount-badge">25% OFF</div>
+                    <div style="color:#c9c9c9; font-size:14px;">CAROLINA HERRERA</div>
+                </div>
+                <div class="exclusive-info">
+                    <div class="exclusive-brand">CAROLINA HERRERA</div>
+                    <h3 class="exclusive-name">Good Girl Perfume</h3>
+                    <div class="exclusive-price">
+                        <span class="current-price">$89.99</span>
+                        <span class="original-price">$119.99</span>
+                    </div>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product1.html')">Shop Now</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="exclusive-card" onclick="navigateToProduct('product2.html')">
+                <div class="exclusive-image">
+                    <div class="discount-badge">15% OFF</div>
+                    <div style="color:#c9c9c9; font-size:14px;">L'OREAL PARIS</div>
+                </div>
+                <div class="exclusive-info">
+                    <div class="exclusive-brand">L'OREAL PARIS</div>
+                    <h3 class="exclusive-name">Infallible Foundation</h3>
+                    <div class="exclusive-price">
+                        <span class="current-price">$14.99</span>
+                        <span class="original-price">$17.99</span>
+                    </div>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product2.html')">Shop Now</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="exclusive-card" onclick="navigateToProduct('product3.html')">
+                <div class="exclusive-image">
+                    <div class="discount-badge">20% OFF</div>
+                    <div style="color:#c9c9c9; font-size:14px;">MAYBELLINE</div>
+                </div>
+                <div class="exclusive-info">
+                    <div class="exclusive-brand">MAYBELLINE</div>
+                    <h3 class="exclusive-name">SuperStay Lipstick</h3>
+                    <div class="exclusive-price">
+                        <span class="current-price">$8.99</span>
+                        <span class="original-price">$11.99</span>
+                    </div>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product3.html')">Shop Now</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="exclusive-card" onclick="navigateToProduct('product4.html')">
+                <div class="exclusive-image">
+                    <div class="discount-badge">10% OFF</div>
+                    <div style="color:#c9c9c9; font-size:14px;">NARS</div>
+                </div>
+                <div class="exclusive-info">
+                    <div class="exclusive-brand">NARS</div>
+                    <h3 class="exclusive-name">Orgasm Blush</h3>
+                    <div class="exclusive-price">
+                        <span class="current-price">$32.99</span>
+                        <span class="original-price">$36.99</span>
+                    </div>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product4.html')">Shop Now</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="exclusive-card" onclick="navigateToProduct('product5.html')">
+                <div class="exclusive-image">
+                    <div class="discount-badge">30% OFF</div>
+                    <div style="color:#c9c9c9; font-size:14px;">MAC</div>
+                </div>
+                <div class="exclusive-info">
+                    <div class="exclusive-brand">MAC</div>
+                    <h3 class="exclusive-name">Matte Lipstick</h3>
+                    <div class="exclusive-price">
+                        <span class="current-price">$17.99</span>
+                        <span class="original-price">$25.99</span>
+                    </div>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product5.html')">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <nav class="bottom-nav">
         <a href="index.html" class="nav-item active"><i class="fas fa-home nav-icon"></i><span class="nav-label">Home</span></a>
@@ -523,7 +743,7 @@
                 if (window.innerWidth < 480) return 1;
                 if (window.innerWidth < 768) return 2;
                 if (window.innerWidth < 1024) return 3;
-                return 5;
+                return 5; // 5 cards per row for desktop
             }
             
             function updateSlider() {
@@ -597,12 +817,18 @@
             window.location.href = page;
         }
 
+        // Product navigation function for exclusive collection
+        function navigateToProduct(productPage) {
+            window.location.href = productPage;
+        }
+
         // Enhanced Search functionality
         const searchInput = document.getElementById('searchInput');
         const searchResultsSection = document.getElementById('searchResults');
         const searchResultsContainer = document.getElementById('searchResultsContainer');
         const featuredSection = document.querySelector('.featured-slider-container');
         const categoriesSection = document.querySelector('.categories-section');
+        const exclusiveSection = document.querySelector('.exclusive-section');
         
         searchInput.addEventListener('input', function(){
             const searchText = this.value.trim().toLowerCase();
@@ -628,22 +854,16 @@
                 const brandName = card.querySelector('.brand-name').textContent.toLowerCase();
                 const productTitle = card.querySelector('.product-title').textContent.toLowerCase();
                 const productDesc = card.querySelector('.product-description').textContent.toLowerCase();
-                const dataBrand = card.getAttribute('data-brand').toLowerCase();
-                const dataCategory = card.getAttribute('data-category').toLowerCase();
-                const dataTitle = card.getAttribute('data-title').toLowerCase();
                 
                 const matches = brandName.includes(searchText) || 
                                productTitle.includes(searchText) || 
-                               productDesc.includes(searchText) ||
-                               dataBrand.includes(searchText) ||
-                               dataCategory.includes(searchText) ||
-                               dataTitle.includes(searchText);
+                               productDesc.includes(searchText);
                 
                 if (matches) {
                     results.push({
                         type: 'product',
                         element: card.cloneNode(true),
-                        relevance: calculateRelevance(brandName, productTitle, productDesc, dataBrand, dataCategory, dataTitle, searchText)
+                        relevance: calculateRelevance(brandName, productTitle, productDesc, searchText)
                     });
                 }
             });
@@ -652,15 +872,31 @@
             const categoryCards = document.querySelectorAll('.category-card');
             categoryCards.forEach(card => {
                 const categoryLabel = card.querySelector('.category-label').textContent.toLowerCase();
-                const dataCategory = card.getAttribute('data-category').toLowerCase();
                 
-                const matches = categoryLabel.includes(searchText) || dataCategory.includes(searchText);
+                const matches = categoryLabel.includes(searchText);
                 
                 if (matches) {
                     results.push({
                         type: 'category',
                         element: card.cloneNode(true),
-                        relevance: calculateRelevance(categoryLabel, dataCategory, searchText)
+                        relevance: calculateRelevance(categoryLabel, searchText)
+                    });
+                }
+            });
+            
+            // Search in exclusive collection
+            const exclusiveCards = document.querySelectorAll('.exclusive-card');
+            exclusiveCards.forEach(card => {
+                const brandName = card.querySelector('.exclusive-brand').textContent.toLowerCase();
+                const productName = card.querySelector('.exclusive-name').textContent.toLowerCase();
+                
+                const matches = brandName.includes(searchText) || productName.includes(searchText);
+                
+                if (matches) {
+                    results.push({
+                        type: 'exclusive',
+                        element: card.cloneNode(true),
+                        relevance: calculateRelevance(brandName, productName, searchText)
                     });
                 }
             });
@@ -689,6 +925,7 @@
             // Hide main sections
             if (featuredSection) featuredSection.style.display = 'none';
             if (categoriesSection) categoriesSection.style.display = 'none';
+            if (exclusiveSection) exclusiveSection.style.display = 'none';
             
             // Show search results section
             searchResultsSection.style.display = 'block';
@@ -712,8 +949,8 @@
 
         function highlightSearchText(element, searchText) {
             // Highlight text in product cards
-            const brandName = element.querySelector('.brand-name');
-            const productTitle = element.querySelector('.product-title');
+            const brandName = element.querySelector('.brand-name, .exclusive-brand');
+            const productTitle = element.querySelector('.product-title, .exclusive-name');
             const productDesc = element.querySelector('.product-description');
             const categoryLabel = element.querySelector('.category-label');
             
@@ -733,6 +970,7 @@
             // Show main sections
             if (featuredSection) featuredSection.style.display = 'block';
             if (categoriesSection) categoriesSection.style.display = 'block';
+            if (exclusiveSection) exclusiveSection.style.display = 'block';
         }
 
         function showAllProducts() {
@@ -745,6 +983,12 @@
             // Show all category products
             const categoryCards = document.querySelectorAll('.category-card');
             categoryCards.forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            // Show all exclusive products
+            const exclusiveCards = document.querySelectorAll('.exclusive-card');
+            exclusiveCards.forEach(card => {
                 card.style.display = 'block';
             });
         }
