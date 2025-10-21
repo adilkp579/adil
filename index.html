@@ -416,11 +416,16 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            overflow: hidden;
         }
         .exclusive-image img {
-            width: 110%;
-            height: 110%;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .exclusive-card:hover .exclusive-image img {
+            transform: scale(1.05);
         }
         .discount-badge {
             position: absolute;
@@ -432,6 +437,7 @@
             font-weight: 700;
             padding: 5px 10px;
             border-radius: 8px;
+            z-index: 2;
         }
         .exclusive-info {
             padding: 15px;
@@ -786,8 +792,8 @@
             <!-- Product 1 -->
             <div class="exclusive-card" onclick="navigateToProduct('product1.html')">
                 <div class="exclusive-image">
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Good Girl Perfume">
                     <div class="discount-badge">25% OFF</div>
-                    <div style="color:#c9c9c9; font-size:14px;">CAROLINA HERRERA</div>
                 </div>
                 <div class="exclusive-info">
                     <div class="exclusive-brand">CAROLINA HERRERA</div>
@@ -803,34 +809,34 @@
            <!-- Product 2 -->
             <div class="exclusive-card" onclick="navigateToProduct('product2.html')">
                 <div class="exclusive-image">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Bad Boy Perfume">
                     <div class="discount-badge">25% OFF</div>
-                    <div style="color:#c9c9c9; font-size:14px;">CAROLINA HERRERA</div>
                 </div>
                 <div class="exclusive-info">
                     <div class="exclusive-brand">CAROLINA HERRERA</div>
-                    <h3 class="exclusive-name">Good Girl Perfume</h3>
+                    <h3 class="exclusive-name">Bad Boy Perfume</h3>
                     <div class="exclusive-price">
                         <span class="current-price">$89.99</span>
                         <span class="original-price">$119.99</span>
                     </div>
-                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product1.html')">Shop Now</button>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product2.html')">Shop Now</button>
                 </div>
             </div>
             
             <!-- Product 3 -->
             <div class="exclusive-card" onclick="navigateToProduct('product3.html')">
                 <div class="exclusive-image">
+                    <img src="https://images.unsplash.com/photo-1590736969953-204a8a7b2edd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="212 VIP Perfume">
                     <div class="discount-badge">25% OFF</div>
-                    <div style="color:#c9c9c9; font-size:14px;">CAROLINA HERRERA</div>
                 </div>
                 <div class="exclusive-info">
                     <div class="exclusive-brand">CAROLINA HERRERA</div>
-                    <h3 class="exclusive-name">Good Girl Perfume</h3>
+                    <h3 class="exclusive-name">212 VIP Perfume</h3>
                     <div class="exclusive-price">
                         <span class="current-price">$89.99</span>
                         <span class="original-price">$119.99</span>
                     </div>
-                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product1.html')">Shop Now</button>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product3.html')">Shop Now</button>
                 </div>
             </div>
 
@@ -838,8 +844,8 @@
             <!-- Product 4 -->
             <div class="exclusive-card" onclick="navigateToProduct('product4.html')">
                 <div class="exclusive-image">
+                    <img src="https://images.unsplash.com/photo-1617897903246-719242758050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm91bmRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Infallible Foundation">
                     <div class="discount-badge">15% OFF</div>
-                    <div style="color:#c9c9c9; font-size:14px;">L'OREAL PARIS</div>
                 </div>
                 <div class="exclusive-info">
                     <div class="exclusive-brand">L'OREAL PARIS</div>
@@ -848,15 +854,15 @@
                         <span class="current-price">$14.99</span>
                         <span class="original-price">$17.99</span>
                     </div>
-                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product2.html')">Shop Now</button>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product4.html')">Shop Now</button>
                 </div>
             </div>
 
             <!-- Product 5 -->
             <div class="exclusive-card" onclick="navigateToProduct('product5.html')">
                 <div class="exclusive-image">
+                    <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlwc3RpY2t8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="SuperStay Lipstick">
                     <div class="discount-badge">20% OFF</div>
-                    <div style="color:#c9c9c9; font-size:14px;">MAYBELLINE</div>
                 </div>
                 <div class="exclusive-info">
                     <div class="exclusive-brand">MAYBELLINE</div>
@@ -865,15 +871,15 @@
                         <span class="current-price">$8.99</span>
                         <span class="original-price">$11.99</span>
                     </div>
-                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product3.html')">Shop Now</button>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product5.html')">Shop Now</button>
                 </div>
             </div>
 
             <!-- Product 6 -->
             <div class="exclusive-card" onclick="navigateToProduct('product6.html')">
                 <div class="exclusive-image">
+                    <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ymx1c2h8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Orgasm Blush">
                     <div class="discount-badge">10% OFF</div>
-                    <div style="color:#c9c9c9; font-size:14px;">NARS</div>
                 </div>
                 <div class="exclusive-info">
                     <div class="exclusive-brand">NARS</div>
@@ -882,32 +888,32 @@
                         <span class="current-price">$32.99</span>
                         <span class="original-price">$36.99</span>
                     </div>
-                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product4.html')">Shop Now</button>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product6.html')">Shop Now</button>
                 </div>
             </div>
             
              <!-- Product 7 -->
             <div class="exclusive-card" onclick="navigateToProduct('product7.html')">
                 <div class="exclusive-image">
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFrZXVwJTIwa2l0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Makeup Kit">
                     <div class="discount-badge">25% OFF</div>
-                    <div style="color:#c9c9c9; font-size:14px;">CAROLINA HERRERA</div>
                 </div>
                 <div class="exclusive-info">
                     <div class="exclusive-brand">CAROLINA HERRERA</div>
-                    <h3 class="exclusive-name">Good Girl Perfume</h3>
+                    <h3 class="exclusive-name">Luxury Makeup Kit</h3>
                     <div class="exclusive-price">
                         <span class="current-price">$89.99</span>
                         <span class="original-price">$119.99</span>
                     </div>
-                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product1.html')">Shop Now</button>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product7.html')">Shop Now</button>
                 </div>
             </div>
 
             <!-- Product 8 -->
             <div class="exclusive-card" onclick="navigateToProduct('product8.html')">
                 <div class="exclusive-image">
+                    <img src="https://images.unsplash.com/photo-1556228578-1cf94bc5c0f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWF0dGUlMjBsaXBzdGlja3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Matte Lipstick">
                     <div class="discount-badge">30% OFF</div>
-                    <div style="color:#c9c9c9; font-size:14px;">MAC</div>
                 </div>
                 <div class="exclusive-info">
                     <div class="exclusive-brand">MAC</div>
@@ -916,7 +922,7 @@
                         <span class="current-price">$17.99</span>
                         <span class="original-price">$25.99</span>
                     </div>
-                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product5.html')">Shop Now</button>
+                    <button class="shop-now" onclick="event.stopPropagation(); navigateToProduct('product8.html')">Shop Now</button>
                 </div>
             </div>
         </div>
