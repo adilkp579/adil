@@ -14,13 +14,13 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:80px; }
         
-        /* Luxury Brands Carousel Styles */
+        /* Luxury Brands Carousel Styles - UPDATED: Space removed */
         .luxury-brands-section {
-            padding: 40px 0;
+            padding: 20px 0 10px 0; /* Reduced top and bottom padding */
             background-color: #000;
             overflow: hidden;
             position: relative;
-            margin: 2rem 0;
+            margin: 1rem 0; /* Reduced margin */
         }
         
         .luxury-brands-title {
@@ -31,7 +31,7 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: 1px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 15px; /* Reduced from 30px to 15px */
         }
         
         .brands-slider {
@@ -75,9 +75,13 @@
             .luxury-brands-title {
                 font-size: 22px;
             }
+            .luxury-brands-section {
+                padding: 15px 0 8px 0; /* Adjusted for mobile */
+                margin: 0.8rem 0;
+            }
         }
-        
-        /* Featured Brands Slider Styles - Updated with larger images and smaller text */
+
+        /* Rest of your CSS remains exactly the same */
         .featured-slider-container {
             margin-top: 70px;
             padding: 1rem;
@@ -107,7 +111,7 @@
             gap: 15px;
         }
         .product-card {
-            flex: 0 0 calc(20% - 12px); /* width of each card relative to slider */
+            flex: 0 0 calc(20% - 12px);
             background: rgba(20, 20, 20, 0.9);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 16px;
@@ -121,7 +125,7 @@
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.35);
         }
         .product-image {
-            height: 240px; /* Increased from 200px to 240px */
+            height: 240px;
             background: linear-gradient(145deg, #111, #1a1a1a);
             display: flex;
             align-items: center;
@@ -139,35 +143,35 @@
             transform: scale(1.05);
         }
         .product-info {
-            padding: 12px 15px 15px; /* Reduced top padding */
+            padding: 12px 15px 15px;
             text-align: center;
         }
         .brand-name {
-            font-size: 11px; /* Reduced from 13px to 11px */
+            font-size: 11px;
             color: #c0a957;
-            margin-bottom: 5px; /* Reduced margin */
+            margin-bottom: 5px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 600;
         }
         .product-title {
-            font-size: 14px; /* Reduced from 17px to 14px */
+            font-size: 14px;
             font-weight: 600;
             color: #f1f1f1;
-            margin-bottom: 8px; /* Reduced margin */
-            line-height: 1.3; /* Reduced line height */
+            margin-bottom: 8px;
+            line-height: 1.3;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
         .product-description {
-            font-size: 11px; /* Reduced from 14px to 11px */
+            font-size: 11px;
             color: #bbb;
-            line-height: 1.3; /* Reduced line height */
-            margin-bottom: 10px; /* Reduced margin */
+            line-height: 1.3;
+            margin-bottom: 10px;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -220,19 +224,19 @@
         
         @media (max-width: 1024px) {
             .product-card {
-                flex: 0 0 calc(33.333% - 10px); /* 3 cards per row */
+                flex: 0 0 calc(33.333% - 10px);
             }
             .product-image {
-                height: 200px; /* Adjusted for tablet */
+                height: 200px;
             }
         }
         
         @media (max-width: 768px) {
             .product-card {
-                flex: 0 0 calc(50% - 10px); /* 2 cards per row */
+                flex: 0 0 calc(50% - 10px);
             }
             .product-image {
-                height: 180px; /* Adjusted for mobile */
+                height: 180px;
             }
             .brand-name {
                 font-size: 10px;
@@ -247,10 +251,10 @@
         
         @media (max-width: 480px) {
             .product-card {
-                flex: 0 0 calc(100% - 10px); /* 1 card per row */
+                flex: 0 0 calc(100% - 10px);
             }
             .product-image {
-                height: 200px; /* Adjusted for small mobile */
+                height: 200px;
             }
             .brand-name {
                 font-size: 11px;
@@ -288,7 +292,7 @@
             border-radius: 3px;
         }
 
-        /* Rest of your existing styles */
+        /* Rest of your existing styles remain unchanged */
         .top-header { background:var(--primary); padding:.8rem 2rem; display:flex; justify-content:space-between; align-items:center; position:fixed; width:100%; top:0; z-index:1000; border-bottom:1px solid var(--glass-border); }
         .logo { font-size:1.8rem; font-weight:800; color:var(--text); text-decoration:none; }
         .logo-dot { color:var(--accent); }
@@ -511,6 +515,7 @@
     </style>
 </head>
 <body>
+    <!-- Your HTML content remains exactly the same -->
     <header class="top-header">
         <a href="index.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
@@ -536,7 +541,7 @@
         </div>
     </section>
 
-    <!-- Featured Brands Slider Section - Updated with larger images and smaller text -->
+    <!-- Featured Brands Slider Section -->
     <section class="featured-slider-container">
         <div class="featured-header">
             <h2 class="featured-title">FEATURED BRANDS</h2>
@@ -722,7 +727,7 @@
         </div>
     </div>
 
-    <!-- Luxury Brands Carousel - Added above Exclusive Collection -->
+    <!-- Luxury Brands Carousel - UPDATED: Space removed -->
     <section class="luxury-brands-section">
         <h2 class="luxury-brands-title">LUXURY BRANDS</h2>
         <div class="brands-slider">
@@ -874,7 +879,7 @@
     </nav>
 
     <script>
-        // Featured Brands Slider Functionality
+        // Your JavaScript code remains exactly the same
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize slider
             const slider = document.querySelector('.slider');
@@ -890,7 +895,7 @@
                 if (window.innerWidth < 480) return 1;
                 if (window.innerWidth < 768) return 2;
                 if (window.innerWidth < 1024) return 3;
-                return 5; // 5 cards per row for desktop
+                return 5;
             }
             
             function updateSlider() {
@@ -1058,7 +1063,7 @@
         function calculateRelevance(...fields) {
             // Simple relevance calculation - count matches in fields
             let relevance = 0;
-            const searchText = arguments[arguments.length - 1]; // Last argument is search text
+            const searchText = arguments[arguments.length - 1];
             
             for (let i = 0; i < arguments.length - 1; i++) {
                 if (arguments[i].includes(searchText)) {
