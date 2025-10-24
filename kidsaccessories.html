@@ -22,6 +22,11 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --card-bg: rgba(255, 255, 255, 0.05);
             --success: #2ed573;
+            --kids-blue: #48dbfb;
+            --kids-pink: #ff6b8b;
+            --kids-yellow: #ffd93d;
+            --kids-purple: #9c88ff;
+            --kids-green: #6bde99;
         }
 
         body {
@@ -294,54 +299,160 @@
             }
         }
 
-        /* Compact Bottom Navigation */
+        /* ENHANCED KIDS ACCESSORIES NAVIGATION BAR */
         .bottom-nav {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--primary);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 500px;
+            height: 75px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             justify-content: space-around;
-            padding: 0.8rem 0;
+            align-items: center;
+            padding: 0 15px;
             z-index: 1000;
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .bottom-nav:hover {
+            background: rgba(255, 255, 255, 0.16);
+            box-shadow: 
+                0 16px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.25);
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-decoration: none;
             color: var(--text);
             transition: all 0.3s ease;
-            padding: 0.4rem 0.6rem;
-            border-radius: 10px;
+            padding: 10px 12px;
+            border-radius: 18px;
+            position: relative;
             flex: 1;
             max-width: 70px;
+            height: 60px;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.25), rgba(255, 255, 255, 0.12));
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .nav-item.active {
             color: var(--accent);
-            background: var(--glass);
+            transform: translateY(-8px);
+        }
+
+        .nav-item.active::before {
+            opacity: 1;
+        }
+
+        .nav-item.active .nav-icon {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.5));
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--accent);
+            font-weight: 700;
+            transform: translateY(2px);
         }
 
         .nav-item:hover {
             color: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+        }
+
+        .nav-item:hover::before {
+            opacity: 0.4;
         }
 
         .nav-icon {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         .nav-label {
-            font-size: 0.65rem;
-            font-weight: 500;
+            font-size: 0.68rem;
+            font-weight: 600;
             text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.4px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
+
+        /* Active state animation */
+        @keyframes navPulse {
+            0% { transform: translateY(-8px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+            100% { transform: translateY(-8px) scale(1); }
+        }
+
+        .nav-item.active {
+            animation: navPulse 0.6s ease;
+        }
+
+        /* Glow effect for active state */
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: rgba(231, 76, 60, 0.3);
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.7;
+        }
+
+        /* Color coding for different categories */
+        .nav-item:nth-child(1) .nav-icon { color: var(--kids-blue); }
+        .nav-item:nth-child(2) .nav-icon { color: var(--kids-pink); }
+        .nav-item:nth-child(3) .nav-icon { color: var(--kids-yellow); }
+        .nav-item:nth-child(4) .nav-icon { color: var(--kids-purple); }
+        .nav-item:nth-child(5) .nav-icon { color: var(--kids-green); }
+
+        .nav-item.active:nth-child(1) { background: rgba(72, 219, 251, 0.15); }
+        .nav-item.active:nth-child(2) { background: rgba(255, 107, 139, 0.15); }
+        .nav-item.active:nth-child(3) { background: rgba(255, 217, 61, 0.15); }
+        .nav-item.active:nth-child(4) { background: rgba(156, 136, 255, 0.15); }
+        .nav-item.active:nth-child(5) { background: rgba(107, 222, 153, 0.15); }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
@@ -384,28 +495,25 @@
                 margin-bottom: 0.8rem;
             }
 
-            .bottom-nav {
-                padding: 0.7rem 0;
+            /* Mobile-specific nav adjustments */
+            .bottom-nav { 
+                height: 70px; 
+                bottom: 12px; 
+                width: 94%;
+                max-width: 440px;
+                padding: 0 12px;
             }
-
-            .nav-item {
-                padding: 0.3rem 0.4rem;
-                max-width: 65px;
+            .nav-item { 
+                width: 60px; 
+                height: 55px; 
+                padding: 8px 10px;
             }
-
-            .nav-icon {
-                font-size: 1rem;
-            }
-
-            .nav-label {
-                font-size: 0.6rem;
-            }
-
+            .nav-icon { font-size: 1.3rem; height: 22px; }
+            .nav-label { font-size: 0.65rem; }
             .icon-btn {
                 width: 28px;
                 height: 28px;
             }
-
             .success-message {
                 top: 60px;
                 right: 1rem;
@@ -413,6 +521,22 @@
                 text-align: center;
                 padding: 0.6rem 1rem;
             }
+        }
+
+        @media (max-width: 480px) {
+            .bottom-nav {
+                height: 65px;
+                border-radius: 22px;
+                padding: 0 10px;
+                max-width: 400px;
+            }
+            .nav-item {
+                width: 55px;
+                height: 50px;
+                padding: 7px 8px;
+            }
+            .nav-icon { font-size: 1.2rem; height: 20px; }
+            .nav-label { font-size: 0.6rem; }
         }
 
         @media (min-width: 1200px) {
@@ -508,7 +632,7 @@
         </div>
     </div>
 
-    <!-- Compact Bottom Navigation with Updated Links -->
+    <!-- ENHANCED KIDS ACCESSORIES NAVIGATION BAR -->
     <nav class="bottom-nav">
         <!-- 1. Home - Updated to kidsaccessories.html -->
         <a href="kidsaccessories.html" class="nav-item active">
@@ -518,25 +642,25 @@
         
         <!-- 2. Games - Updated to kidsgames.html -->
         <a href="kidsgames.html" class="nav-item">
-          🎮
+            <i class="fas fa-gamepad nav-icon"></i>
             <span class="nav-label">Games</span>
         </a>
         
         <!-- 3. Cars - Updated to kidscars.html -->
         <a href="kidscars.html" class="nav-item">
-            🏎
+            <i class="fas fa-car nav-icon"></i>
             <span class="nav-label">Cars</span>
         </a>
         
         <!-- 4. Books - Updated to kidsbooks.html -->
         <a href="kidsbooks.html" class="nav-item">
-            📚
+            <i class="fas fa-book nav-icon"></i>
             <span class="nav-label">Books</span>
         </a>
         
         <!-- 5. Toys - Updated to kidstoys.html -->
         <a href="kidstoys.html" class="nav-item">
-            🧸
+            <i class="fas fa-puzzle-piece nav-icon"></i>
             <span class="nav-label">Toys</span>
         </a>
     </nav>
@@ -748,13 +872,19 @@
             this.parentElement.style.borderColor = 'var(--glass-border)';
         });
 
-        // Bottom navigation active state
+        // Enhanced navigation functionality
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
-                document.querySelectorAll('.nav-item').forEach(nav => {
-                    nav.classList.remove('active');
-                });
-                this.classList.add('active');
+                if (!this.classList.contains('active')) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Smooth navigation
+                    setTimeout(() => {
+                        window.location.href = this.getAttribute('href');
+                    }, 300);
+                }
             });
         });
 
