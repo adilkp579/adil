@@ -12,7 +12,7 @@
             --glass:rgba(255,255,255,0.1); --glass-border:rgba(255,255,255,0.2);
             --card-bg:rgba(255,255,255,0.05); --success:#2ed573;
         }
-        body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:80px; }
+        body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:100px; }
         
         /* Luxury Brands Carousel Styles - FIXED */
         .luxury-brands-section {
@@ -358,12 +358,60 @@
         
         .success-message { position:fixed; top:100px; right:2rem; background:var(--success); color:white; padding:1rem 2rem; border-radius:10px; box-shadow:0 10px 25px rgba(46,213,115,.4); display:none; z-index:1001; animation:slideIn .3s ease; }
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
-        .bottom-nav { position:fixed; bottom:0; left:0; width:100%; background:var(--primary); backdrop-filter:blur(20px); border-top:1px solid var(--glass-border); display:flex; justify-content:space-around; padding:1rem 0; z-index:1000; }
-        .nav-item { display:flex; flex-direction:column; align-items:center; text-decoration:none; color:var(--text); transition:all .3s ease; padding:.5rem .8rem; border-radius:10px; flex:1; max-width:70px; }
-        .nav-item.active { color:var(--accent); background:var(--glass); }
-        .nav-item:hover { color:var(--accent); transform:translateY(-2px); }
-        .nav-icon { font-size:1.2rem; margin-bottom:.3rem; }
-        .nav-label { font-size:.7rem; font-weight:500; text-align:center; }
+        
+        /* FLOATING GLASS NAVIGATION BAR - UPDATED */
+        .floating-nav {
+            width: 90%;
+            max-width: 500px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            opacity: 0.8;
+            transition: 0.3s;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            justify-content: center;
+        }
+
+        .nav-item.active {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .nav-item:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .nav-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 4px;
+        }
         
         /* Exclusive Collection Styles */
         .exclusive-section {
@@ -497,10 +545,9 @@
             .main-content{margin-top:0;padding:.8rem;} 
             .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
             .categories-title{font-size:1.3rem;margin-bottom:.8rem;}
-            .bottom-nav{padding:.8rem 0;} 
-            .nav-item{padding:.4rem .5rem; max-width:65px;} 
-            .nav-icon{font-size:1.1rem;} 
-            .nav-label{font-size:.65rem;} 
+            .floating-nav { height: 65px; bottom: 20px; }
+            .nav-item { width: 45px; height: 45px; font-size: 18px; }
+            .nav-label { font-size: 0.6rem; }
             .icon-btn{width:32px;height:32px;} 
             .success-message{top:80px;right:1rem;left:1rem;text-align:center;}
             .category-card { width: 100px; height: 130px; }
@@ -926,12 +973,28 @@
         </div>
     </section>
 
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active"><i class="fas fa-home nav-icon"></i><span class="nav-label">Home</span></a>
-        <a href="men.html" class="nav-item"><i class="fas fa-male nav-icon"></i><span class="nav-label">Men</span></a>
-        <a href="women.html" class="nav-item"><i class="fas fa-female nav-icon"></i><span class="nav-label">Women</span></a>
-        <a href="kids.html" class="nav-item"><i class="fas fa-child nav-icon"></i><span class="nav-label">Kids</span></a>
-        <a href="track.html" class="nav-item"><i class="fas fa-map-marker-alt nav-icon"></i><span class="nav-label">Track</span></a>
+    <!-- FLOATING GLASS NAVIGATION BAR -->
+    <nav class="floating-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="men.html" class="nav-item">
+            <i class="fas fa-male"></i>
+            <span class="nav-label">Men</span>
+        </a>
+        <a href="women.html" class="nav-item">
+            <i class="fas fa-female"></i>
+            <span class="nav-label">Women</span>
+        </a>
+        <a href="kids.html" class="nav-item">
+            <i class="fas fa-child"></i>
+            <span class="nav-label">Kids</span>
+        </a>
+        <a href="track.html" class="nav-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="nav-label">Track</span>
+        </a>
     </nav>
 
     <script>
@@ -1220,7 +1283,7 @@
             }
         }
 
-        // Bottom nav
+        // Floating nav functionality
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e){
                 if (!this.classList.contains('active')) {
