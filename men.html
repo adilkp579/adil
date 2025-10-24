@@ -294,58 +294,146 @@
             }
         }
 
-        /* Floating Glass Bottom Navigation */
+        /* ENHANCED FLOATING GLASS NAVIGATION BAR */
         .floating-nav {
-            width: 90%;
-            max-width: 500px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 40px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 480px;
+            height: 75px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             justify-content: space-around;
             align-items: center;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            padding: 0 20px;
             z-index: 1000;
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .floating-nav:hover {
+            background: rgba(255, 255, 255, 0.16);
+            box-shadow: 
+                0 16px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.25);
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-decoration: none;
-            color: white;
-            font-size: 20px;
-            opacity: 0.8;
-            transition: 0.3s;
-            padding: 0.5rem;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
             justify-content: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            padding: 10px 12px;
+            border-radius: 18px;
+            position: relative;
+            flex: 1;
+            max-width: 68px;
+            height: 60px;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.25), rgba(255, 255, 255, 0.12));
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .nav-item.active {
+            color: var(--accent);
+            transform: translateY(-8px);
+        }
+
+        .nav-item.active::before {
             opacity: 1;
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.1);
+        }
+
+        .nav-item.active .nav-icon {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.5));
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--accent);
+            font-weight: 700;
+            transform: translateY(2px);
         }
 
         .nav-item:hover {
-            opacity: 1;
-            transform: scale(1.1);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .nav-item:hover::before {
+            opacity: 0.4;
+        }
+
+        .nav-icon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         .nav-label {
-            font-size: 0.65rem;
-            font-weight: 500;
+            font-size: 0.68rem;
+            font-weight: 600;
             text-align: center;
-            margin-top: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.4px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Active state animation */
+        @keyframes navPulse {
+            0% { transform: translateY(-8px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+            100% { transform: translateY(-8px) scale(1); }
+        }
+
+        .nav-item.active {
+            animation: navPulse 0.6s ease;
+        }
+
+        /* Glow effect for active state */
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: rgba(231, 76, 60, 0.3);
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.7;
         }
 
         /* Mobile Responsive */
@@ -389,26 +477,25 @@
                 margin-bottom: 0.8rem;
             }
 
-            .floating-nav {
-                height: 65px;
-                bottom: 20px;
+            /* Mobile-specific floating nav adjustments */
+            .floating-nav { 
+                height: 70px; 
+                bottom: 20px; 
+                width: 94%;
+                max-width: 440px;
+                padding: 0 16px;
             }
-
-            .nav-item {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
+            .nav-item { 
+                width: 58px; 
+                height: 55px; 
+                padding: 8px 10px;
             }
-
-            .nav-label {
-                font-size: 0.6rem;
-            }
-
+            .nav-icon { font-size: 1.3rem; height: 22px; }
+            .nav-label { font-size: 0.65rem; }
             .icon-btn {
                 width: 28px;
                 height: 28px;
             }
-
             .success-message {
                 top: 60px;
                 right: 1rem;
@@ -416,6 +503,22 @@
                 text-align: center;
                 padding: 0.6rem 1rem;
             }
+        }
+
+        @media (max-width: 480px) {
+            .floating-nav {
+                height: 65px;
+                border-radius: 22px;
+                padding: 0 14px;
+                max-width: 400px;
+            }
+            .nav-item {
+                width: 52px;
+                height: 50px;
+                padding: 7px 8px;
+            }
+            .nav-icon { font-size: 1.2rem; height: 20px; }
+            .nav-label { font-size: 0.6rem; }
         }
 
         @media (min-width: 1200px) {
@@ -495,35 +598,35 @@
         </div>
     </div>
 
-    <!-- Floating Glass Bottom Navigation -->
+    <!-- ENHANCED FLOATING GLASS NAVIGATION BAR -->
     <nav class="floating-nav">
         <!-- 1. Home (First) - men.html -->
         <a href="men.html" class="nav-item active">
-            <i class="fas fa-home"></i>
+            <i class="fas fa-home nav-icon"></i>
             <span class="nav-label">Home</span>
         </a>
         
         <!-- 2. Cloths (Second) - Changed to mencloth.html -->
         <a href="mencloth.html" class="nav-item">
-            <i class="fas fa-tshirt"></i>
+            <i class="fas fa-tshirt nav-icon"></i>
             <span class="nav-label">Cloths</span>
         </a>
         
         <!-- 3. Footwear (Third) - Changed to menfootwear.html -->
         <a href="menfootwear.html" class="nav-item">
-            <i class="fas fa-shoe-prints"></i>
+            <i class="fas fa-shoe-prints nav-icon"></i>
             <span class="nav-label">Footwear</span>
         </a>
         
         <!-- 4. Accessories (Fourth) - Changed to menaccessories.html -->
         <a href="menaccessories.html" class="nav-item">
-            <i class="fas fa-gem"></i>
+            <i class="fas fa-gem nav-icon"></i>
             <span class="nav-label">Accessories</span>
         </a>
         
         <!-- 5. Beauty (Fifth) - Changed to menbeauty.html -->
         <a href="menbeauty.html" class="nav-item">
-            <i class="fas fa-spa"></i>
+            <i class="fas fa-spa nav-icon"></i>
             <span class="nav-label">Beauty</span>
         </a>
     </nav>
@@ -735,12 +838,10 @@
             this.parentElement.style.borderColor = 'var(--glass-border)';
         });
 
-        // Bottom navigation active state
+        // Enhanced navigation functionality
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
-                document.querySelectorAll('.nav-item').forEach(nav => {
-                    nav.classList.remove('active');
-                });
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
                 this.classList.add('active');
             });
         });
