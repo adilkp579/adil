@@ -28,7 +28,7 @@
             background: var(--primary);
             color: var(--text);
             min-height: 100vh;
-            padding-bottom: 80px;
+            padding-bottom: 100px;
         }
 
         /* Compact Top Header */
@@ -294,19 +294,37 @@
             }
         }
 
-        /* Compact Bottom Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--primary);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
+        /* FLOATING GLASS NAVIGATION BAR */
+        .floating-nav {
+            width: 90%;
+            max-width: 500px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 40px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             display: flex;
             justify-content: space-around;
-            padding: 0.8rem 0;
+            align-items: center;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .floating-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.15);
         }
 
         .nav-item {
@@ -314,33 +332,70 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: var(--text);
+            color: white;
+            font-size: 20px;
+            opacity: 0.8;
             transition: all 0.3s ease;
-            padding: 0.4rem 0.6rem;
-            border-radius: 10px;
-            flex: 1;
-            max-width: 70px;
+            padding: 0.5rem;
+            border-radius: 20px;
+            width: 55px;
+            height: 55px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .nav-item.active {
-            color: var(--accent);
-            background: var(--glass);
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-item.active::before {
+            opacity: 1;
         }
 
         .nav-item:hover {
-            color: var(--accent);
-            transform: translateY(-2px);
+            opacity: 1;
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-item:hover::before {
+            opacity: 1;
         }
 
         .nav-icon {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         .nav-label {
             font-size: 0.65rem;
-            font-weight: 500;
+            font-weight: 600;
             text-align: center;
+            margin-top: 4px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
         }
 
         /* Mobile Responsive */
@@ -384,34 +439,42 @@
                 margin-bottom: 0.8rem;
             }
 
-            .bottom-nav {
-                padding: 0.7rem 0;
+            .floating-nav { 
+                height: 65px; 
+                bottom: 20px; 
+                width: 95%;
+                backdrop-filter: blur(20px) saturate(180%);
+                -webkit-backdrop-filter: blur(20px) saturate(180%);
             }
-
-            .nav-item {
-                padding: 0.3rem 0.4rem;
-                max-width: 65px;
+            .nav-item { 
+                width: 50px; 
+                height: 50px; 
+                font-size: 18px; 
+                border-radius: 15px;
             }
-
-            .nav-icon {
-                font-size: 1rem;
-            }
-
-            .nav-label {
-                font-size: 0.6rem;
-            }
-
+            .nav-label { font-size: 0.6rem; }
             .icon-btn {
                 width: 28px;
                 height: 28px;
             }
-
             .success-message {
                 top: 60px;
                 right: 1rem;
                 left: 1rem;
                 text-align: center;
                 padding: 0.6rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-nav {
+                height: 60px;
+                border-radius: 30px;
+            }
+            .nav-item {
+                width: 45px;
+                height: 45px;
+                border-radius: 15px;
             }
         }
 
@@ -492,8 +555,8 @@
         </div>
     </div>
 
-    <!-- Compact Bottom Navigation -->
-    <nav class="bottom-nav">
+    <!-- FLOATING GLASS NAVIGATION BAR -->
+    <nav class="floating-nav">
         <!-- 1. Home (First) - Changed to kids.html -->
         <a href="kids.html" class="nav-item active">
             <i class="fas fa-home nav-icon"></i>
@@ -508,13 +571,13 @@
         
         <!-- 3. Footwear (Third) - Changed to kidsfootwear.html -->
         <a href="kidsfootwear.html" class="nav-item">
-            👟
+            <i class="fas fa-shoe-prints nav-icon"></i>
             <span class="nav-label">Footwear</span>
         </a>
         
         <!-- 4. Accessories (Fourth) - Changed to kidsaccessories.html -->
         <a href="kidsaccessories.html" class="nav-item">
-            🎮🏎
+            <i class="fas fa-gamepad nav-icon"></i>
             <span class="nav-label">Accessories</span>
         </a>
         
@@ -732,7 +795,7 @@
             this.parentElement.style.borderColor = 'var(--glass-border)';
         });
 
-        // Bottom navigation active state
+        // Floating navigation active state
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
                 document.querySelectorAll('.nav-item').forEach(nav => {
