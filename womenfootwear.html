@@ -13,18 +13,242 @@
             --card-bg:rgba(255,255,255,0.05); --success:#2ed573;
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:90px; }
-        .top-header { background:var(--primary); padding:.8rem 2rem; display:flex; justify-content:space-between; align-items:center; position:fixed; width:100%; top:0; z-index:1000; border-bottom:1px solid var(--glass-border); }
-        .logo { font-size:1.8rem; font-weight:800; color:var(--text); text-decoration:none; }
+        
+        /* Simple Top Header */
+        .top-header { 
+            background:var(--primary); 
+            padding:.8rem 2rem; 
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center; 
+            position:fixed; 
+            width:100%; 
+            top:0; 
+            z-index:1000; 
+            border-bottom:1px solid var(--glass-border); 
+            height:70px;
+        }
+        .logo { 
+            font-size:1.8rem; 
+            font-weight:800; 
+            color:var(--text); 
+            text-decoration:none; 
+        }
         .logo-dot { color:var(--accent); }
         .header-icons { display:flex; gap:1rem; align-items:center; }
-        .search-bar { background:var(--glass); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:20px; padding:.4rem 1.2rem; display:flex; align-items:center; gap:.6rem; width:5cm; min-width:5cm; height:35px; transition:all .3s ease; }
+        .search-bar { 
+            background:var(--glass); 
+            border:1px solid var(--glass-border); 
+            border-radius:20px; 
+            padding:.4rem 1.2rem; 
+            display:flex; 
+            align-items:center; 
+            gap:.6rem; 
+            width:5cm; 
+            min-width:5cm; 
+            height:35px; 
+            transition:all .3s ease; 
+        }
         .search-bar:focus-within { border-color:var(--accent); }
-        .search-bar input { background:transparent; border:none; color:var(--text); font-size:.9rem; width:100%; outline:none; padding:0; }
+        .search-bar input { 
+            background:transparent; 
+            border:none; 
+            color:var(--text); 
+            font-size:.9rem; 
+            width:100%; 
+            outline:none; 
+            padding:0; 
+        }
         .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.9rem; }
         .search-icon { color:rgba(255,255,255,.7); font-size:.9rem; }
-        .icon-btn { background:var(--glass); border:1px solid var(--glass-border); border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center; color:var(--text); text-decoration:none; transition:all .3s ease; font-size:.9rem; position:relative; }
+        .icon-btn { 
+            background:var(--glass); 
+            border:1px solid var(--glass-border); 
+            border-radius:50%; 
+            width:35px; 
+            height:35px; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            color:var(--text); 
+            text-decoration:none; 
+            transition:all .3s ease; 
+            font-size:.9rem; 
+            position:relative; 
+        }
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
-        .cart-badge { position:absolute; top:-5px; right:-5px; background:var(--accent); color:white; border-radius:50%; width:18px; height:18px; font-size:.7rem; display:none; align-items:center; justify-content:center; font-weight:600; }
+        .cart-badge { 
+            position:absolute; 
+            top:-5px; 
+            right:-5px; 
+            background:var(--accent); 
+            color:white; 
+            border-radius:50%; 
+            width:18px; 
+            height:18px; 
+            font-size:.7rem; 
+            display:none; 
+            align-items:center; 
+            justify-content:center; 
+            font-weight:600; 
+        }
+        
+        /* Premium Floating Glass Bottom Navigation */
+        .bottom-nav { 
+            position: fixed; 
+            bottom: 20px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 25px; 
+            display: flex; 
+            justify-content: space-around; 
+            padding: 1rem 0.5rem; 
+            z-index: 1000; 
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 80px;
+        }
+        
+        .bottom-nav:hover {
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 16px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+        }
+        
+        .nav-item { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-decoration: none; 
+            color: var(--text); 
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            padding: 0.6rem; 
+            border-radius: 18px; 
+            flex: 1; 
+            max-width: 78px;
+            height: 100%; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.25), rgba(255, 255, 255, 0.12));
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .nav-item.active { 
+            color: var(--accent); 
+            background: rgba(231, 76, 60, 0.15); 
+            transform: translateY(-8px);
+        }
+        
+        .nav-item.active::before {
+            opacity: 1;
+        }
+        
+        .nav-item:hover { 
+            color: var(--accent); 
+            transform: translateY(-3px); 
+        }
+        
+        .nav-item:hover::before {
+            opacity: 0.4;
+        }
+        
+        .nav-icon { 
+            font-size: 1.3rem; 
+            margin-bottom: 0.3rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 1.8rem; 
+            color: var(--text); 
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        .nav-item.active .nav-icon {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.5));
+        }
+        
+        .nav-label { 
+            font-size: .75rem;
+            font-weight: 600; 
+            text-align: center; 
+            z-index: 1;
+            letter-spacing: 0.4px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-item.active .nav-label {
+            font-weight: 700;
+            color: var(--accent);
+            transform: translateY(2px);
+        }
+        
+        /* Active indicator for bottom nav */
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+        
+        /* Active state animation */
+        @keyframes navPulse {
+            0% { transform: translateY(-8px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+            100% { transform: translateY(-8px) scale(1); }
+        }
+        
+        .nav-item.active {
+            animation: navPulse 0.6s ease;
+        }
+        
+        /* Glow effect for active state */
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: rgba(231, 76, 60, 0.3);
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.7;
+        }
+
+        /* Rest of the existing styles remain the same */
         .main-content { margin-top:70px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
         .category-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem; }
         .category-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1.5rem; text-align:center; transition:all .3s ease; cursor:pointer; text-decoration:none; color:var(--text); display:block; }
@@ -50,57 +274,6 @@
         .hidden { display:none !important; }
         .success-message { position:fixed; top:100px; right:2rem; background:var(--success); color:white; padding:1rem 2rem; border-radius:10px; box-shadow:0 10px 25px rgba(46,213,115,.4); display:none; z-index:1001; animation:slideIn .3s ease; }
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
-        
-        /* Updated Navigation Bar Styles */
-        .bottom-nav { 
-            position:fixed; 
-            bottom:0; 
-            left:0; 
-            width:100%; 
-            background:var(--primary); 
-            backdrop-filter:blur(20px); 
-            border-top:1px solid var(--glass-border); 
-            display:flex; 
-            justify-content:space-around; 
-            padding:1.1rem 0;
-            z-index:1000; 
-            height:80px;
-        }
-        
-        .nav-item { 
-            display:flex; 
-            flex-direction:column; 
-            align-items:center; 
-            justify-content:center; 
-            text-decoration:none; 
-            color:var(--text); 
-            transition:all .3s ease; 
-            padding:.6rem;
-            border-radius:10px; 
-            flex:1; 
-            max-width:78px;
-            height:100%; 
-        }
-        
-        .nav-item.active { color:var(--accent); background:var(--glass); }
-        .nav-item:hover { color:var(--accent); transform:translateY(-2px); }
-        
-        .nav-icon { 
-            font-size:1.1rem; /* Reduced from 1.2rem to 1.1rem */
-            margin-bottom:.3rem; 
-            display:flex; 
-            align-items:center; 
-            justify-content:center; 
-            height:1.8rem; /* Reduced from 2rem to 1.8rem */
-            color:var(--text); 
-        }
-        
-        .nav-label { 
-            font-size:.75rem;
-            font-weight:500; 
-            text-align:center; 
-        }
-        
         .loading { text-align:center; padding:2rem; color:var(--accent); }
         .hero-section { text-align:center; padding:2rem 1rem; background:#ffffff; border-radius:12px; margin-bottom:2rem; }
         .hero-title { font-size:2.2rem; font-weight:800; margin-bottom:1rem; background:linear-gradient(45deg, #000, #e74c3c); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
@@ -405,8 +578,10 @@
             
             /* Mobile-specific navigation adjustments */
             .bottom-nav{
-                padding:1rem 0;
-                height:75px;
+                padding:1rem 0.5rem;
+                width: 94%;
+                max-width: 450px;
+                height: 75px;
             } 
             
             .nav-item{
@@ -415,8 +590,8 @@
             } 
             
             .nav-icon{
-                font-size:1rem; /* Reduced from 1.1rem to 1rem */
-                height:1.6rem; /* Reduced from 1.8rem to 1.6rem */
+                font-size:1.2rem;
+                height:1.6rem;
             } 
             
             .nav-label{
@@ -462,6 +637,24 @@
             }
         }
         
+        @media(max-width:480px){
+            .bottom-nav {
+                border-radius: 20px;
+                padding: 0.8rem 0.4rem;
+                height: 70px;
+            }
+            .nav-item {
+                padding: 0.4rem;
+                max-width: 65px;
+            }
+            .nav-icon {
+                font-size: 1.1rem;
+            }
+            .nav-label {
+                font-size: 0.65rem;
+            }
+        }
+        
         @media(min-width:1200px){ 
             .search-bar{width:6cm;min-width:6cm;} 
             .category-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
@@ -474,6 +667,7 @@
     </style>
 </head>
 <body>
+    <!-- Simple Top Header -->
     <header class="top-header">
         <a href="womenfootwear.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
@@ -584,25 +778,26 @@
         </div>
     </div>
 
+    <!-- Premium Floating Glass Bottom Navigation -->
     <nav class="bottom-nav">
         <a href="womenfootwear.html" class="nav-item">
             <i class="fas fa-home nav-icon"></i>
             <span class="nav-label">Home</span>
         </a>
         <a href="womenshoes.html" class="nav-item">
-             🥿
+             <i class="fas fa-shoe-prints nav-icon"></i>
             <span class="nav-label">Shoes</span>
         </a>
         <a href="womenheels.html" class="nav-item active">
-            👠
+            <i class="fas fa-female nav-icon"></i>
             <span class="nav-label">Heels</span>
         </a>
         <a href="womensandals.html" class="nav-item">
-            👡
+            <i class="fas fa-sandal nav-icon"></i>
             <span class="nav-label">Sandals</span>
         </a>
         <a href="womenslippers.html" class="nav-item">
-            🩴
+            <i class="fas fa-socks nav-icon"></i>
             <span class="nav-label">Slippers</span>
         </a>
     </nav>
@@ -792,6 +987,28 @@
                     const productPrice = productCard.querySelector('.heel-product-price').textContent;
                     
                     addToCart(productId, productName, productPrice);
+                });
+            });
+            
+            // Add active state to bottom nav items on click
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Prevent default only if it's not the active item
+                    if (!this.classList.contains('active')) {
+                        e.preventDefault();
+                        
+                        // Remove active class from all items
+                        navItems.forEach(nav => nav.classList.remove('active'));
+                        
+                        // Add active class to clicked item
+                        this.classList.add('active');
+                        
+                        // After animation, navigate to the link
+                        setTimeout(() => {
+                            window.location.href = this.getAttribute('href');
+                        }, 300);
+                    }
                 });
             });
         });
