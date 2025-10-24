@@ -53,7 +53,6 @@
         .brand-slide img {
             height: 80px;
             width: auto;
-            /* REMOVED the filter that was making images invisible */
             opacity: 0.8;
             transition: opacity 0.3s ease;
         }
@@ -359,16 +358,20 @@
         .success-message { position:fixed; top:100px; right:2rem; background:var(--success); color:white; padding:1rem 2rem; border-radius:10px; box-shadow:0 10px 25px rgba(46,213,115,.4); display:none; z-index:1001; animation:slideIn .3s ease; }
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
         
-        /* FLOATING GLASS NAVIGATION BAR - UPDATED */
+        /* ENHANCED FLOATING GLASS NAVIGATION BAR WITH GLASS MORPHISM */
         .floating-nav {
             width: 90%;
             max-width: 500px;
             height: 70px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
             border-radius: 40px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -377,6 +380,15 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .floating-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.15);
         }
 
         .nav-item {
@@ -387,30 +399,67 @@
             color: white;
             font-size: 20px;
             opacity: 0.8;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             padding: 0.5rem;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            border-radius: 20px;
+            width: 55px;
+            height: 55px;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .nav-item.active {
             opacity: 1;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             transform: scale(1.1);
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-item.active::before {
+            opacity: 1;
         }
 
         .nav-item:hover {
             opacity: 1;
             transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-item:hover::before {
+            opacity: 1;
+        }
+
+        .nav-icon {
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         .nav-label {
             font-size: 0.65rem;
-            font-weight: 500;
+            font-weight: 600;
             text-align: center;
             margin-top: 4px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
         }
         
         /* Exclusive Collection Styles */
@@ -545,8 +594,19 @@
             .main-content{margin-top:0;padding:.8rem;} 
             .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
             .categories-title{font-size:1.3rem;margin-bottom:.8rem;}
-            .floating-nav { height: 65px; bottom: 20px; }
-            .nav-item { width: 45px; height: 45px; font-size: 18px; }
+            .floating-nav { 
+                height: 65px; 
+                bottom: 20px; 
+                width: 95%;
+                backdrop-filter: blur(20px) saturate(180%);
+                -webkit-backdrop-filter: blur(20px) saturate(180%);
+            }
+            .nav-item { 
+                width: 50px; 
+                height: 50px; 
+                font-size: 18px; 
+                border-radius: 15px;
+            }
             .nav-label { font-size: 0.6rem; }
             .icon-btn{width:32px;height:32px;} 
             .success-message{top:80px;right:1rem;left:1rem;text-align:center;}
@@ -559,6 +619,15 @@
             .category-label { font-size: 10px; }
             .exclusive-card { min-width: 160px; }
             .exclusive-image { height: 140px; }
+            .floating-nav {
+                height: 60px;
+                border-radius: 30px;
+            }
+            .nav-item {
+                width: 45px;
+                height: 45px;
+                border-radius: 15px;
+            }
         }
         @media(min-width:1200px){ 
             .search-bar{width:6cm;min-width:6cm;} 
@@ -973,26 +1042,26 @@
         </div>
     </section>
 
-    <!-- FLOATING GLASS NAVIGATION BAR -->
+    <!-- ENHANCED FLOATING GLASS NAVIGATION BAR -->
     <nav class="floating-nav">
         <a href="index.html" class="nav-item active">
-            <i class="fas fa-home"></i>
+            <i class="fas fa-home nav-icon"></i>
             <span class="nav-label">Home</span>
         </a>
         <a href="men.html" class="nav-item">
-            <i class="fas fa-male"></i>
+            <i class="fas fa-male nav-icon"></i>
             <span class="nav-label">Men</span>
         </a>
         <a href="women.html" class="nav-item">
-            <i class="fas fa-female"></i>
+            <i class="fas fa-female nav-icon"></i>
             <span class="nav-label">Women</span>
         </a>
         <a href="kids.html" class="nav-item">
-            <i class="fas fa-child"></i>
+            <i class="fas fa-child nav-icon"></i>
             <span class="nav-label">Kids</span>
         </a>
         <a href="track.html" class="nav-item">
-            <i class="fas fa-map-marker-alt"></i>
+            <i class="fas fa-map-marker-alt nav-icon"></i>
             <span class="nav-label">Track</span>
         </a>
     </nav>
