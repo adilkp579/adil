@@ -11,6 +11,7 @@
             --primary:#000; --secondary:#1a1a1a; --accent:#e74c3c; --text:#fff;
             --glass:rgba(255,255,255,0.1); --glass-border:rgba(255,255,255,0.2);
             --card-bg:rgba(255,255,255,0.05); --success:#2ed573;
+            --nav-blue:#48dbfb; --nav-pink:#ff6b8b; --nav-yellow:#ffd93d; --nav-purple:#9c88ff; --nav-green:#6bde99;
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:100px; }
         
@@ -358,55 +359,54 @@
         .success-message { position:fixed; top:100px; right:2rem; background:var(--success); color:white; padding:1rem 2rem; border-radius:10px; box-shadow:0 10px 25px rgba(46,213,115,.4); display:none; z-index:1001; animation:slideIn .3s ease; }
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
         
-        /* ENHANCED FLOATING GLASS NAVIGATION BAR WITH GLASS MORPHISM */
+        /* ENHANCED PREMIUM FLOATING GLASS NAVIGATION BAR */
         .floating-nav {
-            width: 90%;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
             max-width: 500px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border-radius: 40px;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            height: 75px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             justify-content: space-around;
             align-items: center;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            padding: 0 15px;
             z-index: 1000;
-            transition: all 0.4s ease;
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .floating-nav:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.16);
             box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+                0 16px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.25);
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-decoration: none;
-            color: white;
-            font-size: 20px;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-            padding: 0.5rem;
-            border-radius: 20px;
-            width: 55px;
-            height: 55px;
             justify-content: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            padding: 10px 12px;
+            border-radius: 18px;
             position: relative;
-            overflow: hidden;
+            flex: 1;
+            max-width: 70px;
+            height: 60px;
         }
 
         .nav-item::before {
@@ -416,51 +416,103 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.25), rgba(255, 255, 255, 0.12));
+            border-radius: 18px;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .nav-item.active {
-            opacity: 1;
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-            box-shadow: 
-                0 4px 15px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            color: var(--accent);
+            transform: translateY(-8px);
         }
 
         .nav-item.active::before {
             opacity: 1;
         }
 
+        .nav-item.active .nav-icon {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.5));
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--accent);
+            font-weight: 700;
+            transform: translateY(2px);
+        }
+
         .nav-item:hover {
-            opacity: 1;
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 0.15);
+            color: var(--accent);
+            transform: translateY(-3px);
         }
 
         .nav-item:hover::before {
-            opacity: 1;
+            opacity: 0.4;
         }
 
         .nav-icon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
             position: relative;
             z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         .nav-label {
-            font-size: 0.65rem;
+            font-size: 0.68rem;
             font-weight: 600;
             text-align: center;
-            margin-top: 4px;
+            transition: all 0.3s ease;
             position: relative;
             z-index: 2;
+            letter-spacing: 0.4px;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            letter-spacing: 0.5px;
         }
+
+        /* Active state animation */
+        @keyframes navPulse {
+            0% { transform: translateY(-8px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+            100% { transform: translateY(-8px) scale(1); }
+        }
+
+        .nav-item.active {
+            animation: navPulse 0.6s ease;
+        }
+
+        /* Glow effect for active state */
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: rgba(231, 76, 60, 0.3);
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.7;
+        }
+
+        /* Color coding for different categories */
+        .nav-item:nth-child(1) .nav-icon { color: var(--nav-blue); }
+        .nav-item:nth-child(2) .nav-icon { color: var(--nav-pink); }
+        .nav-item:nth-child(3) .nav-icon { color: var(--nav-yellow); }
+        .nav-item:nth-child(4) .nav-icon { color: var(--nav-purple); }
+        .nav-item:nth-child(5) .nav-icon { color: var(--nav-green); }
+
+        .nav-item.active:nth-child(1) { background: rgba(72, 219, 251, 0.15); }
+        .nav-item.active:nth-child(2) { background: rgba(255, 107, 139, 0.15); }
+        .nav-item.active:nth-child(3) { background: rgba(255, 217, 61, 0.15); }
+        .nav-item.active:nth-child(4) { background: rgba(156, 136, 255, 0.15); }
+        .nav-item.active:nth-child(5) { background: rgba(107, 222, 153, 0.15); }
         
         /* Exclusive Collection Styles */
         .exclusive-section {
@@ -595,19 +647,19 @@
             .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
             .categories-title{font-size:1.3rem;margin-bottom:.8rem;}
             .floating-nav { 
-                height: 65px; 
-                bottom: 20px; 
-                width: 95%;
-                backdrop-filter: blur(20px) saturate(180%);
-                -webkit-backdrop-filter: blur(20px) saturate(180%);
+                height: 70px; 
+                bottom: 15px; 
+                width: 94%;
+                max-width: 440px;
+                padding: 0 12px;
             }
             .nav-item { 
-                width: 50px; 
-                height: 50px; 
-                font-size: 18px; 
-                border-radius: 15px;
+                width: 60px; 
+                height: 55px; 
+                padding: 8px 10px;
             }
-            .nav-label { font-size: 0.6rem; }
+            .nav-icon { font-size: 1.3rem; height: 22px; }
+            .nav-label { font-size: 0.65rem; }
             .icon-btn{width:32px;height:32px;} 
             .success-message{top:80px;right:1rem;left:1rem;text-align:center;}
             .category-card { width: 100px; height: 130px; }
@@ -620,14 +672,18 @@
             .exclusive-card { min-width: 160px; }
             .exclusive-image { height: 140px; }
             .floating-nav {
-                height: 60px;
-                border-radius: 30px;
+                height: 65px;
+                border-radius: 22px;
+                padding: 0 10px;
+                max-width: 400px;
             }
             .nav-item {
-                width: 45px;
-                height: 45px;
-                border-radius: 15px;
+                width: 55px;
+                height: 50px;
+                padding: 7px 8px;
             }
+            .nav-icon { font-size: 1.2rem; height: 20px; }
+            .nav-label { font-size: 0.6rem; }
         }
         @media(min-width:1200px){ 
             .search-bar{width:6cm;min-width:6cm;} 
@@ -1042,7 +1098,7 @@
         </div>
     </section>
 
-    <!-- ENHANCED FLOATING GLASS NAVIGATION BAR -->
+    <!-- ENHANCED PREMIUM FLOATING GLASS NAVIGATION BAR -->
     <nav class="floating-nav">
         <a href="index.html" class="nav-item active">
             <i class="fas fa-home nav-icon"></i>
@@ -1352,14 +1408,18 @@
             }
         }
 
-        // Floating nav functionality
+        // Enhanced navigation functionality
         document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function(e){
+            item.addEventListener('click', function(e) {
                 if (!this.classList.contains('active')) {
                     e.preventDefault();
                     document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
                     this.classList.add('active');
-                    window.location.href = this.getAttribute('href');
+                    
+                    // Smooth navigation
+                    setTimeout(() => {
+                        window.location.href = this.getAttribute('href');
+                    }, 300);
                 }
             });
         });
