@@ -26,29 +26,249 @@
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
         .cart-badge { position:absolute; top:-5px; right:-5px; background:var(--accent); color:white; border-radius:50%; width:18px; height:18px; font-size:.7rem; display:none; align-items:center; justify-content:center; font-weight:600; }
         .main-content { margin-top:70px; padding:1rem; background:var(--primary); min-height:calc(100vh - 170px); }
-        .category-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem; }
-        .category-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1.5rem; text-align:center; transition:all .3s ease; cursor:pointer; text-decoration:none; color:var(--text); display:block; }
-        .category-card:hover { transform:translateY(-5px); border-color:var(--accent); }
-        .category-icon { font-size:2.7rem; color:var(--accent); margin-bottom:1rem; }
-        .category-name { font-size:1.2rem; font-weight:600; margin-bottom:.5rem; }
-        .category-count { color:rgba(255,255,255,.7); font-size:.9rem; }
-        .section-title { font-size:1.5rem; margin-bottom:1rem; color:var(--text); font-weight:600; text-align:left; padding:0 .5rem; }
-        .products-section { margin:2rem 0; }
-        .dynamic-products { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:.5rem; }
-        .dynamic-product-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1rem; text-align:center; transition:all .3s ease; cursor:pointer; }
-        .dynamic-product-card:hover { transform:translateY(-3px); border-color:var(--accent); }
-        .dynamic-product-image { width:100%; height:140px; border-radius:8px; margin-bottom:.8rem; background-size:cover; background-position:center; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
-        .dynamic-product-image i { font-size:2.3rem; color:var(--accent); }
-        .dynamic-product-card h3 { font-size:1rem; margin-bottom:.5rem; font-weight:600; line-height:1.3; }
-        .product-price { font-size:1.2rem; color:var(--accent); font-weight:700; margin-bottom:.8rem; }
-        .btn { background:linear-gradient(45deg,#e74c3c,#c0392b); color:white; border:none; padding:.6rem 1.2rem; border-radius:20px; font-size:.8rem; font-weight:600; cursor:pointer; transition:all .3s ease; text-decoration:none; display:inline-block; width:100%; }
-        .btn:hover { transform:translateY(-2px); box-shadow:0 5px 15px rgba(231,76,60,.4); }
-        .blank-state { text-align:center; padding:3rem 1rem; color:rgba(255,255,255,.5); }
-        .blank-icon { font-size:3.2rem; margin-bottom:1rem; color:var(--glass-border); }
-        .blank-text { font-size:1.1rem; margin-bottom:.5rem; }
-        .blank-subtext { font-size:.8rem; color:rgba(255,255,255,.3); }
-        .hidden { display:none !important; }
-        .success-message { position:fixed; top:100px; right:2rem; background:var(--success); color:white; padding:1rem 2rem; border-radius:10px; box-shadow:0 10px 25px rgba(46,213,115,.4); display:none; z-index:1001; animation:slideIn .3s ease; }
+        
+        /* Hero Section with Background Image */
+        .hero-section { 
+            text-align:center; 
+            padding:4rem 1rem; 
+            border-radius:16px; 
+            margin-bottom:2rem; 
+            position:relative; 
+            overflow:hidden;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-title { 
+            font-size:2.5rem; 
+            font-weight:800; 
+            margin-bottom:1rem; 
+            background: linear-gradient(45deg, #fff, #ffcccc);
+            -webkit-background-clip:text; 
+            -webkit-text-fill-color:transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-subtitle { 
+            font-size:1.1rem; 
+            color:rgba(255,255,255,.9); 
+            max-width:500px; 
+            margin:0 auto 1.5rem; 
+            line-height:1.5; 
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero-btn { 
+            display:inline-block; 
+            background:linear-gradient(45deg,#e74c3c,#c0392b); 
+            color:white; 
+            padding:1rem 2.5rem; 
+            border-radius:30px; 
+            text-decoration:none; 
+            font-weight:600; 
+            transition:all .3s ease; 
+            margin-top:1rem;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1rem;
+        }
+        
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+        
+        .hero-btn:hover { 
+            transform:translateY(-3px); 
+            box-shadow:0 10px 20px rgba(231,76,60,.4); 
+        }
+        
+        /* Explore Collections Section */
+        .explore-section {
+            margin: 2rem 0;
+            padding: 2rem 1rem;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .explore-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .explore-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .collection-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 150px;
+        }
+        
+        /* Shirts Collection */
+        .collection-card:nth-child(1) {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Pants Collection */
+        .collection-card:nth-child(2) {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* T-Shirts Collection */
+        .collection-card:nth-child(3) {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Trackpants Collection */
+        .collection-card:nth-child(4) {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .collection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .collection-card:hover::before {
+            opacity: 1;
+        }
+        
+        .collection-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .collection-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            transition: all 0.3s ease;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .collection-card:hover .collection-icon {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+        
+        .collection-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .collection-desc {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,.7);
+            line-height: 1.4;
+            z-index: 1;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .success-message { 
+            position:fixed; 
+            top:100px; 
+            right:2rem; 
+            background:var(--success); 
+            color:white; 
+            padding:1rem 2rem; 
+            border-radius:10px; 
+            box-shadow:0 10px 25px rgba(46,213,115,.4); 
+            display:none; 
+            z-index:1001; 
+            animation:slideIn .3s ease; 
+        }
         .success-message i { font-size:1.2rem; margin-right:.5rem; }
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
 
@@ -194,17 +414,53 @@
             opacity: 0.7;
         }
 
-        .loading { text-align:center; padding:2rem; color:var(--accent); }
         @media(max-width:768px){ 
             .top-header{padding:.6rem 1rem;} 
             .logo{font-size:1.5rem;} 
             .main-content{margin-top:60px;padding:.8rem;} 
             .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
-            .category-grid{grid-template-columns:repeat(2,1fr);gap:.8rem;} 
-            .dynamic-products{grid-template-columns:repeat(2,1fr);gap:.8rem;} 
-            .dynamic-product-card{padding:.8rem;} 
-            .dynamic-product-image{height:120px;} 
-            .section-title{font-size:1.3rem;margin-bottom:.8rem;} 
+            
+            /* Hero Section Mobile */
+            .hero-section {
+                padding: 3rem 1rem;
+                background-attachment: scroll;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+            
+            /* Explore Section Mobile */
+            .explore-section {
+                padding: 1.5rem 0.8rem;
+                background-attachment: scroll;
+            }
+            .explore-title {
+                font-size: 1.5rem;
+            }
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            .collection-card {
+                padding: 1rem 0.8rem;
+                min-height: 130px;
+            }
+            .collection-icon {
+                font-size: 2rem;
+            }
+            .collection-name {
+                font-size: 1rem;
+            }
+            .collection-desc {
+                font-size: 0.75rem;
+            }
             
             /* Mobile-specific floating nav adjustments */
             .floating-nav { 
@@ -238,11 +494,16 @@
             }
             .nav-icon { font-size: 1.3rem; height: 20px; }
             .nav-label { font-size: 0.6rem; }
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
         }
         @media(min-width:1200px){ 
             .search-bar{width:6cm;min-width:6cm;} 
-            .category-grid{grid-template-columns:repeat(3,1fr);max-width:600px;margin:0 auto;} 
-            .dynamic-products{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
+            .collections-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
         }
         .container{max-width:600px;margin:0 auto;background:var(--primary);}
         html{background:var(--primary);}
@@ -272,7 +533,39 @@
 
     <div class="container">
         <div class="main-content">
-            <!-- All content removed as requested -->
+            <!-- Hero Section with Background Image -->
+            <section class="hero-section">
+                <h1 class="hero-title">PREMIUM CLOTHING COLLECTION</h1>
+                <p class="hero-subtitle">Discover our exclusive collection of high-quality clothing. From stylish shirts to comfortable trackpants, find your perfect style.</p>
+                <a href="#explore" class="hero-btn">EXPLORE NOW</a>
+            </section>
+
+            <!-- Explore Collections Section -->
+            <section class="explore-section" id="explore">
+                <h2 class="explore-title">EXPLORE COLLECTIONS</h2>
+                <div class="collections-grid">
+                    <a href="menshirts.html" class="collection-card">
+                        <div class="collection-icon">👔</div>
+                        <div class="collection-name">Shirts</div>
+                        <div class="collection-desc">Formal and casual shirts</div>
+                    </a>
+                    <a href="menpants.html" class="collection-card">
+                        <div class="collection-icon">👖</div>
+                        <div class="collection-name">Pants</div>
+                        <div class="collection-desc">Comfortable and stylish pants</div>
+                    </a>
+                    <a href="ment-shirts.html" class="collection-card">
+                        <div class="collection-icon">👕</div>
+                        <div class="collection-name">T-Shirts</div>
+                        <div class="collection-desc">Casual everyday wear</div>
+                    </a>
+                    <a href="mentrackpants.html" class="collection-card">
+                        <div class="collection-icon">🏃</div>
+                        <div class="collection-name">Trackpants</div>
+                        <div class="collection-desc">Comfortable athletic wear</div>
+                    </a>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -301,7 +594,6 @@
     </nav>
 
     <script>
-        // Empty page - no products or functionality
         function updateCartBadge(){
             try{
                 const cart = JSON.parse(localStorage.getItem('storeCart')) || [];
