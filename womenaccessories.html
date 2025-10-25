@@ -13,43 +13,85 @@
             --card-bg:rgba(255,255,255,0.05); --success:#2ed573;
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:90px; }
-        .top-header { background:var(--primary); padding:.8rem 2rem; display:flex; justify-content:space-between; align-items:center; position:fixed; width:100%; top:0; z-index:1000; border-bottom:1px solid var(--glass-border); }
-        .logo { font-size:1.8rem; font-weight:800; color:var(--text); text-decoration:none; }
+        
+        /* Simple Top Header */
+        .top-header { 
+            background:var(--primary); 
+            padding:.8rem 2rem; 
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center; 
+            position:fixed; 
+            width:100%; 
+            top:0; 
+            z-index:1000; 
+            border-bottom:1px solid var(--glass-border); 
+            height:70px;
+        }
+        .logo { 
+            font-size:1.8rem; 
+            font-weight:800; 
+            color:var(--text); 
+            text-decoration:none; 
+        }
         .logo-dot { color:var(--accent); }
         .header-icons { display:flex; gap:1rem; align-items:center; }
-        .search-bar { background:var(--glass); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:20px; padding:.4rem 1.2rem; display:flex; align-items:center; gap:.6rem; width:5cm; min-width:5cm; height:35px; transition:all .3s ease; }
+        .search-bar { 
+            background:var(--glass); 
+            border:1px solid var(--glass-border); 
+            border-radius:20px; 
+            padding:.4rem 1.2rem; 
+            display:flex; 
+            align-items:center; 
+            gap:.6rem; 
+            width:5cm; 
+            min-width:5cm; 
+            height:35px; 
+            transition:all .3s ease; 
+        }
         .search-bar:focus-within { border-color:var(--accent); }
-        .search-bar input { background:transparent; border:none; color:var(--text); font-size:.9rem; width:100%; outline:none; padding:0; }
+        .search-bar input { 
+            background:transparent; 
+            border:none; 
+            color:var(--text); 
+            font-size:.9rem; 
+            width:100%; 
+            outline:none; 
+            padding:0; 
+        }
         .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.9rem; }
         .search-icon { color:rgba(255,255,255,.7); font-size:.9rem; }
-        .icon-btn { background:var(--glass); border:1px solid var(--glass-border); border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center; color:var(--text); text-decoration:none; transition:all .3s ease; font-size:.9rem; position:relative; }
+        .icon-btn { 
+            background:var(--glass); 
+            border:1px solid var(--glass-border); 
+            border-radius:50%; 
+            width:35px; 
+            height:35px; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            color:var(--text); 
+            text-decoration:none; 
+            transition:all .3s ease; 
+            font-size:.9rem; 
+            position:relative; 
+        }
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
-        .cart-badge { position:absolute; top:-5px; right:-5px; background:var(--accent); color:white; border-radius:50%; width:18px; height:18px; font-size:.7rem; display:none; align-items:center; justify-content:center; font-weight:600; }
-        .main-content { margin-top:70px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
-        .category-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem; }
-        .category-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1.5rem; text-align:center; transition:all .3s ease; cursor:pointer; text-decoration:none; color:var(--text); display:block; }
-        .category-card:hover { transform:translateY(-5px); border-color:var(--accent); }
-        .category-icon { font-size:2.2rem; color:var(--text); margin-bottom:1rem; }
-        .category-name { font-size:1.2rem; font-weight:600; margin-bottom:.5rem; }
-        .category-count { color:rgba(255,255,255,.7); font-size:.9rem; }
-        .section-title { font-size:1.5rem; margin-bottom:1rem; color:var(--text); font-weight:600; text-align:left; padding:0 .5rem; }
-        .products-section { margin:2rem 0; }
-        .dynamic-products { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:.5rem; }
-        .dynamic-product-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1rem; text-align:center; transition:all .3s ease; cursor:pointer; }
-        .dynamic-product-card:hover { transform:translateY(-3px); border-color:var(--accent); }
-        .dynamic-product-image { width:100%; height:140px; border-radius:8px; margin-bottom:.8rem; background-size:cover; background-position:center; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
-        .dynamic-product-image i { font-size:1.8rem; color:var(--text); }
-        .dynamic-product-card h3 { font-size:1rem; margin-bottom:.5rem; font-weight:600; line-height:1.3; }
-        .product-price { font-size:1.2rem; color:var(--accent); font-weight:700; margin-bottom:.8rem; }
-        .btn { background:linear-gradient(45deg,#e74c3c,#c0392b); color:white; border:none; padding:.6rem 1.2rem; border-radius:20px; font-size:.8rem; font-weight:600; cursor:pointer; transition:all .3s ease; text-decoration:none; display:inline-block; width:100%; }
-        .btn:hover { transform:translateY(-2px); box-shadow:0 5px 15px rgba(231,76,60,.4); }
-        .blank-state { text-align:center; padding:3rem 1rem; color:rgba(255,255,255,.5); }
-        .blank-icon { font-size:3rem; margin-bottom:1rem; color:var(--glass-border); }
-        .blank-text { font-size:1.1rem; margin-bottom:.5rem; }
-        .blank-subtext { font-size:.8rem; color:rgba(255,255,255,.3); }
-        .hidden { display:none !important; }
-        .success-message { position:fixed; top:100px; right:2rem; background:var(--success); color:white; padding:1rem 2rem; border-radius:10px; box-shadow:0 10px 25px rgba(46,213,115,.4); display:none; z-index:1001; animation:slideIn .3s ease; }
-        @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
+        .cart-badge { 
+            position:absolute; 
+            top:-5px; 
+            right:-5px; 
+            background:var(--accent); 
+            color:white; 
+            border-radius:50%; 
+            width:18px; 
+            height:18px; 
+            font-size:.7rem; 
+            display:none; 
+            align-items:center; 
+            justify-content:center; 
+            font-weight:600; 
+        }
         
         /* Premium Floating Glass Bottom Navigation */
         .bottom-nav { 
@@ -206,76 +248,274 @@
             opacity: 0.7;
         }
 
-        /* Rest of the existing styles remain the same */
-        .loading { text-align:center; padding:2rem; color:var(--accent); }
-        .hero-section { text-align:center; padding:2rem 1rem; background:#ffffff; border-radius:12px; margin-bottom:2rem; }
-        .hero-title { font-size:2.2rem; font-weight:800; margin-bottom:1rem; background:linear-gradient(45deg, #000, #e74c3c); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .hero-subtitle { font-size:1rem; color:#333; max-width:500px; margin:0 auto 1.5rem; line-height:1.5; }
-        .hero-btn { display:inline-block; background:linear-gradient(45deg,#e74c3c,#c0392b); color:white; padding:.8rem 2rem; border-radius:30px; text-decoration:none; font-weight:600; transition:all .3s ease; margin-top:1rem; }
-        .hero-btn:hover { transform:translateY(-3px); box-shadow:0 10px 20px rgba(231,76,60,.4); }
-        .featured-section { margin:2rem 0; }
-        .trending-section { margin:2rem 0; }
+        /* Main Content */
+        .main-content { margin-top:70px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
         
-        /* Accessory Icon Section */
-        .accessory-icon-section {
-            text-align: center;
+        /* Hero Section with Background Image */
+        .hero-section { 
+            text-align:center; 
+            padding:4rem 1rem; 
+            border-radius:16px; 
+            margin-bottom:2rem; 
+            position:relative; 
+            overflow:hidden;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-title { 
+            font-size:2.5rem; 
+            font-weight:800; 
+            margin-bottom:1rem; 
+            background: linear-gradient(45deg, #fff, #ffcccc);
+            -webkit-background-clip:text; 
+            -webkit-text-fill-color:transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-subtitle { 
+            font-size:1.1rem; 
+            color:rgba(255,255,255,.9); 
+            max-width:500px; 
+            margin:0 auto 1.5rem; 
+            line-height:1.5; 
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero-btn { 
+            display:inline-block; 
+            background:linear-gradient(45deg,#e74c3c,#c0392b); 
+            color:white; 
+            padding:1rem 2.5rem; 
+            border-radius:30px; 
+            text-decoration:none; 
+            font-weight:600; 
+            transition:all .3s ease; 
+            margin-top:1rem;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1rem;
+        }
+        
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s;
+            z-index: -1;
+        }
+        
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+        
+        .hero-btn:hover { 
+            transform:translateY(-3px); 
+            box-shadow:0 10px 20px rgba(231,76,60,.4); 
+        }
+        
+        /* Explore Collections Section */
+        .explore-section {
             margin: 2rem 0;
-            padding: 1.5rem;
+            padding: 2rem 1rem;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .explore-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .explore-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .collection-card {
             background: var(--glass);
             backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-        }
-        
-        .accessory-main-icon {
-            font-size: 4rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .accessory-icon-text {
-            font-size: 1.2rem;
-            font-weight: 600;
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
             color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 150px;
         }
         
-        /* Product Cards */
-        .product-cards { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1rem; }
-        .product-card { background:var(--glass); backdrop-filter:blur(10px); border:1px solid var(--glass-border); border-radius:12px; padding:1rem; text-align:center; transition:all .3s ease; }
-        .product-card:hover { transform:translateY(-5px); border-color:var(--accent); }
-        .product-image { width:100%; height:140px; border-radius:8px; margin-bottom:.8rem; background-size:cover; background-position:center; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
-        .product-image i { font-size:2.5rem; color:var(--text); }
-        .product-card h3 { font-size:1rem; margin-bottom:.5rem; font-weight:600; line-height:1.3; }
-        .product-price { font-size:1.2rem; color:var(--accent); font-weight:700; margin-bottom:.8rem; }
+        /* Watches Collection */
+        .collection-card:nth-child(1) {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
         
-        /* Search Results */
-        .search-results { margin:1rem 0; }
-        .no-results { text-align:center; padding:2rem; color:rgba(255,255,255,.5); }
+        /* Jewellery Collection */
+        .collection-card:nth-child(2) {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
         
-        /* Empty State */
-        .empty-state { text-align:center; padding:3rem 1rem; color:rgba(255,255,255,.5); }
-        .empty-icon { font-size:3rem; margin-bottom:1rem; color:var(--glass-border); }
-        .empty-text { font-size:1.1rem; margin-bottom:.5rem; }
-        .empty-subtext { font-size:.8rem; color:rgba(255,255,255,.3); }
+        /* Bags Collection */
+        .collection-card:nth-child(3) {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Accessories Collection */
+        .collection-card:nth-child(4) {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1594223274512-ad4803739b7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .collection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .collection-card:hover::before {
+            opacity: 1;
+        }
+        
+        .collection-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .collection-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            transition: all 0.3s ease;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .collection-card:hover .collection-icon {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+        
+        .collection-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .collection-desc {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,.7);
+            line-height: 1.4;
+            z-index: 1;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .success-message { 
+            position:fixed; 
+            top:100px; 
+            right:2rem; 
+            background:var(--success); 
+            color:white; 
+            padding:1rem 2rem; 
+            border-radius:10px; 
+            box-shadow:0 10px 25px rgba(46,213,115,.4); 
+            display:none; 
+            z-index:1001; 
+            animation:slideIn .3s ease; 
+        }
+        @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
         
         @media(max-width:768px){ 
             .top-header{padding:.6rem 1rem;} 
             .logo{font-size:1.5rem;} 
             .main-content{margin-top:60px;padding:.8rem;} 
             .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
-            .category-grid{grid-template-columns:repeat(2,1fr);gap:.8rem;} 
-            .dynamic-products{grid-template-columns:repeat(2,1fr);gap:.8rem;} 
-            .dynamic-product-card{padding:.8rem;} 
-            .dynamic-product-image{height:120px;} 
-            .section-title{font-size:1.3rem;margin-bottom:.8rem;} 
+            
+            /* Hero Section Mobile */
+            .hero-section {
+                padding: 3rem 1rem;
+                background-attachment: scroll;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
             
             /* Mobile-specific navigation adjustments */
             .bottom-nav{
@@ -301,24 +541,31 @@
             
             .icon-btn{width:32px;height:32px;} 
             .success-message{top:80px;right:1rem;left:1rem;text-align:center;} 
-            .hero-title{font-size:1.8rem;} 
-            .category-icon {
+            
+            /* Explore Section Mobile */
+            .explore-section {
+                padding: 1.5rem 0.8rem;
+                background-attachment: scroll;
+            }
+            .explore-title {
+                font-size: 1.5rem;
+            }
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            .collection-card {
+                padding: 1rem 0.8rem;
+                min-height: 130px;
+            }
+            .collection-icon {
                 font-size: 2rem;
             }
-            .dynamic-product-image i {
-                font-size: 1.6rem;
-            }
-            .accessory-main-icon {
-                font-size: 3rem;
-            }
-            .accessory-icon-text {
+            .collection-name {
                 font-size: 1rem;
             }
-            .product-image {
-                height: 120px;
-            }
-            .product-image i {
-                font-size: 2rem;
+            .collection-desc {
+                font-size: 0.75rem;
             }
         }
         
@@ -338,13 +585,17 @@
             .nav-label {
                 font-size: 0.65rem;
             }
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
         }
         
         @media(min-width:1200px){ 
             .search-bar{width:6cm;min-width:6cm;} 
-            .category-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
-            .dynamic-products{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
-            .product-cards{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
+            .collections-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
         }
         
         .container{max-width:600px;margin:0 auto;background:var(--primary);}
@@ -352,12 +603,13 @@
     </style>
 </head>
 <body>
+    <!-- Simple Top Header -->
     <header class="top-header">
         <a href="womenaccessories.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
             <div class="search-bar">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search accessories..." oninput="filterProducts()">
+                <input type="text" id="searchInput" placeholder="Search accessories...">
             </div>
             <a href="cart.html" class="icon-btn">
                 <i class="fas fa-shopping-bag"></i>
@@ -375,41 +627,37 @@
 
     <div class="container">
         <div class="main-content">
-            <!-- Hero Section -->
+            <!-- Hero Section with Background Image -->
             <section class="hero-section">
                 <h1 class="hero-title">ELEGANT ACCESSORIES COLLECTION</h1>
                 <p class="hero-subtitle">Discover our stunning collection of high-quality accessories. From watches to jewellery, find your perfect style statement.</p>
-                <a href="#featured" class="hero-btn">EXPLORE NOW</a>
+                <a href="#explore" class="hero-btn">EXPLORE NOW</a>
             </section>
 
-            <!-- Accessory Icon Section -->
-            <section class="accessory-icon-section">
-                <div class="accessory-main-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <div class="accessory-icon-text">Complete Your Look</div>
-            </section>
-
-            <!-- Search Results Section -->
-            <section class="search-results hidden" id="searchResults">
-                <h2 class="section-title">Search Results</h2>
-                <div class="product-cards" id="productCards">
-                    <!-- Products will be dynamically populated -->
-                </div>
-                <div class="no-results hidden" id="noResults">
-                    <div class="empty-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="empty-text">No accessories found</div>
-                    <div class="empty-subtext">Try searching with different keywords</div>
-                </div>
-            </section>
-
-            <!-- All Products Section -->
-            <section class="trending-section" id="allProductsSection">
-                <h2 class="section-title">Our Collection</h2>
-                <div class="product-cards" id="allProducts">
-                    <!-- Products will be loaded -->
+            <!-- Explore Collections Section -->
+            <section class="explore-section" id="explore">
+                <h2 class="explore-title">EXPLORE COLLECTIONS</h2>
+                <div class="collections-grid">
+                    <a href="womenwatch.html" class="collection-card">
+                        <div class="collection-icon">⌚</div>
+                        <div class="collection-name">Watches</div>
+                        <div class="collection-desc">Elegant timepieces for every occasion</div>
+                    </a>
+                    <a href="womenjewellery.html" class="collection-card">
+                        <div class="collection-icon">💍</div>
+                        <div class="collection-name">Jewellery</div>
+                        <div class="collection-desc">Sparkling pieces to complete your look</div>
+                    </a>
+                    <a href="womenwallets.html" class="collection-card">
+                        <div class="collection-icon">👜</div>
+                        <div class="collection-name">Bags & Wallets</div>
+                        <div class="collection-desc">Stylish accessories for everyday use</div>
+                    </a>
+                    <a href="womenprodect.html" class="collection-card">
+                        <div class="collection-icon">🪒🪮</div>
+                        <div class="collection-name">Other Accessories</div>
+                        <div class="collection-desc">Unique pieces to express your style</div>
+                    </a>
                 </div>
             </section>
         </div>
@@ -440,146 +688,7 @@
     </nav>
 
     <script>
-        // Sample accessories data
-        const accessories = [
-            { id: 1, name: "Gold Chain Necklace", price: "49.99", category: "jewellery", description: "Beautiful 18k gold chain necklace", stock_quantity: 50 },
-            { id: 2, name: "Silver Bracelet", price: "39.99", category: "jewellery", description: "Elegant silver bracelet with gemstones", stock_quantity: 30 },
-            { id: 3, name: "Leather Handbag", price: "89.99", category: "bags", description: "Genuine leather handbag", stock_quantity: 20 },
-            { id: 4, name: "Designer Watch", price: "129.99", category: "watches", description: "Luxury designer watch", stock_quantity: 15 },
-            { id: 5, name: "Pearl Earrings", price: "29.99", category: "jewellery", description: "Natural pearl earrings", stock_quantity: 40 },
-            { id: 6, name: "Sunglasses", price: "59.99", category: "accessories", description: "Designer sunglasses with UV protection", stock_quantity: 25 },
-            { id: 7, name: "Silk Scarf", price: "34.99", category: "accessories", description: "Luxury silk scarf with patterns", stock_quantity: 35 },
-            { id: 8, name: "Evening Clutch", price: "45.99", category: "bags", description: "Elegant evening clutch purse", stock_quantity: 18 }
-        ];
-
-        // Frontend Functions
-        function loadAllProducts() {
-            const container = document.getElementById('allProducts');
-            container.innerHTML = '';
-            
-            accessories.forEach(product => {
-                const productCard = createProductCard(product);
-                container.appendChild(productCard);
-            });
-        }
-
-        function filterProducts() {
-            const searchInput = document.getElementById('searchInput');
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            const productCards = document.getElementById('productCards');
-            const noResults = document.getElementById('noResults');
-            const searchResults = document.getElementById('searchResults');
-            const allProductsSection = document.getElementById('allProductsSection');
-
-            // Clear previous results
-            productCards.innerHTML = '';
-            
-            if (searchTerm === '') {
-                // If search is empty, hide search results and show all products
-                searchResults.classList.add('hidden');
-                allProductsSection.classList.remove('hidden');
-                return;
-            }
-
-            // Filter accessories based on search term
-            const filteredAccessories = accessories.filter(product => 
-                product.name.toLowerCase().includes(searchTerm) ||
-                product.description.toLowerCase().includes(searchTerm) ||
-                product.category.toLowerCase().includes(searchTerm) ||
-                product.price.toLowerCase().includes(searchTerm)
-            );
-
-            if (filteredAccessories.length > 0) {
-                // Show search results and hide main section
-                searchResults.classList.remove('hidden');
-                allProductsSection.classList.add('hidden');
-                noResults.classList.add('hidden');
-                
-                // Display filtered products
-                filteredAccessories.forEach(product => {
-                    const productCard = createProductCard(product);
-                    productCards.appendChild(productCard);
-                });
-            } else {
-                // Show no results message
-                searchResults.classList.remove('hidden');
-                allProductsSection.classList.add('hidden');
-                noResults.classList.remove('hidden');
-            }
-        }
-
-        function createProductCard(product) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.setAttribute('data-id', product.id);
-            
-            let iconHTML = '';
-            switch(product.category) {
-                case 'watches':
-                    iconHTML = '<i class="fas fa-clock"></i>';
-                    break;
-                case 'bags':
-                    iconHTML = '<i class="fas fa-shopping-bag"></i>';
-                    break;
-                case 'accessories':
-                    iconHTML = '<i class="fas fa-star"></i>';
-                    break;
-                default:
-                    iconHTML = '<i class="fas fa-gem"></i>';
-            }
-            
-            // Generate color based on product ID for consistency
-            const colors = ['#fdcb6e', '#dfe6e9', '#6c5ce7', '#00b894', '#fd79a8', '#a29bfe', '#e84393', '#74b9ff'];
-            const color = colors[product.id % colors.length];
-            
-            card.innerHTML = `
-                <div class="product-image" style="background-color: ${color};">
-                    ${iconHTML}
-                </div>
-                <h3>${product.name}</h3>
-                <div class="product-price">$${product.price}</div>
-                ${product.stock_quantity > 0 ? 
-                    `<button class="btn add-to-cart">Add to Cart</button>` :
-                    `<button class="btn" style="background: #666;" disabled>Out of Stock</button>`
-                }
-            `;
-            
-            if (product.stock_quantity > 0) {
-                const addToCartBtn = card.querySelector('.add-to-cart');
-                addToCartBtn.addEventListener('click', function() {
-                    addToCart(product.id, product.name, product.price);
-                });
-            }
-            
-            return card;
-        }
-
-        // Add to cart functionality
-        function addToCart(productId, productName, price) {
-            try {
-                let cart = JSON.parse(localStorage.getItem('storeCart')) || [];
-                
-                const existingItem = cart.find(item => item.id === productId);
-                
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({
-                        id: productId,
-                        name: productName,
-                        price: price,
-                        quantity: 1
-                    });
-                }
-                
-                localStorage.setItem('storeCart', JSON.stringify(cart));
-                updateCartBadge();
-                showSuccessMessage(`${productName} added to cart!`);
-            } catch (err) {
-                console.error('Error adding to cart:', err);
-            }
-        }
-
+        // Update cart badge
         function updateCartBadge(){
             try{
                 const cart = JSON.parse(localStorage.getItem('storeCart')) || [];
@@ -596,6 +705,7 @@
             }
         }
 
+        // Show success message
         function showSuccessMessage(message) {
             const successMessage = document.getElementById('successMessage');
             const messageText = document.getElementById('messageText');
@@ -610,14 +720,6 @@
         // Initialize the app
         document.addEventListener('DOMContentLoaded', () => {
             updateCartBadge();
-            loadAllProducts();
-            
-            // Add event listener for Enter key in search
-            document.getElementById('searchInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    filterProducts();
-                }
-            });
             
             // Add active state to bottom nav items on click
             const navItems = document.querySelectorAll('.nav-item');
