@@ -14,10 +14,10 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:90px; }
         
-        /* Simple Top Header */
+        /* Reduced Top Header Size */
         .top-header { 
             background:var(--primary); 
-            padding:.8rem 2rem; 
+            padding:.5rem 1.5rem; /* Reduced padding */
             display:flex; 
             justify-content:space-between; 
             align-items:center; 
@@ -26,10 +26,10 @@
             top:0; 
             z-index:1000; 
             border-bottom:1px solid var(--glass-border); 
-            height:70px;
+            height:55px; /* Reduced height */
         }
         .logo { 
-            font-size:1.8rem; 
+            font-size:1.5rem; /* Reduced font size */
             font-weight:800; 
             color:var(--text); 
             text-decoration:none; 
@@ -40,13 +40,13 @@
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:20px; 
-            padding:.4rem 1.2rem; 
+            padding:.3rem 1rem; /* Reduced padding */
             display:flex; 
             align-items:center; 
             gap:.6rem; 
             width:5cm; 
             min-width:5cm; 
-            height:35px; 
+            height:32px; /* Reduced height */
             transition:all .3s ease; 
         }
         .search-bar:focus-within { border-color:var(--accent); }
@@ -54,26 +54,26 @@
             background:transparent; 
             border:none; 
             color:var(--text); 
-            font-size:.9rem; 
+            font-size:.85rem; /* Slightly smaller font */
             width:100%; 
             outline:none; 
             padding:0; 
         }
-        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.9rem; }
-        .search-icon { color:rgba(255,255,255,.7); font-size:.9rem; }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.85rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:.85rem; }
         .icon-btn { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:50%; 
-            width:35px; 
-            height:35px; 
+            width:32px; /* Reduced size */
+            height:32px; /* Reduced size */
             display:flex; 
             align-items:center; 
             justify-content:center; 
             color:var(--text); 
             text-decoration:none; 
             transition:all .3s ease; 
-            font-size:.9rem; 
+            font-size:.85rem; /* Slightly smaller */
             position:relative; 
         }
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
@@ -84,9 +84,9 @@
             background:var(--accent); 
             color:white; 
             border-radius:50%; 
-            width:18px; 
-            height:18px; 
-            font-size:.7rem; 
+            width:16px; /* Slightly smaller */
+            height:16px; /* Slightly smaller */
+            font-size:.65rem; /* Smaller font */
             display:none; 
             align-items:center; 
             justify-content:center; 
@@ -248,8 +248,8 @@
             opacity: 0.7;
         }
 
-        /* Main Content */
-        .main-content { margin-top:70px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
+        /* Main Content - Adjusted for smaller header */
+        .main-content { margin-top:55px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
         
         /* Hero Section with Background Image */
         .hero-section { 
@@ -496,10 +496,10 @@
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
         
         @media(max-width:768px){ 
-            .top-header{padding:.6rem 1rem;} 
-            .logo{font-size:1.5rem;} 
-            .main-content{margin-top:60px;padding:.8rem;} 
-            .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
+            .top-header{padding:.4rem 1rem;} /* Further reduced padding for mobile */
+            .logo{font-size:1.3rem;} /* Smaller logo on mobile */
+            .main-content{margin-top:55px;padding:.8rem;} /* Adjusted for smaller header */
+            .search-bar{width:4cm;min-width:4cm;height:30px;padding:.3rem 1rem;} /* Smaller search bar */
             
             /* Hero Section Mobile */
             .hero-section {
@@ -539,8 +539,8 @@
                 font-size:.7rem;
             } 
             
-            .icon-btn{width:32px;height:32px;} 
-            .success-message{top:80px;right:1rem;left:1rem;text-align:center;} 
+            .icon-btn{width:30px;height:30px;} /* Smaller buttons on mobile */
+            .success-message{top:70px;right:1rem;left:1rem;text-align:center;} /* Adjusted position */
             
             /* Explore Section Mobile */
             .explore-section {
@@ -591,6 +591,13 @@
             .hero-subtitle {
                 font-size: 0.9rem;
             }
+            .top-header {
+                padding: .4rem 1rem;
+                height: 50px; /* Even smaller on very small screens */
+            }
+            .main-content {
+                margin-top: 50px; /* Adjusted for smaller header */
+            }
         }
         
         @media(min-width:1200px){ 
@@ -603,7 +610,7 @@
     </style>
 </head>
 <body>
-    <!-- Simple Top Header -->
+    <!-- Reduced Top Header -->
     <header class="top-header">
         <a href="womenaccessories.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
