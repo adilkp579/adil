@@ -14,10 +14,10 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:100px; }
         
-        /* ENHANCED TOP HEADER */
+        /* COMPACT TOP HEADER */
         .top-header { 
             background:var(--primary); 
-            padding:1.2rem 2rem; 
+            padding:0.6rem 1.5rem; /* Reduced padding */
             display:flex; 
             justify-content:space-between; 
             align-items:center; 
@@ -26,27 +26,28 @@
             top:0; 
             z-index:1000; 
             border-bottom:1px solid var(--glass-border); 
+            height: 60px; /* Reduced height */
         }
         .logo { 
-            font-size:2.2rem; 
+            font-size:1.6rem; /* Reduced font size */
             font-weight:800; 
             color:var(--text); 
             text-decoration:none; 
         }
         .logo-dot { color:var(--accent); }
-        .header-icons { display:flex; gap:1rem; align-items:center; }
+        .header-icons { display:flex; gap:0.8rem; align-items:center; }
         .search-bar { 
             background:var(--glass); 
             backdrop-filter:blur(20px); 
             border:1px solid var(--glass-border); 
-            border-radius:20px; 
-            padding:.6rem 1.4rem; 
+            border-radius:18px; /* Slightly smaller radius */
+            padding:.4rem 1rem; /* Reduced padding */
             display:flex; 
             align-items:center; 
-            gap:.8rem; 
-            width:6cm; 
-            min-width:6cm; 
-            height:42px; 
+            gap:.6rem; 
+            width:5.5cm; /* Slightly smaller */
+            min-width:5.5cm; 
+            height:36px; /* Reduced height */
             transition:all .3s ease; 
         }
         .search-bar:focus-within { border-color:var(--accent); }
@@ -54,32 +55,32 @@
             background:transparent; 
             border:none; 
             color:var(--text); 
-            font-size:1rem; 
+            font-size:0.9rem; /* Smaller font */
             width:100%; 
             outline:none; 
             padding:0; 
         }
         .search-bar input::placeholder { 
             color:rgba(255,255,255,.6); 
-            font-size:1rem; 
+            font-size:0.9rem; /* Smaller font */
         }
         .search-icon { 
             color:rgba(255,255,255,.7); 
-            font-size:1.1rem; 
+            font-size:0.9rem; /* Smaller icon */
         }
         .icon-btn { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:50%; 
-            width:42px; 
-            height:42px; 
+            width:34px; /* Smaller buttons */
+            height:34px; 
             display:flex; 
             align-items:center; 
             justify-content:center; 
             color:var(--text); 
             text-decoration:none; 
             transition:all .3s ease; 
-            font-size:1.1rem; 
+            font-size:0.9rem; /* Smaller icons */
             position:relative; 
         }
         .icon-btn:hover { 
@@ -88,14 +89,14 @@
         }
         .cart-badge { 
             position:absolute; 
-            top:-6px; 
-            right:-6px; 
+            top:-5px; 
+            right:-5px; 
             background:var(--accent); 
             color:white; 
             border-radius:50%; 
-            width:20px; 
-            height:20px; 
-            font-size:.8rem; 
+            width:16px; /* Smaller badge */
+            height:16px; 
+            font-size:.65rem; /* Smaller font */
             display:none; 
             align-items:center; 
             justify-content:center; 
@@ -103,7 +104,7 @@
         }
         
         .main-content { 
-            margin-top:90px; 
+            margin-top:60px; /* Adjusted for smaller header */
             padding:1rem; 
             background:var(--primary); 
             min-height:calc(100vh - 170px); 
@@ -341,7 +342,7 @@
         
         .success-message { 
             position:fixed; 
-            top:120px; 
+            top:75px; /* Adjusted for smaller header */
             right:2rem; 
             background:var(--success); 
             color:white; 
@@ -499,21 +500,28 @@
         
         @media(max-width:768px){ 
             .top-header{
-                padding:1rem 1rem; 
+                padding:0.5rem 1rem; /* Even smaller padding for mobile */
+                height: 55px; /* Smaller height for mobile */
             } 
             .logo{
-                font-size:1.8rem; 
+                font-size:1.4rem; /* Smaller logo for mobile */
             } 
             .main-content{
-                margin-top:80px;
+                margin-top:55px; /* Adjusted for smaller header */
                 padding:.8rem; 
             } 
             .search-bar{
-                width:5cm;
-                min-width:5cm;
-                height:38px;
-                padding:.4rem 1.2rem; 
+                width:4.5cm;
+                min-width:4.5cm;
+                height:32px; /* Smaller search bar */
+                padding:.3rem .8rem; /* Reduced padding */
             } 
+            .search-bar input, .search-bar input::placeholder {
+                font-size: 0.85rem; /* Smaller font */
+            }
+            .search-icon {
+                font-size: 0.85rem; /* Smaller icon */
+            }
             .categories-grid{
                 grid-template-columns:repeat(2,1fr);
                 gap:.8rem;
@@ -559,12 +567,12 @@
             .nav-icon { font-size: 1.3rem; height: 22px; }
             .nav-label { font-size: 0.65rem; }
             .icon-btn{
-                width:38px;
-                height:38px; 
-                font-size:1.1rem;
+                width:32px; /* Smaller icon buttons */
+                height:32px; 
+                font-size:0.85rem; /* Smaller icons */
             }
             .success-message{
-                top:100px;
+                top:70px; /* Adjusted for smaller header */
                 right:1rem;
                 left:1rem;
                 text-align:center;
@@ -592,23 +600,30 @@
                 font-size: 0.9rem;
             }
             .top-header {
-                padding: 0.8rem 1rem;
+                padding: 0.4rem 0.8rem; /* Even smaller padding */
+                height: 50px; /* Even smaller height */
             }
             .logo {
-                font-size: 1.6rem;
+                font-size: 1.3rem; /* Even smaller logo */
             }
             .search-bar {
-                width: 4cm;
-                min-width: 4cm;
-                height: 36px;
-                padding: 0.3rem 1rem;
+                width: 3.5cm;
+                min-width: 3.5cm;
+                height: 30px; /* Even smaller search bar */
+                padding: 0.25rem 0.7rem; /* Even smaller padding */
+            }
+            .search-bar input, .search-bar input::placeholder {
+                font-size: 0.8rem; /* Even smaller font */
+            }
+            .search-icon {
+                font-size: 0.8rem; /* Even smaller icon */
             }
         }
         
         @media(min-width:1200px){ 
             .search-bar{
-                width:7cm;
-                min-width:7cm;
+                width:6cm; /* Slightly smaller for desktop */
+                min-width:6cm;
             } 
             .categories-grid{
                 grid-template-columns:repeat(2,1fr);
