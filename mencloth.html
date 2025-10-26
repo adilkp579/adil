@@ -13,19 +13,89 @@
             --card-bg:rgba(255,255,255,0.05); --success:#2ed573;
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:100px; }
-        .top-header { background:var(--primary); padding:.8rem 2rem; display:flex; justify-content:space-between; align-items:center; position:fixed; width:100%; top:0; z-index:1000; border-bottom:1px solid var(--glass-border); }
-        .logo { font-size:1.8rem; font-weight:800; color:var(--text); text-decoration:none; }
+        
+        /* REDUCED Top Header */
+        .top-header { 
+            background:var(--primary); 
+            padding:.5rem 1.5rem; /* Reduced padding */
+            display:flex; 
+            justify-content:space-between; 
+            align-items:center; 
+            position:fixed; 
+            width:100%; 
+            top:0; 
+            z-index:1000; 
+            border-bottom:1px solid var(--glass-border); 
+            height:55px; /* Reduced height */
+        }
+        .logo { 
+            font-size:1.5rem; /* Reduced font size */
+            font-weight:800; 
+            color:var(--text); 
+            text-decoration:none; 
+        }
         .logo-dot { color:var(--accent); }
-        .header-icons { display:flex; gap:1rem; align-items:center; }
-        .search-bar { background:var(--glass); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:20px; padding:.4rem 1.2rem; display:flex; align-items:center; gap:.6rem; width:5cm; min-width:5cm; height:35px; transition:all .3s ease; }
+        .header-icons { display:flex; gap:0.8rem; align-items:center; }
+        .search-bar { 
+            background:var(--glass); 
+            backdrop-filter:blur(20px); 
+            border:1px solid var(--glass-border); 
+            border-radius:18px; 
+            padding:.3rem 1rem; /* Reduced padding */
+            display:flex; 
+            align-items:center; 
+            gap:.5rem; 
+            width:4.5cm; /* Slightly reduced */
+            min-width:4.5cm; 
+            height:32px; /* Reduced height */
+            transition:all .3s ease; 
+        }
         .search-bar:focus-within { border-color:var(--accent); }
-        .search-bar input { background:transparent; border:none; color:var(--text); font-size:.9rem; width:100%; outline:none; padding:0; }
-        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.9rem; }
-        .search-icon { color:rgba(255,255,255,.7); font-size:1.05rem; }
-        .icon-btn { background:var(--glass); border:1px solid var(--glass-border); border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center; color:var(--text); text-decoration:none; transition:all .3s ease; font-size:1.05rem; position:relative; }
+        .search-bar input { 
+            background:transparent; 
+            border:none; 
+            color:var(--text); 
+            font-size:.85rem; /* Slightly smaller */
+            width:100%; 
+            outline:none; 
+            padding:0; 
+        }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.85rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:1rem; } /* Slightly smaller */
+        .icon-btn { 
+            background:var(--glass); 
+            border:1px solid var(--glass-border); 
+            border-radius:50%; 
+            width:32px; /* Reduced size */
+            height:32px; /* Reduced size */
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            color:var(--text); 
+            text-decoration:none; 
+            transition:all .3s ease; 
+            font-size:1rem; /* Slightly smaller */
+            position:relative; 
+        }
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
-        .cart-badge { position:absolute; top:-5px; right:-5px; background:var(--accent); color:white; border-radius:50%; width:18px; height:18px; font-size:.7rem; display:none; align-items:center; justify-content:center; font-weight:600; }
-        .main-content { margin-top:70px; padding:1rem; background:var(--primary); min-height:calc(100vh - 170px); }
+        .cart-badge { 
+            position:absolute; 
+            top:-4px; 
+            right:-4px; 
+            background:var(--accent); 
+            color:white; 
+            border-radius:50%; 
+            width:16px; /* Slightly smaller */
+            height:16px; /* Slightly smaller */
+            font-size:.65rem; /* Slightly smaller */
+            display:none; 
+            align-items:center; 
+            justify-content:center; 
+            font-weight:600; 
+        }
+        
+        /* Main Content - Adjusted for reduced header */
+        .main-content { margin-top:55px; padding:1rem; background:var(--primary); min-height:calc(100vh - 170px); }
         
         /* Hero Section with Background Image */
         .hero-section { 
@@ -258,7 +328,7 @@
         
         .success-message { 
             position:fixed; 
-            top:100px; 
+            top:80px; /* Adjusted for reduced header */
             right:2rem; 
             background:var(--success); 
             color:white; 
@@ -415,10 +485,23 @@
         }
 
         @media(max-width:768px){ 
-            .top-header{padding:.6rem 1rem;} 
-            .logo{font-size:1.5rem;} 
-            .main-content{margin-top:60px;padding:.8rem;} 
-            .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} 
+            .top-header{
+                padding:.4rem 1rem; /* Reduced padding for mobile */
+                height:50px; /* Reduced height for mobile */
+            } 
+            .logo{
+                font-size:1.3rem; /* Reduced font size for mobile */
+            } 
+            .main-content{
+                margin-top:50px; /* Adjusted for reduced header */
+                padding:.8rem;
+            } 
+            .search-bar{
+                width:3.8cm; /* Slightly reduced for mobile */
+                min-width:3.8cm;
+                height:30px; /* Reduced height for mobile */
+                padding:.25rem .9rem;
+            } 
             
             /* Hero Section Mobile */
             .hero-section {
@@ -477,8 +560,17 @@
             }
             .nav-icon { font-size: 1.4rem; height: 22px; }
             .nav-label { font-size: 0.65rem; }
-            .icon-btn{width:32px;height:32px; font-size:1rem;}
-            .success-message{top:80px;right:1rem;left:1rem;text-align:center;} 
+            .icon-btn{
+                width:30px; /* Reduced for mobile */
+                height:30px; 
+                font-size:.95rem;
+            }
+            .success-message{
+                top:70px; /* Adjusted for reduced header */
+                right:1rem;
+                left:1rem;
+                text-align:center;
+            } 
         }
         @media(max-width:480px) {
             .floating-nav {
@@ -500,16 +592,31 @@
             .hero-subtitle {
                 font-size: 0.9rem;
             }
+            .top-header {
+                padding: .35rem 1rem;
+                height: 48px; /* Further reduced on very small screens */
+            }
+            .main-content {
+                margin-top: 48px; /* Adjusted for reduced header */
+            }
         }
         @media(min-width:1200px){ 
-            .search-bar{width:6cm;min-width:6cm;} 
-            .collections-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
+            .search-bar{
+                width:5.5cm; /* Slightly reduced */
+                min-width:5.5cm;
+            } 
+            .collections-grid{
+                grid-template-columns:repeat(2,1fr);
+                max-width:600px;
+                margin:0 auto;
+            } 
         }
         .container{max-width:600px;margin:0 auto;background:var(--primary);}
         html{background:var(--primary);}
     </style>
 </head>
 <body>
+    <!-- REDUCED Top Header -->
     <header class="top-header">
         <a href="index.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
