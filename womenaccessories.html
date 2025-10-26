@@ -14,10 +14,10 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:90px; }
         
-        /* Slightly Reduced Top Header */
+        /* Significantly Reduced Top Header */
         .top-header { 
             background:var(--primary); 
-            padding:.6rem 1.8rem; /* Slightly reduced padding */
+            padding:.4rem 1.5rem; /* Significantly reduced padding */
             display:flex; 
             justify-content:space-between; 
             align-items:center; 
@@ -26,27 +26,27 @@
             top:0; 
             z-index:1000; 
             border-bottom:1px solid var(--glass-border); 
-            height:65px; /* Reduced from 70px to 65px */
+            height:50px; /* Significantly reduced height */
         }
         .logo { 
-            font-size:1.7rem; /* Slightly smaller */
+            font-size:1.3rem; /* Significantly smaller */
             font-weight:800; 
             color:var(--text); 
             text-decoration:none; 
         }
         .logo-dot { color:var(--accent); }
-        .header-icons { display:flex; gap:1rem; align-items:center; }
+        .header-icons { display:flex; gap:0.8rem; align-items:center; }
         .search-bar { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
-            border-radius:20px; 
-            padding:.35rem 1.1rem; /* Slightly reduced padding */
+            border-radius:18px; 
+            padding:.25rem 0.9rem; /* Significantly reduced padding */
             display:flex; 
             align-items:center; 
-            gap:.6rem; 
-            width:5cm; 
-            min-width:5cm; 
-            height:34px; /* Slightly reduced height */
+            gap:.5rem; 
+            width:4.5cm; 
+            min-width:4.5cm; 
+            height:30px; /* Significantly reduced height */
             transition:all .3s ease; 
         }
         .search-bar:focus-within { border-color:var(--accent); }
@@ -54,39 +54,39 @@
             background:transparent; 
             border:none; 
             color:var(--text); 
-            font-size:.88rem; /* Slightly smaller font */
+            font-size:.8rem; /* Smaller font */
             width:100%; 
             outline:none; 
             padding:0; 
         }
-        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.88rem; }
-        .search-icon { color:rgba(255,255,255,.7); font-size:.88rem; }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.8rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:.8rem; }
         .icon-btn { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:50%; 
-            width:34px; /* Slightly smaller */
-            height:34px; /* Slightly smaller */
+            width:30px; /* Significantly smaller */
+            height:30px; /* Significantly smaller */
             display:flex; 
             align-items:center; 
             justify-content:center; 
             color:var(--text); 
             text-decoration:none; 
             transition:all .3s ease; 
-            font-size:.88rem; /* Slightly smaller */
+            font-size:.8rem; /* Smaller */
             position:relative; 
         }
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
         .cart-badge { 
             position:absolute; 
-            top:-5px; 
-            right:-5px; 
+            top:-4px; 
+            right:-4px; 
             background:var(--accent); 
             color:white; 
             border-radius:50%; 
-            width:17px; /* Slightly smaller */
-            height:17px; /* Slightly smaller */
-            font-size:.68rem; /* Slightly smaller */
+            width:15px; /* Smaller */
+            height:15px; /* Smaller */
+            font-size:.6rem; /* Smaller */
             display:none; 
             align-items:center; 
             justify-content:center; 
@@ -249,12 +249,12 @@
         }
 
         /* Main Content - Adjusted for smaller header */
-        .main-content { margin-top:65px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
+        .main-content { margin-top:50px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
         
         /* Hero Section with Background Image */
         .hero-section { 
             text-align:center; 
-            padding:4rem 1rem; 
+            padding:3.5rem 1rem; /* Slightly reduced padding */
             border-radius:16px; 
             margin-bottom:2rem; 
             position:relative; 
@@ -270,7 +270,7 @@
         }
         
         .hero-title { 
-            font-size:2.5rem; 
+            font-size:2.2rem; /* Slightly smaller */
             font-weight:800; 
             margin-bottom:1rem; 
             background: linear-gradient(45deg, #fff, #ffcccc);
@@ -282,7 +282,7 @@
         }
         
         .hero-subtitle { 
-            font-size:1.1rem; 
+            font-size:1rem; /* Slightly smaller */
             color:rgba(255,255,255,.9); 
             max-width:500px; 
             margin:0 auto 1.5rem; 
@@ -296,7 +296,7 @@
             display:inline-block; 
             background:linear-gradient(45deg,#e74c3c,#c0392b); 
             color:white; 
-            padding:1rem 2.5rem; 
+            padding:0.9rem 2.2rem; /* Slightly smaller */
             border-radius:30px; 
             text-decoration:none; 
             font-weight:600; 
@@ -306,7 +306,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            font-size: 1rem;
+            font-size: 0.95rem; /* Slightly smaller */
         }
         
         .hero-btn::before {
@@ -333,7 +333,7 @@
         /* Explore Collections Section */
         .explore-section {
             margin: 2rem 0;
-            padding: 2rem 1rem;
+            padding: 1.8rem 1rem; /* Slightly reduced padding */
             border-radius: 16px;
             position: relative;
             overflow: hidden;
@@ -347,7 +347,7 @@
         }
         
         .explore-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem; /* Slightly smaller */
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--text);
@@ -381,7 +381,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
-            padding: 1.5rem 1rem;
+            padding: 1.3rem 1rem; /* Slightly reduced padding */
             text-align: center;
             transition: all 0.4s ease;
             cursor: pointer;
@@ -393,7 +393,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            min-height: 150px;
+            min-height: 140px; /* Slightly reduced height */
         }
         
         /* Watches Collection */
@@ -451,8 +451,8 @@
         }
         
         .collection-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem; /* Slightly smaller */
+            margin-bottom: 0.9rem; /* Slightly reduced margin */
             color: var(--text);
             transition: all 0.3s ease;
             z-index: 1;
@@ -465,7 +465,7 @@
         }
         
         .collection-name {
-            font-size: 1.1rem;
+            font-size: 1rem; /* Slightly smaller */
             font-weight: 600;
             margin-bottom: 0.5rem;
             z-index: 1;
@@ -473,7 +473,7 @@
         }
         
         .collection-desc {
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Slightly smaller */
             color: rgba(255,255,255,.7);
             line-height: 1.4;
             z-index: 1;
@@ -482,11 +482,11 @@
         
         .success-message { 
             position:fixed; 
-            top:90px; /* Adjusted for smaller header */
+            top:70px; /* Adjusted for smaller header */
             right:2rem; 
             background:var(--success); 
             color:white; 
-            padding:1rem 2rem; 
+            padding:0.9rem 1.8rem; /* Slightly smaller */
             border-radius:10px; 
             box-shadow:0 10px 25px rgba(46,213,115,.4); 
             display:none; 
@@ -496,10 +496,10 @@
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
         
         @media(max-width:768px){ 
-            .top-header{padding:.5rem 1rem;} /* Slightly reduced padding for mobile */
-            .logo{font-size:1.4rem;} /* Slightly smaller logo on mobile */
-            .main-content{margin-top:65px;padding:.8rem;} /* Adjusted for smaller header */
-            .search-bar{width:4cm;min-width:4cm;height:32px;padding:.3rem 1rem;} /* Slightly smaller search bar */
+            .top-header{padding:.3rem 1rem;} /* Further reduced padding for mobile */
+            .logo{font-size:1.2rem;} /* Smaller logo on mobile */
+            .main-content{margin-top:50px;padding:.8rem;} /* Adjusted for smaller header */
+            .search-bar{width:4cm;min-width:4cm;height:28px;padding:.25rem 0.9rem;} /* Smaller search bar */
             
             /* Hero Section Mobile */
             .hero-section {
@@ -507,10 +507,10 @@
                 background-attachment: scroll;
             }
             .hero-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .hero-btn {
                 padding: 0.8rem 2rem;
@@ -539,8 +539,8 @@
                 font-size:.7rem;
             } 
             
-            .icon-btn{width:32px;height:32px;} /* Slightly smaller buttons on mobile */
-            .success-message{top:75px;right:1rem;left:1rem;text-align:center;} /* Adjusted position */
+            .icon-btn{width:28px;height:28px;} /* Smaller buttons on mobile */
+            .success-message{top:60px;right:1rem;left:1rem;text-align:center;} /* Adjusted position */
             
             /* Explore Section Mobile */
             .explore-section {
@@ -548,7 +548,7 @@
                 background-attachment: scroll;
             }
             .explore-title {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             .collections-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -556,16 +556,16 @@
             }
             .collection-card {
                 padding: 1rem 0.8rem;
-                min-height: 130px;
+                min-height: 120px; /* Smaller on mobile */
             }
             .collection-icon {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .collection-name {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .collection-desc {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
         }
         
@@ -586,22 +586,22 @@
                 font-size: 0.65rem;
             }
             .hero-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             .hero-subtitle {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .top-header {
-                padding: .4rem 1rem;
-                height: 60px; /* Slightly smaller on very small screens */
+                padding: .3rem 1rem;
+                height: 45px; /* Even smaller on very small screens */
             }
             .main-content {
-                margin-top: 60px; /* Adjusted for smaller header */
+                margin-top: 45px; /* Adjusted for smaller header */
             }
         }
         
         @media(min-width:1200px){ 
-            .search-bar{width:6cm;min-width:6cm;} 
+            .search-bar{width:5cm;min-width:5cm;} /* Slightly smaller on desktop */
             .collections-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
         }
         
@@ -610,7 +610,7 @@
     </style>
 </head>
 <body>
-    <!-- Slightly Reduced Top Header -->
+    <!-- Significantly Reduced Top Header -->
     <header class="top-header">
         <a href="womenaccessories.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
