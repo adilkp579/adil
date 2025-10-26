@@ -14,10 +14,10 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:90px; }
         
-        /* Significantly Reduced Top Header */
+        /* Slightly Increased Top Header */
         .top-header { 
             background:var(--primary); 
-            padding:.3rem 1.2rem; /* Significantly reduced padding */
+            padding:.4rem 1.5rem; /* Slightly increased padding */
             display:flex; 
             justify-content:space-between; 
             align-items:center; 
@@ -26,27 +26,27 @@
             top:0; 
             z-index:1000; 
             border-bottom:1px solid var(--glass-border); 
-            height:45px; /* Significantly reduced height */
+            height:52px; /* Slightly increased height */
         }
         .logo { 
-            font-size:1.2rem; /* Significantly smaller */
+            font-size:1.4rem; /* Slightly larger */
             font-weight:800; 
             color:var(--text); 
             text-decoration:none; 
         }
         .logo-dot { color:var(--accent); }
-        .header-icons { display:flex; gap:0.6rem; align-items:center; }
+        .header-icons { display:flex; gap:0.8rem; align-items:center; }
         .search-bar { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
-            border-radius:15px; 
-            padding:.2rem 0.8rem; /* Significantly reduced padding */
+            border-radius:16px; 
+            padding:.25rem 1rem; /* Slightly increased padding */
             display:flex; 
             align-items:center; 
-            gap:.4rem; 
-            width:4cm; 
-            min-width:4cm; 
-            height:28px; /* Significantly reduced height */
+            gap:.5rem; 
+            width:4.2cm; 
+            min-width:4.2cm; 
+            height:30px; /* Slightly increased height */
             transition:all .3s ease; 
         }
         .search-bar:focus-within { border-color:var(--accent); }
@@ -54,39 +54,39 @@
             background:transparent; 
             border:none; 
             color:var(--text); 
-            font-size:.75rem; /* Smaller font */
+            font-size:.8rem; /* Slightly larger font */
             width:100%; 
             outline:none; 
             padding:0; 
         }
-        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.75rem; }
-        .search-icon { color:rgba(255,255,255,.7); font-size:.75rem; }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.8rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:.8rem; }
         .icon-btn { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:50%; 
-            width:28px; /* Significantly smaller */
-            height:28px; /* Significantly smaller */
+            width:30px; /* Slightly larger */
+            height:30px; /* Slightly larger */
             display:flex; 
             align-items:center; 
             justify-content:center; 
             color:var(--text); 
             text-decoration:none; 
             transition:all .3s ease; 
-            font-size:.75rem; /* Smaller */
+            font-size:.8rem; /* Slightly larger */
             position:relative; 
         }
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
         .cart-badge { 
             position:absolute; 
-            top:-3px; 
-            right:-3px; 
+            top:-4px; 
+            right:-4px; 
             background:var(--accent); 
             color:white; 
             border-radius:50%; 
-            width:14px; /* Smaller */
-            height:14px; /* Smaller */
-            font-size:.6rem; /* Smaller */
+            width:15px; /* Slightly larger */
+            height:15px; /* Slightly larger */
+            font-size:.65rem; /* Slightly larger */
             display:none; 
             align-items:center; 
             justify-content:center; 
@@ -248,13 +248,13 @@
             opacity: 0.7;
         }
 
-        /* Main Content - Adjusted for smaller header */
-        .main-content { margin-top:45px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
+        /* Main Content - Adjusted for slightly larger header */
+        .main-content { margin-top:52px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
         
         /* Hero Section with Background Image */
         .hero-section { 
             text-align:center; 
-            padding:3.5rem 1rem; /* Slightly reduced padding */
+            padding:3.5rem 1rem; 
             border-radius:16px; 
             margin-bottom:2rem; 
             position:relative; 
@@ -270,7 +270,7 @@
         }
         
         .hero-title { 
-            font-size:2.2rem; /* Slightly smaller */
+            font-size:2.2rem; 
             font-weight:800; 
             margin-bottom:1rem; 
             background: linear-gradient(45deg, #fff, #ffcccc);
@@ -282,7 +282,7 @@
         }
         
         .hero-subtitle { 
-            font-size:1rem; /* Slightly smaller */
+            font-size:1rem; 
             color:rgba(255,255,255,.9); 
             max-width:500px; 
             margin:0 auto 1.5rem; 
@@ -296,7 +296,7 @@
             display:inline-block; 
             background:linear-gradient(45deg,#e74c3c,#c0392b); 
             color:white; 
-            padding:0.9rem 2.2rem; /* Slightly smaller */
+            padding:0.9rem 2.2rem; 
             border-radius:30px; 
             text-decoration:none; 
             font-weight:600; 
@@ -306,7 +306,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            font-size: 0.95rem; /* Slightly smaller */
+            font-size: 0.95rem; 
         }
         
         .hero-btn::before {
@@ -333,7 +333,7 @@
         /* Explore Collections Section */
         .explore-section {
             margin: 2rem 0;
-            padding: 1.8rem 1rem; /* Slightly reduced padding */
+            padding: 1.8rem 1rem; 
             border-radius: 16px;
             position: relative;
             overflow: hidden;
@@ -347,7 +347,7 @@
         }
         
         .explore-title {
-            font-size: 1.6rem; /* Slightly smaller */
+            font-size: 1.6rem; 
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--text);
@@ -381,7 +381,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
-            padding: 1.3rem 1rem; /* Slightly reduced padding */
+            padding: 1.3rem 1rem; 
             text-align: center;
             transition: all 0.4s ease;
             cursor: pointer;
@@ -393,7 +393,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            min-height: 140px; /* Slightly reduced height */
+            min-height: 140px; 
         }
         
         /* Skincare Collection */
@@ -451,8 +451,8 @@
         }
         
         .collection-icon {
-            font-size: 2.2rem; /* Slightly smaller */
-            margin-bottom: 0.9rem; /* Slightly reduced margin */
+            font-size: 2.2rem; 
+            margin-bottom: 0.9rem; 
             color: var(--text);
             transition: all 0.3s ease;
             z-index: 1;
@@ -465,7 +465,7 @@
         }
         
         .collection-name {
-            font-size: 1rem; /* Slightly smaller */
+            font-size: 1rem; 
             font-weight: 600;
             margin-bottom: 0.5rem;
             z-index: 1;
@@ -473,7 +473,7 @@
         }
         
         .collection-desc {
-            font-size: 0.75rem; /* Slightly smaller */
+            font-size: 0.75rem; 
             color: rgba(255,255,255,.7);
             line-height: 1.4;
             z-index: 1;
@@ -482,11 +482,11 @@
         
         .success-message { 
             position:fixed; 
-            top:60px; /* Adjusted for smaller header */
+            top:65px; /* Adjusted for slightly larger header */
             right:2rem; 
             background:var(--success); 
             color:white; 
-            padding:0.8rem 1.6rem; /* Slightly smaller */
+            padding:0.8rem 1.6rem; 
             border-radius:10px; 
             box-shadow:0 10px 25px rgba(46,213,115,.4); 
             display:none; 
@@ -496,10 +496,10 @@
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
         
         @media(max-width:768px){ 
-            .top-header{padding:.2rem 0.8rem;} /* Further reduced padding for mobile */
-            .logo{font-size:1.1rem;} /* Smaller logo on mobile */
-            .main-content{margin-top:45px;padding:.8rem;} /* Adjusted for smaller header */
-            .search-bar{width:3.5cm;min-width:3.5cm;height:26px;padding:.2rem 0.8rem;} /* Smaller search bar */
+            .top-header{padding:.3rem 1rem;} /* Slightly increased padding for mobile */
+            .logo{font-size:1.2rem;} /* Slightly larger logo on mobile */
+            .main-content{margin-top:52px;padding:.8rem;} /* Adjusted for slightly larger header */
+            .search-bar{width:3.8cm;min-width:3.8cm;height:28px;padding:.25rem 0.9rem;} /* Slightly larger search bar */
             
             /* Hero Section Mobile */
             .hero-section {
@@ -539,8 +539,8 @@
                 font-size:.7rem;
             } 
             
-            .icon-btn{width:26px;height:26px;} /* Smaller buttons on mobile */
-            .success-message{top:50px;right:1rem;left:1rem;text-align:center;} /* Adjusted position */
+            .icon-btn{width:28px;height:28px;} /* Slightly larger buttons on mobile */
+            .success-message{top:55px;right:1rem;left:1rem;text-align:center;} /* Adjusted position */
             
             /* Explore Section Mobile */
             .explore-section {
@@ -556,7 +556,7 @@
             }
             .collection-card {
                 padding: 1rem 0.8rem;
-                min-height: 120px; /* Smaller on mobile */
+                min-height: 120px; 
             }
             .collection-icon {
                 font-size: 1.8rem;
@@ -592,16 +592,16 @@
                 font-size: 0.85rem;
             }
             .top-header {
-                padding: .2rem 0.8rem;
-                height: 40px; /* Even smaller on very small screens */
+                padding: .3rem 1rem;
+                height: 48px; /* Slightly larger on very small screens */
             }
             .main-content {
-                margin-top: 40px; /* Adjusted for smaller header */
+                margin-top: 48px; /* Adjusted for slightly larger header */
             }
         }
         
         @media(min-width:1200px){ 
-            .search-bar{width:4.5cm;min-width:4.5cm;} /* Smaller on desktop */
+            .search-bar{width:4.8cm;min-width:4.8cm;} /* Slightly larger on desktop */
             .collections-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
         }
         
@@ -610,7 +610,7 @@
     </style>
 </head>
 <body>
-    <!-- Significantly Reduced Top Header -->
+    <!-- Slightly Increased Top Header -->
     <header class="top-header">
         <a href="womenbeauty.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
