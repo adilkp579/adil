@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>store.in - Kids Footwear Store</title>
+    <title>store.in - Kids Fashion Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -22,8 +22,8 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --card-bg: rgba(255, 255, 255, 0.05);
             --success: #2ed573;
-            --kids-blue: #48dbfb;
             --kids-pink: #ff6b8b;
+            --kids-blue: #48dbfb;
             --kids-yellow: #ffd93d;
             --kids-purple: #9c88ff;
             --kids-green: #6bde99;
@@ -152,6 +152,188 @@
             padding: 1rem;
             background: var(--primary);
             min-height: calc(100vh - 150px);
+        }
+
+        /* Hero Section with Background Image */
+        .hero-section {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,.9);
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(45deg,#e74c3c,#c0392b);
+            color: white;
+            padding: .8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all .3s ease;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(231,76,60,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231,76,60,.5);
+        }
+
+        /* Categories Section with Background Image */
+        .categories-section {
+            margin: 2rem 0;
+            padding: 2.5rem 1rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .categories-section .section-title {
+            text-align: center;
+            color: var(--text);
+            position: relative;
+            z-index: 1;
+        }
+
+        .categories-section .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .categories-section .category-grid {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .category-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Background images for category cards */
+        .category-card:nth-child(1) {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1594736797933-d0c64a8f9f78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80');
+        }
+
+        .category-card:nth-child(2) {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1591369822096-ffd140ec948f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80');
+        }
+
+        .category-card:nth-child(3) {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1591369822096-ffd140ec948f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80');
+        }
+
+        .category-card:nth-child(4) {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1591369822096-ffd140ec948f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80');
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .category-icon {
+            font-size: 2.2rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .category-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: .5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .category-count {
+            color: rgba(255,255,255,.9);
+            font-size: .9rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         /* Products Section - 2 products per line */
@@ -299,7 +481,7 @@
             }
         }
 
-        /* ENHANCED KIDS FOOTWEAR NAVIGATION BAR */
+        /* ENHANCED KIDS-FRIENDLY BOTTOM NAVIGATION */
         .bottom-nav {
             position: fixed;
             bottom: 15px;
@@ -442,14 +624,14 @@
         }
 
         /* Color coding for different categories */
-        .nav-item:nth-child(1) .nav-icon { color: var(--kids-blue); }
-        .nav-item:nth-child(2) .nav-icon { color: var(--kids-pink); }
+        .nav-item:nth-child(1) .nav-icon { color: var(--kids-pink); }
+        .nav-item:nth-child(2) .nav-icon { color: var(--kids-blue); }
         .nav-item:nth-child(3) .nav-icon { color: var(--kids-yellow); }
         .nav-item:nth-child(4) .nav-icon { color: var(--kids-purple); }
         .nav-item:nth-child(5) .nav-icon { color: var(--kids-green); }
 
-        .nav-item.active:nth-child(1) { background: rgba(72, 219, 251, 0.15); }
-        .nav-item.active:nth-child(2) { background: rgba(255, 107, 139, 0.15); }
+        .nav-item.active:nth-child(1) { background: rgba(255, 107, 139, 0.15); }
+        .nav-item.active:nth-child(2) { background: rgba(72, 219, 251, 0.15); }
         .nav-item.active:nth-child(3) { background: rgba(255, 217, 61, 0.15); }
         .nav-item.active:nth-child(4) { background: rgba(156, 136, 255, 0.15); }
         .nav-item.active:nth-child(5) { background: rgba(107, 222, 153, 0.15); }
@@ -475,6 +657,23 @@
                 min-width: 3.5cm;
                 height: 28px;
                 padding: 0.2rem 0.8rem;
+            }
+
+            .hero-section {
+                padding: 2rem 1rem;
+                min-height: 180px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .categories-section {
+                padding: 2rem 0.8rem;
             }
 
             .dynamic-products {
@@ -568,12 +767,12 @@
 <body>
     <!-- Compact Top Header -->
     <header class="top-header">
-        <a href="kidsfootwear.html" class="logo">store<span class="logo-dot">.</span>in</a>
+        <a href="kidscloths.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
             <!-- Compact Search Bar -->
             <div class="search-bar">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" placeholder="Search kids footwear...">
+                <input type="text" id="searchInput" placeholder="Search kids fashion...">
             </div>
             
             <!-- Cart Icon First -->
@@ -597,25 +796,59 @@
     <!-- Main Content -->
     <div class="container">
         <div class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h1 class="hero-title">KIDS FASHION STORE</h1>
+                <p class="hero-subtitle">Discover adorable and comfortable clothing for your little ones. From baby essentials to trendy kids fashion.</p>
+                <a href="#categories" class="hero-btn">SHOP NOW</a>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="categories-section" id="categories">
+                <h2 class="section-title">Shop Categories</h2>
+                <div class="category-grid">
+                    <a href="kidsbabycloths.html" class="category-card">
+                        <div class="category-icon">👶</div>
+                        <div class="category-name">Baby Clothes</div>
+                        <div class="category-count">24 Products</div>
+                    </a>
+                    <a href="kidsboyscloths.html" class="category-card">
+                        <div class="category-icon">👦</div>
+                        <div class="category-name">Boys Fashion</div>
+                        <div class="category-count">32 Products</div>
+                    </a>
+                    <a href="kidsgirlscloths.html" class="category-card">
+                        <div class="category-icon">👧</div>
+                        <div class="category-name">Girls Fashion</div>
+                        <div class="category-count">28 Products</div>
+                    </a>
+                    <a href="kidspremium.html" class="category-card">
+                        <div class="category-icon">👑</div>
+                        <div class="category-name">Premium Collection</div>
+                        <div class="category-count">18 Products</div>
+                    </a>
+                </div>
+            </section>
+
             <!-- Home Products Section -->
             <section class="products-section" id="productsSection">
-                <h2 class="section-title">Kids Footwear</h2>
+                <h2 class="section-title">Featured Products</h2>
                 <div class="dynamic-products" id="homeProducts">
-                    <!-- Kids footwear products will be loaded here dynamically -->
+                    <!-- Kids fashion products will be loaded here dynamically -->
                     <div class="dynamic-product-card">
                         <div class="dynamic-product-image" style="background-color: #ff6b6b;">
-                            <i class="fas fa-shoe-prints"></i>
+                            <i class="fas fa-tshirt"></i>
                         </div>
-                        <h3>Kids Running Shoes</h3>
-                        <p class="product-price">$29.99</p>
+                        <h3>Kids T-Shirt Set</h3>
+                        <p class="product-price">$24.99</p>
                         <button class="btn">Add to Cart</button>
                     </div>
                     <div class="dynamic-product-card">
                         <div class="dynamic-product-image" style="background-color: #48dbfb;">
-                            <i class="fas fa-socks"></i>
+                            <i class="fas fa-shoe-prints"></i>
                         </div>
-                        <h3>Children Sandals</h3>
-                        <p class="product-price">$24.99</p>
+                        <h3>Children Sneakers</h3>
+                        <p class="product-price">$34.99</p>
                         <button class="btn">Add to Cart</button>
                     </div>
                 </div>
@@ -632,36 +865,36 @@
         </div>
     </div>
 
-    <!-- ENHANCED KIDS FOOTWEAR NAVIGATION BAR -->
+    <!-- ENHANCED KIDS-FRIENDLY BOTTOM NAVIGATION -->
     <nav class="bottom-nav">
-        <!-- 1. Home - Updated to kidsfootwear.html -->
-        <a href="kidsfootwear.html" class="nav-item active">
+        <!-- 1. Home - Updated to kidscloths.html -->
+        <a href="kidscloths.html" class="nav-item active">
             <i class="fas fa-home nav-icon"></i>
             <span class="nav-label">Home</span>
         </a>
         
-        <!-- 2. Baby - Updated to footwearbabys.html -->
-        <a href="footwearbabys.html" class="nav-item">
+        <!-- 2. Baby - Updated to kidsbabycloths.html -->
+        <a href="kidsbabycloths.html" class="nav-item">
             <i class="fas fa-baby nav-icon"></i>
             <span class="nav-label">Baby</span>
         </a>
         
-        <!-- 3. Boys - Updated to footwearboys.html -->
-        <a href="footwearboys.html" class="nav-item">
-            <i class="fas fa-male nav-icon"></i>
+        <!-- 3. Boys - Updated to kidsboyscloths.html -->
+        <a href="kidsboyscloths.html" class="nav-item">
+            <i class="fas fa-child nav-icon"></i>
             <span class="nav-label">Boys</span>
         </a>
         
-        <!-- 4. Girls - Updated to footweargirls.html -->
-        <a href="footweargirls.html" class="nav-item">
+        <!-- 4. Girls - Updated to kidsgirlscloths.html -->
+        <a href="kidsgirlscloths.html" class="nav-item">
             <i class="fas fa-female nav-icon"></i>
             <span class="nav-label">Girls</span>
         </a>
         
-        <!-- 5. Sports - Updated to footwearsports.html -->
-        <a href="footwearsports.html" class="nav-item">
-            <i class="fas fa-running nav-icon"></i>
-            <span class="nav-label">Sports</span>
+        <!-- 5. Premium - Updated to kidspremium.html -->
+        <a href="kidspremium.html" class="nav-item">
+            <i class="fas fa-crown nav-icon"></i>
+            <span class="nav-label">Premium</span>
         </a>
     </nav>
 
@@ -718,7 +951,7 @@
                 } else {
                     // No image - show placeholder
                     backgroundStyle = 'background: var(--secondary)';
-                    imageContent = '<i class="fas fa-shoe-prints"></i>';
+                    imageContent = '<i class="fas fa-tshirt"></i>';
                 }
                 
                 productCard.innerHTML = `
@@ -843,7 +1076,7 @@
                             backgroundStyle = `background-image: url('${productImage}')`;
                         } else {
                             backgroundStyle = 'background: var(--secondary)';
-                            imageContent = '<i class="fas fa-shoe-prints"></i>';
+                            imageContent = '<i class="fas fa-tshirt"></i>';
                         }
                         
                         productCard.innerHTML = `
@@ -906,7 +1139,7 @@
             updateCartBadge();
             
             // Set home as active in navigation
-            const homeNav = document.querySelector('.nav-item[href="kidsfootwear.html"]');
+            const homeNav = document.querySelector('.nav-item[href="kidscloths.html"]');
             if (homeNav) {
                 homeNav.classList.add('active');
             }
