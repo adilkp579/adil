@@ -154,6 +154,217 @@
             min-height: calc(100vh - 150px);
         }
 
+        /* Hero Section with Background Image */
+        .hero-section {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,.9);
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(45deg,#e74c3c,#c0392b);
+            color: white;
+            padding: .8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all .3s ease;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(231,76,60,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231,76,60,.5);
+        }
+
+        /* Categories Section with Background Image */
+        .categories-section {
+            margin: 2rem 0;
+            padding: 2.5rem 1rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .categories-section .section-title {
+            text-align: center;
+            color: var(--text);
+            position: relative;
+            z-index: 1;
+        }
+
+        .categories-section .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .categories-section .category-grid {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Category Cards with Background Images */
+        .category-card {
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+            position: relative;
+            overflow: hidden;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+            z-index: 1;
+            border-radius: 12px;
+        }
+
+        .category-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .category-icon {
+            font-size: 2.2rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .category-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: .5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .category-count {
+            color: rgba(255,255,255,.9);
+            font-size: .9rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Individual Category Background Images */
+        .category-card:nth-child(1) {
+            background: 
+                linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1591369822095-9cb6cff2a5df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-card:nth-child(2) {
+            background: 
+                linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-card:nth-child(3) {
+            background: 
+                linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-card:nth-child(4) {
+            background: 
+                linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1591369822095-9cb6cff2a5df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
         /* Products Section - 2 products per line */
         .products-section {
             margin: 1rem 0;
@@ -477,6 +688,36 @@
                 padding: 0.2rem 0.8rem;
             }
 
+            .hero-section {
+                padding: 2rem 1rem;
+                min-height: 180px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .categories-section {
+                padding: 2rem 0.8rem;
+            }
+
+            .category-card {
+                min-height: 130px;
+                padding: 1.2rem;
+            }
+
+            .category-icon {
+                font-size: 1.8rem;
+            }
+
+            .category-name {
+                font-size: 1.1rem;
+            }
+
             .dynamic-products {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.8rem;
@@ -597,9 +838,43 @@
     <!-- Main Content -->
     <div class="container">
         <div class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h1 class="hero-title">KIDS FASHION STORE</h1>
+                <p class="hero-subtitle">Discover adorable and comfortable clothing for your little ones. From baby essentials to trendy kids fashion.</p>
+                <a href="#categories" class="hero-btn">SHOP NOW</a>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="categories-section" id="categories">
+                <h2 class="section-title">Shop Categories</h2>
+                <div class="category-grid">
+                    <a href="kidsbabycloths.html" class="category-card">
+                        <div class="category-icon">👶</div>
+                        <div class="category-name">Baby Clothes</div>
+                        <div class="category-count">24 Products</div>
+                    </a>
+                    <a href="kidsboyscloths.html" class="category-card">
+                        <div class="category-icon">👦</div>
+                        <div class="category-name">Boys Fashion</div>
+                        <div class="category-count">32 Products</div>
+                    </a>
+                    <a href="kidsgirlscloths.html" class="category-card">
+                        <div class="category-icon">👧</div>
+                        <div class="category-name">Girls Fashion</div>
+                        <div class="category-count">28 Products</div>
+                    </a>
+                    <a href="kidspremium.html" class="category-card">
+                        <div class="category-icon">👑</div>
+                        <div class="category-name">Premium Collection</div>
+                        <div class="category-count">18 Products</div>
+                    </a>
+                </div>
+            </section>
+
             <!-- Home Products Section -->
             <section class="products-section" id="productsSection">
-                <h2 class="section-title">Kids Fashion</h2>
+                <h2 class="section-title">Featured Products</h2>
                 <div class="dynamic-products" id="homeProducts">
                     <!-- Kids fashion products will be loaded here dynamically -->
                     <div class="dynamic-product-card">
