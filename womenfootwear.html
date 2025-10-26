@@ -14,10 +14,10 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:90px; }
         
-        /* COMPACT Top Header */
+        /* ULTRA COMPACT Top Header */
         .top-header { 
             background:var(--primary); 
-            padding:.5rem 1.5rem; /* Reduced padding */
+            padding:.3rem 1rem; /* Further reduced padding */
             display:flex; 
             justify-content:space-between; 
             align-items:center; 
@@ -26,27 +26,27 @@
             top:0; 
             z-index:1000; 
             border-bottom:1px solid var(--glass-border); 
-            height:55px; /* Reduced from 70px */
+            height:45px; /* Ultra compact height */
         }
         .logo { 
-            font-size:1.5rem; /* Reduced from 1.8rem */
+            font-size:1.3rem; /* Further reduced */
             font-weight:800; 
             color:var(--text); 
             text-decoration:none; 
         }
         .logo-dot { color:var(--accent); }
-        .header-icons { display:flex; gap:0.8rem; align-items:center; } /* Reduced gap */
+        .header-icons { display:flex; gap:0.6rem; align-items:center; } /* Minimal gap */
         .search-bar { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
-            border-radius:18px; 
-            padding:.3rem 1rem; /* Reduced padding */
+            border-radius:16px; 
+            padding:.2rem .8rem; /* Minimal padding */
             display:flex; 
             align-items:center; 
-            gap:.5rem; 
-            width:4.5cm; /* Slightly reduced */
-            min-width:4.5cm; 
-            height:32px; /* Reduced from 35px */
+            gap:.4rem; 
+            width:4cm; /* Compact width */
+            min-width:4cm; 
+            height:28px; /* Ultra compact height */
             transition:all .3s ease; 
         }
         .search-bar:focus-within { border-color:var(--accent); }
@@ -54,39 +54,39 @@
             background:transparent; 
             border:none; 
             color:var(--text); 
-            font-size:.85rem; /* Slightly smaller */
+            font-size:.8rem; /* Smaller font */
             width:100%; 
             outline:none; 
             padding:0; 
         }
-        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.85rem; }
-        .search-icon { color:rgba(255,255,255,.7); font-size:.85rem; }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.8rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:.8rem; }
         .icon-btn { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:50%; 
-            width:32px; /* Reduced from 35px */
-            height:32px; 
+            width:28px; /* Ultra compact */
+            height:28px; 
             display:flex; 
             align-items:center; 
             justify-content:center; 
             color:var(--text); 
             text-decoration:none; 
             transition:all .3s ease; 
-            font-size:.85rem; 
+            font-size:.8rem; 
             position:relative; 
         }
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
         .cart-badge { 
             position:absolute; 
-            top:-4px; 
-            right:-4px; 
+            top:-3px; 
+            right:-3px; 
             background:var(--accent); 
             color:white; 
             border-radius:50%; 
-            width:16px; 
-            height:16px; 
-            font-size:.65rem; 
+            width:14px; 
+            height:14px; 
+            font-size:.6rem; 
             display:none; 
             align-items:center; 
             justify-content:center; 
@@ -248,13 +248,13 @@
             opacity: 0.7;
         }
 
-        /* Main Content - Adjusted for smaller header */
-        .main-content { margin-top:55px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
+        /* Main Content - Adjusted for ultra compact header */
+        .main-content { margin-top:45px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
         
         /* Hero Section with Background Image */
         .hero-section { 
             text-align:center; 
-            padding:3.5rem 1rem; /* Slightly reduced */
+            padding:3rem 1rem; 
             border-radius:16px; 
             margin-bottom:2rem; 
             position:relative; 
@@ -270,7 +270,7 @@
         }
         
         .hero-title { 
-            font-size:2.2rem; /* Slightly reduced */
+            font-size:2rem; 
             font-weight:800; 
             margin-bottom:1rem; 
             background: linear-gradient(45deg, #fff, #ffcccc);
@@ -282,7 +282,7 @@
         }
         
         .hero-subtitle { 
-            font-size:1rem; 
+            font-size:.95rem; 
             color:rgba(255,255,255,.9); 
             max-width:500px; 
             margin:0 auto 1.5rem; 
@@ -296,7 +296,7 @@
             display:inline-block; 
             background:linear-gradient(45deg,#e74c3c,#c0392b); 
             color:white; 
-            padding:.9rem 2.2rem; /* Slightly reduced */
+            padding:.8rem 2rem; 
             border-radius:30px; 
             text-decoration:none; 
             font-weight:600; 
@@ -306,7 +306,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            font-size: .95rem; /* Slightly smaller */
+            font-size: .9rem;
         }
         
         .hero-btn::before {
@@ -347,7 +347,7 @@
         }
         
         .explore-title {
-            font-size: 1.7rem; /* Slightly reduced */
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--text);
@@ -451,7 +451,7 @@
         }
         
         .collection-icon {
-            font-size: 2.3rem; /* Slightly reduced */
+            font-size: 2.2rem;
             margin-bottom: 1rem;
             color: var(--text);
             transition: all 0.3s ease;
@@ -482,11 +482,11 @@
         
         .success-message { 
             position:fixed; 
-            top:70px; /* Adjusted for smaller header */
+            top:55px; /* Adjusted for ultra compact header */
             right:2rem; 
             background:var(--success); 
             color:white; 
-            padding:.8rem 1.5rem; /* Reduced padding */
+            padding:.6rem 1.2rem; /* Reduced padding */
             border-radius:10px; 
             box-shadow:0 10px 25px rgba(46,213,115,.4); 
             display:none; 
@@ -497,37 +497,37 @@
         
         @media(max-width:768px){ 
             .top-header{
-                padding:.4rem 1rem; /* Further reduced */
-                height:50px; /* Smaller on mobile */
+                padding:.2rem .8rem; /* Ultra compact on mobile */
+                height:40px; /* Even smaller on mobile */
             } 
             .logo{
-                font-size:1.3rem;
+                font-size:1.1rem;
             } 
             .main-content{
-                margin-top:50px; /* Adjusted for smaller header */
+                margin-top:40px; /* Adjusted for ultra compact header */
                 padding:.8rem;
             } 
             .search-bar{
-                width:3.5cm; /* Smaller on mobile */
-                min-width:3.5cm;
-                height:30px; /* Smaller on mobile */
-                padding:.2rem .8rem;
+                width:3cm; /* Ultra compact on mobile */
+                min-width:3cm;
+                height:26px; /* Ultra compact on mobile */
+                padding:.15rem .6rem;
             } 
             
             /* Hero Section Mobile */
             .hero-section {
-                padding: 2.5rem 1rem;
+                padding: 2rem 1rem;
                 background-attachment: scroll;
             }
             .hero-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             .hero-subtitle {
-                font-size: .95rem;
+                font-size: .9rem;
             }
             .hero-btn {
-                padding: 0.8rem 2rem;
-                font-size: 0.9rem;
+                padding: 0.7rem 1.8rem;
+                font-size: 0.85rem;
             }
             
             /* Mobile-specific navigation adjustments */
@@ -553,15 +553,15 @@
             } 
             
             .icon-btn{
-                width:30px; /* Smaller on mobile */
-                height:30px;
+                width:26px; /* Ultra compact on mobile */
+                height:26px;
             } 
             .success-message{
-                top:60px; /* Adjusted for smaller header */
+                top:45px; /* Adjusted for ultra compact header */
                 right:1rem;
                 left:1rem;
                 text-align:center;
-                padding: .7rem 1.2rem; /* Reduced padding */
+                padding: .5rem 1rem; /* Ultra compact padding */
             } 
             
             /* Explore Section Mobile */
@@ -570,7 +570,7 @@
                 background-attachment: scroll;
             }
             .explore-title {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
             .collections-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -608,17 +608,17 @@
                 font-size: 0.65rem;
             }
             .hero-title {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
             .hero-subtitle {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
         }
         
         @media(min-width:1200px){ 
             .search-bar{
-                width:5cm; /* Slightly reduced */
-                min-width:5cm;
+                width:4.5cm; /* Ultra compact on desktop */
+                min-width:4.5cm;
             } 
             .collections-grid{
                 grid-template-columns:repeat(2,1fr);
@@ -632,7 +632,7 @@
     </style>
 </head>
 <body>
-    <!-- COMPACT Top Header -->
+    <!-- ULTRA COMPACT Top Header -->
     <header class="top-header">
         <a href="womenfootwear.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
