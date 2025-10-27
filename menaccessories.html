@@ -14,10 +14,10 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:100px; }
         
-        /* REDUCED TOP HEADER SIZE */
+        /* UPDATED TOP HEADER - EXACT SPECIFICATIONS */
         .top-header { 
             background:var(--primary); 
-            padding:.5rem 1.5rem; /* Reduced padding */
+            padding:0.5rem 1.5rem; /* 8px top/bottom, 24px left/right */
             display:flex; 
             justify-content:space-between; 
             align-items:center; 
@@ -26,10 +26,10 @@
             top:0; 
             z-index:1000; 
             border-bottom:1px solid var(--glass-border); 
-            height: 55px; /* Fixed height */
+            height:50px; /* Desktop: 50px total */
         }
         .logo { 
-            font-size:1.5rem; /* Reduced from 1.8rem */
+            font-size:1.5rem; 
             font-weight:800; 
             color:var(--text); 
             text-decoration:none; 
@@ -41,13 +41,13 @@
             backdrop-filter:blur(20px); 
             border:1px solid var(--glass-border); 
             border-radius:18px; 
-            padding:.3rem 1rem; /* Reduced padding */
+            padding:.3rem 1rem;
             display:flex; 
             align-items:center; 
             gap:.5rem; 
-            width:4.5cm; /* Reduced width */
+            width:4.5cm;
             min-width:4.5cm; 
-            height:32px; /* Reduced height */
+            height:32px;
             transition:all .3s ease; 
         }
         .search-bar:focus-within { border-color:var(--accent); }
@@ -55,32 +55,32 @@
             background:transparent; 
             border:none; 
             color:var(--text); 
-            font-size:.85rem; /* Reduced font size */
+            font-size:.85rem;
             width:100%; 
             outline:none; 
             padding:0; 
         }
         .search-bar input::placeholder { 
             color:rgba(255,255,255,.6); 
-            font-size:.85rem; /* Reduced font size */
+            font-size:.85rem;
         }
         .search-icon { 
             color:rgba(255,255,255,.7); 
-            font-size:.85rem; /* Reduced font size */
+            font-size:1rem;
         }
         .icon-btn { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:50%; 
-            width:32px; /* Reduced size */
-            height:32px; 
+            width:32px;
+            height:32px;
             display:flex; 
             align-items:center; 
             justify-content:center; 
             color:var(--text); 
             text-decoration:none; 
             transition:all .3s ease; 
-            font-size:.85rem; /* Reduced font size */
+            font-size:1rem;
             position:relative; 
         }
         .icon-btn:hover { 
@@ -89,14 +89,14 @@
         }
         .cart-badge { 
             position:absolute; 
-            top:-4px; /* Adjusted position */
+            top:-4px;
             right:-4px; 
             background:var(--accent); 
             color:white; 
             border-radius:50%; 
-            width:16px; /* Reduced size */
+            width:16px;
             height:16px; 
-            font-size:.65rem; /* Reduced font size */
+            font-size:.65rem;
             display:none; 
             align-items:center; 
             justify-content:center; 
@@ -105,7 +105,7 @@
         
         /* Adjusted main content margin for smaller header */
         .main-content { 
-            margin-top:60px; /* Reduced from 70px */
+            margin-top:50px; /* Adjusted for header height */
             padding:1rem; 
             background:var(--primary); 
             min-height:calc(100vh - 160px); 
@@ -134,7 +134,7 @@
         .hidden { display:none !important; }
         .success-message { 
             position:fixed; 
-            top:70px; /* Adjusted for smaller header */
+            top:60px; /* Adjusted for header height */
             right:2rem; 
             background:var(--success); 
             color:white; 
@@ -424,22 +424,23 @@
                        url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80') center/cover;
         }
         
+        /* Mobile Styles */
         @media(max-width:768px){ 
             .top-header{
-                padding:.4rem 1rem; /* Further reduced for mobile */
-                height: 50px; /* Smaller height on mobile */
+                padding:0.4rem 1rem; /* 6.4px top/bottom, 16px left/right */
+                height:45px; /* Mobile: 45px total */
             } 
             .logo{
-                font-size:1.3rem; /* Further reduced for mobile */
+                font-size:1.3rem;
             } 
             .main-content{
-                margin-top:55px; /* Adjusted for smaller header */
+                margin-top:45px; /* Adjusted for header height */
                 padding:.8rem; 
             } 
             .search-bar{
                 width:4cm;
                 min-width:4cm;
-                height:30px; /* Further reduced for mobile */
+                height:30px;
                 padding:.25rem .8rem; 
             } 
             .category-grid{grid-template-columns:repeat(2,1fr);gap:.8rem;} 
@@ -473,12 +474,12 @@
             }
             
             .icon-btn{
-                width:30px; /* Further reduced for mobile */
+                width:30px;
                 height:30px; 
-                font-size:.8rem;
+                font-size:.9rem;
             } 
             .success-message{
-                top:60px; /* Adjusted for smaller header */
+                top:55px; /* Adjusted for header height */
                 right:1rem;
                 left:1rem;
                 text-align:center;
@@ -535,7 +536,7 @@
         }
         
         @media(min-width:1200px){ 
-            .search-bar{width:5cm;min-width:5cm;} /* Slightly reduced for desktop */
+            .search-bar{width:5.5cm;min-width:5.5cm;}
             .category-grid{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
             .dynamic-products{grid-template-columns:repeat(2,1fr);max-width:600px;margin:0 auto;} 
         }
@@ -545,6 +546,7 @@
     </style>
 </head>
 <body>
+    <!-- UPDATED HEADER WITH EXACT DIMENSIONS -->
     <header class="top-header">
         <a href="menaccessories.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
