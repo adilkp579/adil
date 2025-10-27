@@ -14,10 +14,10 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:100px; }
         
-        /* ULTRA COMPACT TOP HEADER */
+        /* UPDATED TOP HEADER - EXACT SPECIFICATIONS */
         .top-header { 
             background:var(--primary); 
-            padding:0.4rem 1.2rem; /* Significantly reduced padding */
+            padding:0.5rem 1.5rem; /* 8px top/bottom, 24px left/right */
             display:flex; 
             justify-content:space-between; 
             align-items:center; 
@@ -26,28 +26,28 @@
             top:0; 
             z-index:1000; 
             border-bottom:1px solid var(--glass-border); 
-            height: 50px; /* Much smaller height */
+            height:50px; /* Desktop: 50px total */
         }
         .logo { 
-            font-size:1.3rem; /* Much smaller logo */
+            font-size:1.5rem; 
             font-weight:800; 
             color:var(--text); 
             text-decoration:none; 
         }
         .logo-dot { color:var(--accent); }
-        .header-icons { display:flex; gap:0.6rem; align-items:center; }
+        .header-icons { display:flex; gap:0.8rem; align-items:center; }
         .search-bar { 
             background:var(--glass); 
             backdrop-filter:blur(20px); 
             border:1px solid var(--glass-border); 
-            border-radius:16px; /* Smaller radius */
-            padding:.3rem .8rem; /* Reduced padding */
+            border-radius:18px; 
+            padding:.3rem 1rem;
             display:flex; 
             align-items:center; 
-            gap:.4rem; 
-            width:4.5cm; /* Smaller width */
+            gap:.5rem; 
+            width:4.5cm;
             min-width:4.5cm; 
-            height:32px; /* Reduced height */
+            height:32px;
             transition:all .3s ease; 
         }
         .search-bar:focus-within { border-color:var(--accent); }
@@ -55,32 +55,26 @@
             background:transparent; 
             border:none; 
             color:var(--text); 
-            font-size:0.85rem; /* Smaller font */
+            font-size:.85rem;
             width:100%; 
             outline:none; 
             padding:0; 
         }
-        .search-bar input::placeholder { 
-            color:rgba(255,255,255,.6); 
-            font-size:0.85rem; /* Smaller font */
-        }
-        .search-icon { 
-            color:rgba(255,255,255,.7); 
-            font-size:0.8rem; /* Smaller icon */
-        }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.85rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:1rem; }
         .icon-btn { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:50%; 
-            width:30px; /* Smaller buttons */
-            height:30px; 
+            width:32px;
+            height:32px;
             display:flex; 
             align-items:center; 
             justify-content:center; 
             color:var(--text); 
             text-decoration:none; 
             transition:all .3s ease; 
-            font-size:0.8rem; /* Smaller icons */
+            font-size:1rem;
             position:relative; 
         }
         .icon-btn:hover { 
@@ -94,9 +88,9 @@
             background:var(--accent); 
             color:white; 
             border-radius:50%; 
-            width:14px; /* Smaller badge */
-            height:14px; 
-            font-size:.6rem; /* Smaller font */
+            width:16px;
+            height:16px;
+            font-size:.65rem;
             display:none; 
             align-items:center; 
             justify-content:center; 
@@ -104,7 +98,7 @@
         }
         
         .main-content { 
-            margin-top:50px; /* Adjusted for smaller header */
+            margin-top:50px; /* Adjusted for header height */
             padding:1rem; 
             background:var(--primary); 
             min-height:calc(100vh - 170px); 
@@ -342,7 +336,7 @@
         
         .success-message { 
             position:fixed; 
-            top:60px; /* Adjusted for smaller header */
+            top:60px; /* Adjusted for header height */
             right:2rem; 
             background:var(--success); 
             color:white; 
@@ -498,29 +492,30 @@
             opacity: 0.7;
         }
         
+        /* Mobile Styles */
         @media(max-width:768px){ 
             .top-header{
-                padding:0.3rem 0.8rem; /* Even smaller padding for mobile */
-                height: 45px; /* Smaller height for mobile */
+                padding:0.4rem 1rem; /* 6.4px top/bottom, 16px left/right */
+                height:45px; /* Mobile: 45px total */
             } 
             .logo{
-                font-size:1.1rem; /* Smaller logo for mobile */
+                font-size:1.3rem;
             } 
             .main-content{
-                margin-top:45px; /* Adjusted for smaller header */
+                margin-top:45px; /* Adjusted for header height */
                 padding:.8rem; 
             } 
             .search-bar{
-                width:3.5cm;
-                min-width:3.5cm;
-                height:28px; /* Smaller search bar */
-                padding:.2rem .6rem; /* Reduced padding */
+                width:3.8cm;
+                min-width:3.8cm;
+                height:30px;
+                padding:.25rem .9rem;
             } 
             .search-bar input, .search-bar input::placeholder {
-                font-size: 0.8rem; /* Smaller font */
+                font-size: 0.85rem;
             }
             .search-icon {
-                font-size: 0.75rem; /* Smaller icon */
+                font-size: 0.9rem;
             }
             .categories-grid{
                 grid-template-columns:repeat(2,1fr);
@@ -567,12 +562,12 @@
             .nav-icon { font-size: 1.3rem; height: 22px; }
             .nav-label { font-size: 0.65rem; }
             .icon-btn{
-                width:28px; /* Smaller icon buttons */
-                height:28px; 
-                font-size:0.75rem; /* Smaller icons */
+                width:30px;
+                height:30px; 
+                font-size:0.9rem;
             }
             .success-message{
-                top:55px; /* Adjusted for smaller header */
+                top:55px; /* Adjusted for header height */
                 right:1rem;
                 left:1rem;
                 text-align:center;
@@ -600,30 +595,30 @@
                 font-size: 0.9rem;
             }
             .top-header {
-                padding: 0.25rem 0.6rem; /* Even smaller padding */
-                height: 40px; /* Even smaller height */
+                padding: 0.4rem 1rem;
+                height: 45px;
             }
             .logo {
-                font-size: 1rem; /* Even smaller logo */
+                font-size: 1.2rem;
             }
             .search-bar {
-                width: 3cm;
-                min-width: 3cm;
-                height: 26px; /* Even smaller search bar */
-                padding: 0.2rem 0.5rem; /* Even smaller padding */
+                width: 3.5cm;
+                min-width: 3.5cm;
+                height: 28px;
+                padding: 0.25rem 0.8rem;
             }
             .search-bar input, .search-bar input::placeholder {
-                font-size: 0.75rem; /* Even smaller font */
+                font-size: 0.8rem;
             }
             .search-icon {
-                font-size: 0.7rem; /* Even smaller icon */
+                font-size: 0.8rem;
             }
         }
         
         @media(min-width:1200px){ 
             .search-bar{
-                width:5cm; /* Smaller for desktop */
-                min-width:5cm;
+                width:5.5cm;
+                min-width:5.5cm;
             } 
             .categories-grid{
                 grid-template-columns:repeat(2,1fr);
@@ -643,6 +638,7 @@
     </style>
 </head>
 <body>
+    <!-- UPDATED HEADER WITH EXACT DIMENSIONS -->
     <header class="top-header">
         <a href="index.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
