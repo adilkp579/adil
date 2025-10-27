@@ -14,10 +14,10 @@
         }
         body { background:var(--primary); color:var(--text); min-height:100vh; padding-bottom:90px; }
         
-        /* SLIGHTLY REDUCED Top Header */
+        /* UPDATED TOP HEADER - EXACT SPECIFICATIONS */
         .top-header { 
             background:var(--primary); 
-            padding:.35rem 1.4rem; /* Slightly reduced padding */
+            padding:0.5rem 1.5rem; /* 8px top/bottom, 24px left/right */
             display:flex; 
             justify-content:space-between; 
             align-items:center; 
@@ -26,27 +26,27 @@
             top:0; 
             z-index:1000; 
             border-bottom:1px solid var(--glass-border); 
-            height:48px; /* Slightly reduced from 50px */
+            height:50px; /* Desktop: 50px total */
         }
         .logo { 
-            font-size:1.25rem; /* Slightly smaller */
+            font-size:1.5rem;
             font-weight:800; 
             color:var(--text); 
             text-decoration:none; 
         }
         .logo-dot { color:var(--accent); }
-        .header-icons { display:flex; gap:0.7rem; align-items:center; }
+        .header-icons { display:flex; gap:0.8rem; align-items:center; }
         .search-bar { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
-            border-radius:16px; 
-            padding:.22rem 0.85rem; /* Slightly reduced padding */
+            border-radius:18px;
+            padding:.3rem 1rem;
             display:flex; 
             align-items:center; 
-            gap:.45rem; 
-            width:4.3cm; /* Slightly reduced */
-            min-width:4.3cm; 
-            height:28px; /* Slightly reduced from 30px */
+            gap:.5rem; 
+            width:4.5cm;
+            min-width:4.5cm; 
+            height:32px;
             transition:all .3s ease; 
         }
         .search-bar:focus-within { border-color:var(--accent); }
@@ -54,39 +54,39 @@
             background:transparent; 
             border:none; 
             color:var(--text); 
-            font-size:.78rem; /* Slightly smaller */
+            font-size:.85rem;
             width:100%; 
             outline:none; 
             padding:0; 
         }
-        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.78rem; }
-        .search-icon { color:rgba(255,255,255,.7); font-size:.78rem; }
+        .search-bar input::placeholder { color:rgba(255,255,255,.6); font-size:.85rem; }
+        .search-icon { color:rgba(255,255,255,.7); font-size:1rem; }
         .icon-btn { 
             background:var(--glass); 
             border:1px solid var(--glass-border); 
             border-radius:50%; 
-            width:28px; /* Slightly smaller */
-            height:28px; /* Slightly smaller */
+            width:32px;
+            height:32px;
             display:flex; 
             align-items:center; 
             justify-content:center; 
             color:var(--text); 
             text-decoration:none; 
             transition:all .3s ease; 
-            font-size:.78rem; /* Slightly smaller */
+            font-size:1rem;
             position:relative; 
         }
         .icon-btn:hover { background:var(--accent); transform:scale(1.1); }
         .cart-badge { 
             position:absolute; 
-            top:-3px; 
-            right:-3px; 
+            top:-4px;
+            right:-4px; 
             background:var(--accent); 
             color:white; 
             border-radius:50%; 
-            width:14px; /* Slightly smaller */
-            height:14px; /* Slightly smaller */
-            font-size:.58rem; /* Slightly smaller */
+            width:16px;
+            height:16px; 
+            font-size:.65rem;
             display:none; 
             align-items:center; 
             justify-content:center; 
@@ -248,8 +248,8 @@
             opacity: 0.7;
         }
 
-        /* Main Content - Adjusted for slightly smaller header */
-        .main-content { margin-top:48px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
+        /* Main Content - Adjusted for header */
+        .main-content { margin-top:50px; padding:1rem; background:var(--primary); min-height:calc(100vh - 160px); }
         
         /* Hero Section with Background Image */
         .hero-section { 
@@ -482,7 +482,7 @@
         
         .success-message { 
             position:fixed; 
-            top:65px; /* Adjusted for slightly smaller header */
+            top:60px; /* Adjusted for header height */
             right:2rem; 
             background:var(--success); 
             color:white; 
@@ -495,23 +495,24 @@
         }
         @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
         
+        /* Mobile Styles */
         @media(max-width:768px){ 
             .top-header{
-                padding:.25rem 1rem; /* Slightly reduced padding for mobile */
-                height:45px; /* Slightly reduced height for mobile */
+                padding:0.4rem 1rem; /* 6.4px top/bottom, 16px left/right */
+                height:45px; /* Mobile: 45px total */
             } 
             .logo{
-                font-size:1.15rem; /* Slightly smaller logo on mobile */
+                font-size:1.3rem;
             } 
             .main-content{
-                margin-top:45px; /* Adjusted for slightly smaller header */
+                margin-top:45px; /* Adjusted for header height */
                 padding:.8rem;
             } 
             .search-bar{
-                width:3.8cm; /* Slightly reduced for mobile */
+                width:3.8cm;
                 min-width:3.8cm;
-                height:26px; /* Slightly reduced height for mobile */
-                padding:.2rem .8rem;
+                height:30px;
+                padding:.25rem .9rem;
             } 
             
             /* Hero Section Mobile */
@@ -553,11 +554,11 @@
             } 
             
             .icon-btn{
-                width:26px; /* Slightly smaller buttons on mobile */
-                height:26px;
+                width:30px;
+                height:30px;
             } 
             .success-message{
-                top:55px; /* Adjusted position */
+                top:55px; /* Adjusted for header height */
                 right:1rem;
                 left:1rem;
                 text-align:center;
@@ -613,18 +614,18 @@
                 font-size: 0.85rem;
             }
             .top-header {
-                padding: .25rem 1rem;
-                height: 42px; /* Slightly smaller on very small screens */
+                padding: 0.4rem 1rem;
+                height: 45px;
             }
             .main-content {
-                margin-top: 42px; /* Adjusted for slightly smaller header */
+                margin-top: 45px;
             }
         }
         
         @media(min-width:1200px){ 
             .search-bar{
-                width:4.8cm; /* Slightly smaller on desktop */
-                min-width:4.8cm;
+                width:5.5cm;
+                min-width:5.5cm;
             } 
             .collections-grid{
                 grid-template-columns:repeat(2,1fr);
@@ -638,7 +639,7 @@
     </style>
 </head>
 <body>
-    <!-- SLIGHTLY REDUCED Top Header -->
+    <!-- UPDATED HEADER WITH EXACT DIMENSIONS -->
     <header class="top-header">
         <a href="womenaccessories.html" class="logo">store<span class="logo-dot">.</span>in</a>
         <div class="header-icons">
