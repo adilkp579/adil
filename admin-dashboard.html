@@ -383,6 +383,261 @@
             color: white;
         }
         
+        /* Order List Styles */
+        .order-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .order-filters .form-group {
+            margin-bottom: 0;
+        }
+        
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .order-table th, .order-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .order-table th {
+            background-color: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .order-table tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background-color: rgba(248, 150, 30, 0.1);
+            color: var(--warning);
+        }
+        
+        .status-processing {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+        
+        .status-shipped {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+        }
+        
+        .status-delivered {
+            background-color: rgba(72, 149, 239, 0.1);
+            color: var(--info);
+        }
+        
+        .status-cancelled {
+            background-color: rgba(247, 37, 133, 0.1);
+            color: var(--danger);
+        }
+        
+        .status-approved {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+        }
+        
+        .status-rejected {
+            background-color: rgba(247, 37, 133, 0.1);
+            color: var(--danger);
+        }
+        
+        .status-pending-review {
+            background-color: rgba(248, 150, 30, 0.1);
+            color: var(--warning);
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .order-actions .btn {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+        
+        .order-details {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--light);
+            border-radius: 8px;
+        }
+        
+        .order-details.active {
+            display: block;
+        }
+        
+        .order-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .order-items {
+            margin-top: 20px;
+        }
+        
+        .order-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .order-item-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .order-item-info {
+            flex: 1;
+        }
+        
+        .order-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .order-item-meta {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .order-item-price {
+            font-weight: 600;
+        }
+        
+        /* User Products Styles */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .product-description {
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-sizes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .size-badge {
+            padding: 4px 10px;
+            background: var(--light);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .product-actions .btn {
+            flex: 1;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+        
+        .user-info-small {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .user-info-small img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .user-info-small span {
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .sidebar {
@@ -412,6 +667,19 @@
             }
             
             .discount-fields {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .products-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -444,8 +712,9 @@
                 <li><a href="#" class="active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
                 <li><a href="#" data-page="upload"><i class="fas fa-plus-circle"></i> <span>Add Product</span></a></li>
                 <li><a href="#" data-page="products"><i class="fas fa-shopping-bag"></i> <span>All Products</span></a></li>
+                <li><a href="#" data-page="orders"><i class="fas fa-shopping-cart"></i> <span>User Orders</span></a></li>
+                <li><a href="#" data-page="user-products"><i class="fas fa-users"></i> <span>User Products</span></a></li>
                 <li><a href="#" data-page="discounts"><i class="fas fa-tag"></i> <span>Discounts</span></a></li>
-                <li><a href="#" data-page="categories"><i class="fas fa-list"></i> <span>Categories</span></a></li>
                 <li><a href="#" data-page="inventory"><i class="fas fa-boxes"></i> <span>Inventory</span></a></li>
                 <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
                 <li><a href="#"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
@@ -456,7 +725,7 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="header">
-            <h1 id="page-title">Add New Product</h1>
+            <h1 id="page-title">User Products</h1>
             <div class="user-info">
                 <img src="https://i.pravatar.cc/150?img=32" alt="Admin User">
                 <span>Admin User</span>
@@ -465,7 +734,7 @@
 
         <div class="content">
             <!-- Upload Product Page -->
-            <div class="page-content active" id="upload-page">
+            <div class="page-content" id="upload-page">
                 <div class="card">
                     <div class="card-header">
                         <h3>Product Information</h3>
@@ -639,6 +908,190 @@
                 </div>
             </div>
 
+            <!-- User Orders Page -->
+            <div class="page-content" id="orders-page">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>User Orders</h3>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-primary"><i class="fas fa-download"></i> Export</button>
+                            <button class="btn btn-success"><i class="fas fa-sync"></i> Refresh</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="order-filters">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select id="order-status-filter" class="form-control">
+                                    <option value="all">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Date Range</label>
+                                <select id="order-date-filter" class="form-control">
+                                    <option value="all">All Time</option>
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="custom">Custom Range</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Search</label>
+                                <input type="text" id="order-search" class="form-control" placeholder="Search by order ID or customer">
+                            </div>
+                        </div>
+                        
+                        <table class="order-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-7842</td>
+                                    <td>John Smith</td>
+                                    <td>2023-10-15</td>
+                                    <td>$128.50</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="order-actions">
+                                            <button class="btn btn-primary btn-sm view-order" data-order="7842"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-success btn-sm update-status" data-order="7842"><i class="fas fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-7841</td>
+                                    <td>Emma Johnson</td>
+                                    <td>2023-10-14</td>
+                                    <td>$245.00</td>
+                                    <td><span class="status-badge status-processing">Processing</span></td>
+                                    <td>
+                                        <div class="order-actions">
+                                            <button class="btn btn-primary btn-sm view-order" data-order="7841"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-success btn-sm update-status" data-order="7841"><i class="fas fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-7840</td>
+                                    <td>Michael Brown</td>
+                                    <td>2023-10-13</td>
+                                    <td>$89.99</td>
+                                    <td><span class="status-badge status-shipped">Shipped</span></td>
+                                    <td>
+                                        <div class="order-actions">
+                                            <button class="btn btn-primary btn-sm view-order" data-order="7840"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-success btn-sm update-status" data-order="7840"><i class="fas fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-7839</td>
+                                    <td>Sarah Williams</td>
+                                    <td>2023-10-12</td>
+                                    <td>$156.75</td>
+                                    <td><span class="status-badge status-delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="order-actions">
+                                            <button class="btn btn-primary btn-sm view-order" data-order="7839"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-success btn-sm update-status" data-order="7839"><i class="fas fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-7838</td>
+                                    <td>David Miller</td>
+                                    <td>2023-10-11</td>
+                                    <td>$210.25</td>
+                                    <td><span class="status-badge status-cancelled">Cancelled</span></td>
+                                    <td>
+                                        <div class="order-actions">
+                                            <button class="btn btn-primary btn-sm view-order" data-order="7838"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-success btn-sm update-status" data-order="7838"><i class="fas fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Order Details Section -->
+                        <div class="order-details" id="order-details">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3>Order Details - #ORD-<span id="detail-order-id"></span></h3>
+                                <button class="btn btn-primary" id="close-order-details"><i class="fas fa-times"></i> Close</button>
+                            </div>
+                            
+                            <div class="order-details-grid">
+                                <div>
+                                    <h4>Customer Information</h4>
+                                    <p><strong>Name:</strong> <span id="detail-customer-name"></span></p>
+                                    <p><strong>Email:</strong> <span id="detail-customer-email"></span></p>
+                                    <p><strong>Phone:</strong> <span id="detail-customer-phone"></span></p>
+                                    <p><strong>Address:</strong> <span id="detail-customer-address"></span></p>
+                                </div>
+                                <div>
+                                    <h4>Order Information</h4>
+                                    <p><strong>Order Date:</strong> <span id="detail-order-date"></span></p>
+                                    <p><strong>Status:</strong> <span id="detail-order-status"></span></p>
+                                    <p><strong>Payment Method:</strong> <span id="detail-payment-method"></span></p>
+                                    <p><strong>Shipping Method:</strong> <span id="detail-shipping-method"></span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="order-items">
+                                <h4>Order Items</h4>
+                                <div id="order-items-list">
+                                    <!-- Order items will be populated here -->
+                                </div>
+                                
+                                <div style="text-align: right; margin-top: 20px;">
+                                    <p><strong>Subtotal: $<span id="detail-subtotal">0.00</span></strong></p>
+                                    <p><strong>Shipping: $<span id="detail-shipping">0.00</span></strong></p>
+                                    <p><strong>Tax: $<span id="detail-tax">0.00</span></strong></p>
+                                    <h3>Total: $<span id="detail-total">0.00</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Products Page -->
+            <div class="page-content active" id="user-products-page">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>User Added Products</h3>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" class="form-control" placeholder="Search products..." style="width: 250px;">
+                            <select class="form-control" style="width: 200px;" id="status-filter">
+                                <option value="all">All Statuses</option>
+                                <option value="pending">Pending Review</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="products-grid" id="user-products-grid">
+                            <!-- Product cards will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Discounts Page -->
             <div class="page-content" id="discounts-page">
                 <div class="card">
@@ -648,38 +1101,6 @@
                     </div>
                     <div class="card-body">
                         <p>No discounts created yet. Create discounts when adding products or set up site-wide promotions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Categories Page -->
-            <div class="page-content" id="categories-page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Category Management</h3>
-                        <button class="btn btn-success"><i class="fas fa-plus"></i> Add Category</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-grid">
-                            <div>
-                                <h4>Men's Categories</h4>
-                                <ul style="list-style: none; padding: 0;">
-                                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">Shirts</li>
-                                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">Pants</li>
-                                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">Shoes</li>
-                                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">Accessories</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4>Women's Categories</h4>
-                                <ul style="list-style: none; padding: 0;">
-                                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">Clothing</li>
-                                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">Shoes</li>
-                                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">Accessories</li>
-                                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">Jewellery</li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -721,8 +1142,9 @@
                     'dashboard': 'Dashboard',
                     'upload': 'Add Product',
                     'products': 'All Products',
+                    'orders': 'User Orders',
+                    'user-products': 'User Products',
                     'discounts': 'Discount Management',
-                    'categories': 'Category Management',
                     'inventory': 'Inventory Management'
                 };
                 document.getElementById('page-title').textContent = pageTitles[targetPage];
@@ -872,6 +1294,427 @@
                 checkbox.checked = false;
             });
         });
+
+        // Order Management Functionality
+        const orderDetails = document.getElementById('order-details');
+        const closeOrderDetails = document.getElementById('close-order-details');
+        
+        // Sample order data
+        const ordersData = {
+            '7842': {
+                customer: {
+                    name: 'John Smith',
+                    email: 'john.smith@example.com',
+                    phone: '+1 (555) 123-4567',
+                    address: '123 Main St, Apt 4B, New York, NY 10001'
+                },
+                date: '2023-10-15',
+                status: 'pending',
+                payment: 'Credit Card',
+                shipping: 'Standard Shipping',
+                items: [
+                    { name: 'Classic White T-Shirt', size: 'M', color: 'White', price: 24.99, quantity: 2, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Denim Jeans', size: '32', color: 'Blue', price: 59.99, quantity: 1, image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Leather Belt', size: 'M', color: 'Brown', price: 39.99, quantity: 1, image: 'https://images.unsplash.com/photo-1601924994980-3f7742b13b84?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' }
+                ],
+                subtotal: 149.96,
+                shipping: 5.99,
+                tax: 12.55,
+                total: 168.50
+            },
+            '7841': {
+                customer: {
+                    name: 'Emma Johnson',
+                    email: 'emma.johnson@example.com',
+                    phone: '+1 (555) 987-6543',
+                    address: '456 Oak Ave, Los Angeles, CA 90210'
+                },
+                date: '2023-10-14',
+                status: 'processing',
+                payment: 'PayPal',
+                shipping: 'Express Shipping',
+                items: [
+                    { name: 'Floral Summer Dress', size: 'S', color: 'Multicolor', price: 89.99, quantity: 1, image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Straw Hat', size: 'One Size', color: 'Natural', price: 35.00, quantity: 1, image: 'https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Sandals', size: '38', color: 'Beige', price: 45.00, quantity: 1, image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Sunglasses', size: 'One Size', color: 'Black', price: 75.00, quantity: 1, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' }
+                ],
+                subtotal: 245.00,
+                shipping: 12.99,
+                tax: 20.58,
+                total: 278.57
+            },
+            '7840': {
+                customer: {
+                    name: 'Michael Brown',
+                    email: 'michael.brown@example.com',
+                    phone: '+1 (555) 456-7890',
+                    address: '789 Pine St, Chicago, IL 60601'
+                },
+                date: '2023-10-13',
+                status: 'shipped',
+                payment: 'Credit Card',
+                shipping: 'Standard Shipping',
+                items: [
+                    { name: 'Casual Blazer', size: 'L', color: 'Navy', price: 89.99, quantity: 1, image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' }
+                ],
+                subtotal: 89.99,
+                shipping: 5.99,
+                tax: 7.56,
+                total: 103.54
+            },
+            '7839': {
+                customer: {
+                    name: 'Sarah Williams',
+                    email: 'sarah.williams@example.com',
+                    phone: '+1 (555) 234-5678',
+                    address: '321 Elm St, Miami, FL 33101'
+                },
+                date: '2023-10-12',
+                status: 'delivered',
+                payment: 'Credit Card',
+                shipping: 'Standard Shipping',
+                items: [
+                    { name: 'Knit Sweater', size: 'M', color: 'Cream', price: 65.00, quantity: 1, image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Skinny Jeans', size: '30', color: 'Black', price: 69.99, quantity: 1, image: 'https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Ankle Boots', size: '39', color: 'Brown', price: 99.99, quantity: 1, image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' }
+                ],
+                subtotal: 234.98,
+                shipping: 5.99,
+                tax: 19.73,
+                total: 260.70
+            },
+            '7838': {
+                customer: {
+                    name: 'David Miller',
+                    email: 'david.miller@example.com',
+                    phone: '+1 (555) 876-5432',
+                    address: '654 Maple Dr, Seattle, WA 98101'
+                },
+                date: '2023-10-11',
+                status: 'cancelled',
+                payment: 'Credit Card',
+                shipping: 'Express Shipping',
+                items: [
+                    { name: 'Winter Jacket', size: 'XL', color: 'Black', price: 129.99, quantity: 1, image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Wool Scarf', size: 'One Size', color: 'Gray', price: 35.00, quantity: 1, image: 'https://images.unsplash.com/photo-1601924582970-9238bcb495d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' },
+                    { name: 'Beanie', size: 'One Size', color: 'Navy', price: 25.00, quantity: 1, image: 'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60' }
+                ],
+                subtotal: 189.99,
+                shipping: 12.99,
+                tax: 15.96,
+                total: 218.94
+            }
+        };
+
+        // View order details
+        document.querySelectorAll('.view-order').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.getAttribute('data-order');
+                const order = ordersData[orderId];
+                
+                if (order) {
+                    // Populate order details
+                    document.getElementById('detail-order-id').textContent = orderId;
+                    document.getElementById('detail-customer-name').textContent = order.customer.name;
+                    document.getElementById('detail-customer-email').textContent = order.customer.email;
+                    document.getElementById('detail-customer-phone').textContent = order.customer.phone;
+                    document.getElementById('detail-customer-address').textContent = order.customer.address;
+                    document.getElementById('detail-order-date').textContent = order.date;
+                    
+                    // Set status with appropriate badge
+                    const statusBadge = document.getElementById('detail-order-status');
+                    statusBadge.innerHTML = '';
+                    const badge = document.createElement('span');
+                    badge.className = `status-badge status-${order.status}`;
+                    badge.textContent = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+                    statusBadge.appendChild(badge);
+                    
+                    document.getElementById('detail-payment-method').textContent = order.payment;
+                    document.getElementById('detail-shipping-method').textContent = order.shipping;
+                    
+                    // Populate order items
+                    const itemsList = document.getElementById('order-items-list');
+                    itemsList.innerHTML = '';
+                    
+                    order.items.forEach(item => {
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'order-item';
+                        
+                        itemElement.innerHTML = `
+                            <img src="${item.image}" alt="${item.name}" class="order-item-img">
+                            <div class="order-item-info">
+                                <div class="order-item-name">${item.name}</div>
+                                <div class="order-item-meta">Size: ${item.size} | Color: ${item.color} | Qty: ${item.quantity}</div>
+                            </div>
+                            <div class="order-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                        `;
+                        
+                        itemsList.appendChild(itemElement);
+                    });
+                    
+                    // Set totals
+                    document.getElementById('detail-subtotal').textContent = order.subtotal.toFixed(2);
+                    document.getElementById('detail-shipping').textContent = order.shipping.toFixed(2);
+                    document.getElementById('detail-tax').textContent = order.tax.toFixed(2);
+                    document.getElementById('detail-total').textContent = order.total.toFixed(2);
+                    
+                    // Show order details
+                    orderDetails.classList.add('active');
+                }
+            });
+        });
+
+        // Close order details
+        closeOrderDetails.addEventListener('click', function() {
+            orderDetails.classList.remove('active');
+        });
+
+        // Update order status
+        document.querySelectorAll('.update-status').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderId = this.getAttribute('data-order');
+                const newStatus = prompt('Update order status (pending, processing, shipped, delivered, cancelled):');
+                
+                if (newStatus && ['pending', 'processing', 'shipped', 'delivered', 'cancelled'].includes(newStatus)) {
+                    // In a real application, you would send this update to a server
+                    alert(`Order #ORD-${orderId} status updated to ${newStatus}`);
+                    
+                    // Update the status badge in the table
+                    const row = this.closest('tr');
+                    const statusCell = row.querySelector('.status-badge');
+                    statusCell.className = `status-badge status-${newStatus}`;
+                    statusCell.textContent = newStatus.charAt(0).toUpperCase() + newStatus.slice(1);
+                } else if (newStatus) {
+                    alert('Invalid status. Please use: pending, processing, shipped, delivered, or cancelled');
+                }
+            });
+        });
+
+        // Order filtering
+        document.getElementById('order-status-filter').addEventListener('change', function() {
+            filterOrders();
+        });
+
+        document.getElementById('order-search').addEventListener('input', function() {
+            filterOrders();
+        });
+
+        function filterOrders() {
+            const statusFilter = document.getElementById('order-status-filter').value;
+            const searchTerm = document.getElementById('order-search').value.toLowerCase();
+            
+            document.querySelectorAll('.order-table tbody tr').forEach(row => {
+                const status = row.querySelector('.status-badge').textContent.toLowerCase();
+                const orderId = row.cells[0].textContent.toLowerCase();
+                const customer = row.cells[1].textContent.toLowerCase();
+                
+                const statusMatch = statusFilter === 'all' || status === statusFilter;
+                const searchMatch = searchTerm === '' || 
+                    orderId.includes(searchTerm) || 
+                    customer.includes(searchTerm);
+                
+                if (statusMatch && searchMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // User Products Data
+        const userProductsData = [
+            {
+                id: 1,
+                title: "Vintage Denim Jacket",
+                description: "A unique vintage denim jacket with custom embroidery. Perfect for casual outings.",
+                price: 45.99,
+                category: "Men's Fashion",
+                sizes: ["M", "L", "XL"],
+                images: ["https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"],
+                user: {
+                    name: "Alex Johnson",
+                    avatar: "https://i.pravatar.cc/150?img=5"
+                },
+                dateAdded: "2023-10-10",
+                status: "pending"
+            },
+            {
+                id: 2,
+                title: "Handmade Leather Bag",
+                description: "Beautiful handmade leather bag with multiple compartments. Made from genuine leather.",
+                price: 89.50,
+                category: "Women's Accessories",
+                sizes: ["One Size"],
+                images: ["https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"],
+                user: {
+                    name: "Sophia Williams",
+                    avatar: "https://i.pravatar.cc/150?img=9"
+                },
+                dateAdded: "2023-10-08",
+                status: "approved"
+            },
+            {
+                id: 3,
+                title: "Custom Graphic T-Shirt",
+                description: "Custom designed graphic t-shirt with original artwork. Limited edition print.",
+                price: 24.99,
+                category: "Men's Fashion",
+                sizes: ["S", "M", "L", "XL"],
+                images: ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"],
+                user: {
+                    name: "Mike Thompson",
+                    avatar: "https://i.pravatar.cc/150?img=11"
+                },
+                dateAdded: "2023-10-05",
+                status: "rejected"
+            },
+            {
+                id: 4,
+                title: "Hand-knitted Wool Scarf",
+                description: "Warm and cozy hand-knitted wool scarf. Perfect for winter weather.",
+                price: 32.75,
+                category: "Women's Accessories",
+                sizes: ["One Size"],
+                images: ["https://images.unsplash.com/photo-1601924582970-9238bcb495d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"],
+                user: {
+                    name: "Emma Davis",
+                    avatar: "https://i.pravatar.cc/150?img=12"
+                },
+                dateAdded: "2023-10-03",
+                status: "approved"
+            },
+            {
+                id: 5,
+                title: "Upcycled Denim Shorts",
+                description: "Eco-friendly upcycled denim shorts with unique patchwork design.",
+                price: 28.50,
+                category: "Women's Fashion",
+                sizes: ["S", "M", "L"],
+                images: ["https://images.unsplash.com/photo-1506629905607-e48b0e67d879?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"],
+                user: {
+                    name: "Olivia Martinez",
+                    avatar: "https://i.pravatar.cc/150?img=20"
+                },
+                dateAdded: "2023-10-01",
+                status: "pending"
+            },
+            {
+                id: 6,
+                title: "Hand-painted Canvas Sneakers",
+                description: "Custom hand-painted canvas sneakers with unique designs. Each pair is one of a kind.",
+                price: 55.00,
+                category: "Unisex Footwear",
+                sizes: ["38", "39", "40", "41", "42"],
+                images: ["https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"],
+                user: {
+                    name: "Daniel Wilson",
+                    avatar: "https://i.pravatar.cc/150?img=15"
+                },
+                dateAdded: "2023-09-28",
+                status: "approved"
+            }
+        ];
+
+        // Render user products
+        function renderUserProducts(products = userProductsData) {
+            const container = document.getElementById('user-products-grid');
+            container.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                const statusClass = `status-${product.status}`;
+                const statusText = product.status === 'pending' ? 'Pending Review' : 
+                                 product.status === 'approved' ? 'Approved' : 'Rejected';
+                
+                productCard.innerHTML = `
+                    <img src="${product.images[0]}" alt="${product.title}" class="product-image">
+                    <div class="product-info">
+                        <div class="user-info-small">
+                            <img src="${product.user.avatar}" alt="${product.user.name}">
+                            <span>${product.user.name}</span>
+                        </div>
+                        <div class="product-title">${product.title}</div>
+                        <div class="product-meta">
+                            <span>${product.category}</span>
+                            <span>${product.dateAdded}</span>
+                        </div>
+                        <div class="product-description">${product.description}</div>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-sizes">
+                            ${product.sizes.map(size => `<span class="size-badge">${size}</span>`).join('')}
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary view-product" data-id="${product.id}">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="btn btn-success approve-product" data-id="${product.id}">
+                                <i class="fas fa-check"></i> Approve
+                            </button>
+                            <button class="btn btn-danger reject-product" data-id="${product.id}">
+                                <i class="fas fa-times"></i> Reject
+                            </button>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <span class="status-badge ${statusClass}">${statusText}</span>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(productCard);
+            });
+            
+            // Add event listeners to action buttons
+            document.querySelectorAll('.view-product').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    const product = userProductsData.find(p => p.id == productId);
+                    if (product) {
+                        alert(`Viewing product: ${product.title}\nDescription: ${product.description}\nPrice: $${product.price}\nStatus: ${product.status}`);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.approve-product').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    const product = userProductsData.find(p => p.id == productId);
+                    if (product) {
+                        product.status = 'approved';
+                        renderUserProducts();
+                        alert(`Product "${product.title}" has been approved.`);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.reject-product').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    const product = userProductsData.find(p => p.id == productId);
+                    if (product) {
+                        product.status = 'rejected';
+                        renderUserProducts();
+                        alert(`Product "${product.title}" has been rejected.`);
+                    }
+                });
+            });
+        }
+
+        // Filter user products by status
+        document.getElementById('status-filter').addEventListener('change', function() {
+            const status = this.value;
+            if (status === 'all') {
+                renderUserProducts();
+            } else {
+                const filteredProducts = userProductsData.filter(product => product.status === status);
+                renderUserProducts(filteredProducts);
+            }
+        });
+
+        // Initialize user products
+        renderUserProducts();
     </script>
 </body>
 </html>
