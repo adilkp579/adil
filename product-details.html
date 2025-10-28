@@ -6,33 +6,22 @@
     <title>Product Details - store.in</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f8f8f8;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
         }
         header {
             background: #000;
             color: #fff;
-            padding: 15px 40px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        header h1 {
-            font-size: 22px;
-            letter-spacing: 1px;
-        }
-        .cart-icon {
-            position: relative;
-            font-size: 22px;
-            cursor: pointer;
-        }
+        header h1 { font-size: 22px; }
+        .cart-icon { position: relative; font-size: 22px; cursor: pointer; }
         .cart-badge {
             position: absolute;
             top: -8px;
@@ -45,178 +34,41 @@
             display: none;
         }
         .container {
+            width: 90%;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            padding: 40px;
-            gap: 40px;
-            background-color: #fff;
-            margin: 30px auto;
-            width: 90%;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 20px;
         }
-        .image-gallery {
+        .image {
             flex: 1;
             min-width: 300px;
-        }
-        .main-image {
-            width: 100%;
-            height: 380px;
-            border-radius: 15px;
-            background-color: #eee;
             background-size: cover;
             background-position: center;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            color: #777;
-        }
-        .thumbnail-row {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-        .thumbnail {
-            width: 80px;
-            height: 80px;
             border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid transparent;
+            height: 350px;
         }
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .thumbnail.active {
-            border-color: #000;
-        }
-        .product-details {
+        .details {
             flex: 1;
-            min-width: 320px;
+            min-width: 300px;
+            padding: 20px;
         }
-        .product-details h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .product-details .price {
-            font-size: 22px;
-            color: #d32f2f;
-            margin-bottom: 10px;
-        }
-        .product-details .description {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 15px;
-        }
-        .options {
-            margin: 20px 0;
-        }
-        .option-title {
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .color-options, .storage-options {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .color-option, .storage-option {
-            padding: 8px 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .color-option.selected, .storage-option.selected {
-            background: #000;
-            color: #fff;
-            border-color: #000;
-        }
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 15px 0;
-        }
-        .quantity-control button {
-            padding: 6px 12px;
-            background: #000;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        .quantity-control input {
-            width: 50px;
-            text-align: center;
-            font-size: 16px;
-            padding: 5px;
-        }
-        .actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .actions button {
-            flex: 1;
-            padding: 14px 0;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .add-to-cart {
-            background: #000;
-            color: #fff;
-        }
-        .buy-now {
-            background: #d32f2f;
-            color: #fff;
-        }
-        .actions button:hover {
-            transform: scale(1.02);
-        }
+        .details h2 { font-size: 28px; margin-bottom: 10px; }
+        .details p.price { font-size: 22px; color: #d32f2f; }
+        .details p.desc { font-size: 16px; color: #555; margin-top: 10px; }
         .specs {
-            margin-top: 30px;
+            margin-top: 20px;
         }
         .specs table {
             width: 100%;
             border-collapse: collapse;
         }
-        .specs th, .specs td {
+        .specs td {
             border-bottom: 1px solid #eee;
-            padding: 10px;
-            text-align: left;
-        }
-        .specs th {
-            width: 40%;
-            color: #555;
-        }
-        .success-message {
-            display: none;
-            background: #4caf50;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                padding: 20px;
-            }
-            .product-details h2 {
-                font-size: 22px;
-            }
+            padding: 8px;
         }
     </style>
 </head>
@@ -230,35 +82,11 @@
     </header>
 
     <div class="container">
-        <div class="image-gallery">
-            <div id="mainImage" class="main-image">Loading...</div>
-            <div class="thumbnail-row" id="thumbnails"></div>
-        </div>
-
-        <div class="product-details">
-            <h2 id="productName"></h2>
+        <div class="image" id="productImage"></div>
+        <div class="details">
+            <h2 id="productName">Loading...</h2>
             <p class="price" id="productPrice"></p>
-            <p class="description" id="productDescription"></p>
-
-            <div class="options">
-                <p class="option-title">Color</p>
-                <div class="color-options" id="colorOptions"></div>
-
-                <p class="option-title">Storage</p>
-                <div class="storage-options" id="storageOptions"></div>
-            </div>
-
-            <div class="quantity-control">
-                <button onclick="changeQuantity(-1)">-</button>
-                <input type="number" id="quantity" value="1" min="1" max="5" readonly>
-                <button onclick="changeQuantity(1)">+</button>
-            </div>
-
-            <div class="actions">
-                <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
-                <button class="buy-now" onclick="buyNow()">Buy Now</button>
-            </div>
-            <div class="success-message" id="successMessage">Added to Cart!</div>
+            <p class="desc" id="productDesc"></p>
 
             <div class="specs">
                 <h3>Specifications</h3>
@@ -268,193 +96,58 @@
     </div>
 
     <script>
-        let currentProduct = null;
-        let selectedColor = '';
-        let selectedStorage = '';
-        let quantity = 1;
-
-        const sampleProducts = {
+        const products = {
             "Quantum X Pro": {
-                id: 1,
                 name: "Quantum X Pro",
                 price: "₹1,19,999",
                 description: "The ultimate flagship smartphone with AI-enhanced performance and a 200MP camera system.",
-                colors: ["Black", "Silver", "Blue"],
-                storage: ["128GB", "256GB", "512GB"],
                 image: "https://images.unsplash.com/photo-1603808033192-082d6919d9ad?w=800",
-                thumbnails: [
-                    "https://images.unsplash.com/photo-1603808033192-082d6919d9ad?w=800",
-                    "https://images.unsplash.com/photo-1611152596955-8b21e9b28a65?w=800",
-                    "https://images.unsplash.com/photo-1604156789510-3f3e3b2c7e10?w=800"
-                ],
                 specs: {
                     "Display": "6.8-inch AMOLED, 120Hz",
                     "Processor": "Quantum AI Gen 3",
                     "Camera": "200MP + 64MP + 32MP",
-                    "Battery": "5500mAh with 120W charging",
+                    "Battery": "5500mAh, 120W fast charging",
                     "OS": "Android 14"
                 }
             },
             "NovaBook Pro": {
-                id: 2,
                 name: "NovaBook Pro",
                 price: "₹89,999",
                 description: "Powerful ultrabook designed for creators and professionals with AI optimization.",
-                colors: ["Gray", "Black"],
-                storage: ["512GB SSD", "1TB SSD"],
                 image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800",
-                thumbnails: [
-                    "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800",
-                    "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800",
-                    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800"
-                ],
                 specs: {
                     "Display": "14-inch Retina IPS, 120Hz",
                     "Processor": "Intel Evo i9 14th Gen",
                     "RAM": "32GB DDR5",
-                    "Storage": "Up to 1TB NVMe SSD",
+                    "Storage": "1TB NVMe SSD",
                     "Battery": "90Wh, 16 hours backup"
                 }
             }
         };
 
-        function loadProductDetails() {
+        function loadProduct() {
             const params = new URLSearchParams(window.location.search);
-            const productName = params.get('product');
-            currentProduct = sampleProducts[productName] || sampleProducts["Quantum X Pro"];
+            const productName = params.get("product");
+            const product = products[productName];
 
-            document.getElementById('productName').textContent = currentProduct.name;
-            document.getElementById('productPrice').textContent = currentProduct.price;
-            document.getElementById('productDescription').textContent = currentProduct.description;
-
-            const mainImage = document.getElementById('mainImage');
-            mainImage.style.backgroundImage = `url('${currentProduct.image}')`;
-            mainImage.textContent = '';
-
-            const thumbnailsDiv = document.getElementById('thumbnails');
-            thumbnailsDiv.innerHTML = '';
-            currentProduct.thumbnails.forEach((thumb, index) => {
-                const thumbDiv = document.createElement('div');
-                thumbDiv.classList.add('thumbnail');
-                if (index === 0) thumbDiv.classList.add('active');
-                thumbDiv.innerHTML = `<img src="${thumb}" onclick="changeMainImage(this, '${thumb}')">`;
-                thumbnailsDiv.appendChild(thumbDiv);
-            });
-
-            const colorDiv = document.getElementById('colorOptions');
-            colorDiv.innerHTML = '';
-            currentProduct.colors.forEach(color => {
-                const colorBtn = document.createElement('div');
-                colorBtn.classList.add('color-option');
-                colorBtn.textContent = color;
-                colorBtn.onclick = () => selectColor(colorBtn, color);
-                colorDiv.appendChild(colorBtn);
-            });
-
-            const storageDiv = document.getElementById('storageOptions');
-            storageDiv.innerHTML = '';
-            currentProduct.storage.forEach(size => {
-                const storageBtn = document.createElement('div');
-                storageBtn.classList.add('storage-option');
-                storageBtn.textContent = size;
-                storageBtn.onclick = () => selectStorage(storageBtn, size);
-                storageDiv.appendChild(storageBtn);
-            });
-
-            const specsTable = document.getElementById('specsTable');
-            let specsHTML = '';
-            for (const [key, value] of Object.entries(currentProduct.specs)) {
-                specsHTML += `
-                    <tr>
-                        <th>${key}</th>
-                        <td>${value}</td>
-                    </tr>
-                `;
-            }
-            specsTable.innerHTML = specsHTML;
-        }
-
-        function selectColor(element, color) {
-            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            selectedColor = color;
-        }
-
-        function selectStorage(element, storage) {
-            document.querySelectorAll('.storage-option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            selectedStorage = storage;
-        }
-
-        function changeMainImage(element, imageUrl) {
-            const mainImage = document.getElementById('mainImage');
-            mainImage.style.backgroundImage = `url('${imageUrl}')`;
-            document.querySelectorAll('.thumbnail').forEach(th => th.classList.remove('active'));
-            element.parentElement.classList.add('active');
-        }
-
-        function changeQuantity(amount) {
-            const quantityInput = document.getElementById('quantity');
-            let value = parseInt(quantityInput.value);
-            value = Math.max(1, Math.min(5, value + amount));
-            quantityInput.value = value;
-            quantity = value;
-        }
-
-        function addToCart() {
-            const cartBadge = document.getElementById('cartBadge');
-            const successMessage = document.getElementById('successMessage');
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            const existingItem = cart.find(
-                item => item.id === currentProduct.id && 
-                        item.color === selectedColor && 
-                        item.storage === selectedStorage
-            );
-
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    id: currentProduct.id,
-                    name: currentProduct.name,
-                    price: currentProduct.price,
-                    color: selectedColor,
-                    storage: selectedStorage,
-                    quantity: quantity,
-                    image: currentProduct.image
-                });
+            if (!product) {
+                document.querySelector(".container").innerHTML = "<h2 style='text-align:center;width:100%;'>Product not found!</h2>";
+                return;
             }
 
-            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById("productName").textContent = product.name;
+            document.getElementById("productPrice").textContent = product.price;
+            document.getElementById("productDesc").textContent = product.description;
+            document.getElementById("productImage").style.backgroundImage = `url('${product.image}')`;
 
-            cartBadge.style.display = 'flex';
-            cartBadge.textContent = cart.length;
-
-            successMessage.style.display = 'block';
-            setTimeout(() => successMessage.style.display = 'none', 2000);
-        }
-
-        function buyNow() {
-            addToCart();
-            window.location.href = "checkout.html";
-        }
-
-        function updateCartBadge() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const cartBadge = document.getElementById('cartBadge');
-            if (cart.length > 0) {
-                cartBadge.style.display = 'flex';
-                cartBadge.textContent = cart.length;
-            } else {
-                cartBadge.style.display = 'none';
+            let specsHTML = "";
+            for (const [key, value] of Object.entries(product.specs)) {
+                specsHTML += `<tr><td><b>${key}</b></td><td>${value}</td></tr>`;
             }
+            document.getElementById("specsTable").innerHTML = specsHTML;
         }
 
-        window.onload = function() {
-            loadProductDetails();
-            updateCartBadge();
-        };
+        window.onload = loadProduct;
     </script>
 </body>
 </html>
