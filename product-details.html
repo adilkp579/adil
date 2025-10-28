@@ -10,1006 +10,451 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
         }
-
-        :root {
-            --primary: #000000;
-            --secondary: #1a1a1a;
-            --accent: #3498db;
-            --text: #ffffff;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --success: #2ed573;
-            --glass-bg: rgba(0, 0, 0, 0.8);
-            --glass-shadow: rgba(0, 0, 0, 0.6);
-        }
-
         body {
-            background: #000000;
-            color: var(--text);
-            min-height: 100vh;
-            padding-bottom: 80px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
         }
-
-        /* Header - Black Glass Effect */
-        .header {
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 2rem;
+        header {
+            background: #000;
+            color: #fff;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
         }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text);
-            text-decoration: none;
+        header h1 {
+            font-size: 22px;
+            letter-spacing: 1px;
         }
-
-        .logo-dot {
-            color: var(--accent);
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .icon-btn {
-            background: rgba(26, 26, 26, 0.8);
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .cart-icon {
             position: relative;
-            backdrop-filter: blur(10px);
+            font-size: 22px;
+            cursor: pointer;
         }
-
-        .icon-btn:hover {
-            background: var(--accent);
-            color: var(--text);
-            transform: scale(1.05);
-        }
-
         .cart-badge {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--accent);
-            color: var(--text);
+            top: -8px;
+            right: -10px;
+            background: red;
+            color: #fff;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
+            padding: 2px 7px;
+            font-size: 12px;
             display: none;
-            align-items: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            font-weight: 600;
+            padding: 40px;
+            gap: 40px;
+            background-color: #fff;
+            margin: 30px auto;
+            width: 90%;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
-        /* Main Content - Black Glass Background */
-        .main-content {
-            margin-top: 80px;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(20px);
-            min-height: calc(100vh - 80px);
+        .image-gallery {
+            flex: 1;
+            min-width: 300px;
         }
-
-        /* Product Container */
-        .product-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        /* Product Images - Black Glass Effect */
-        .product-images {
-            position: sticky;
-            top: 100px;
-        }
-
         .main-image {
             width: 100%;
-            height: 500px;
-            background: rgba(26, 26, 26, 0.9);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
+            height: 380px;
             border-radius: 15px;
-            margin-bottom: 1rem;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 8px 32px var(--glass-shadow);
-        }
-
-        .main-image i {
-            font-size: 4rem;
-            color: var(--accent);
-        }
-
-        .image-thumbnails {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
-        }
-
-        .thumbnail {
-            width: 100%;
-            height: 80px;
-            background: rgba(26, 26, 26, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
+            background-color: #eee;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px var(--glass-shadow);
-        }
-
-        .thumbnail:hover, .thumbnail.active {
-            border-color: var(--accent);
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
-        }
-
-        /* Product Info - Black Glass Effect */
-        .product-info {
-            padding: 2rem;
-            background: rgba(26, 26, 26, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            box-shadow: 0 8px 32px var(--glass-shadow);
-        }
-
-        .product-category {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .product-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            color: var(--text);
-        }
-
-        .product-price {
-            font-size: 2rem;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        /* Color Selection - Black Glass Effect */
-        .color-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            box-shadow: 0 4px 16px var(--glass-shadow);
-        }
-
-        .section-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .color-options {
+            margin-bottom: 10px;
             display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .color-option {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .color-option:hover {
-            transform: scale(1.1);
-        }
-
-        .color-option.selected {
-            border-color: var(--accent);
-            transform: scale(1.1);
-        }
-
-        .color-option.selected::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-            text-shadow: 0 0 3px rgba(0,0,0,0.5);
-        }
-
-        /* Storage Selection - Black Glass Effect */
-        .storage-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            box-shadow: 0 4px 16px var(--glass-shadow);
-        }
-
-        .storage-options {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .storage-option {
-            background: rgba(26, 26, 26, 0.8);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--glass-border);
-            border-radius: 8px;
-            padding: 0.8rem 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            min-width: 80px;
-            text-align: center;
-            color: var(--text);
-            box-shadow: 0 4px 16px var(--glass-shadow);
-        }
-
-        .storage-option:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .storage-option.selected {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--text);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-        }
-
-        /* Quantity Selector - Black Glass Effect */
-        .quantity-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            box-shadow: 0 4px 16px var(--glass-shadow);
-        }
-
-        .quantity-selector {
-            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 1rem;
-            background: rgba(26, 26, 26, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
+            font-size: 24px;
+            color: #777;
+        }
+        .thumbnail-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .thumbnail {
+            width: 80px;
+            height: 80px;
             border-radius: 10px;
-            padding: 0.5rem;
-            width: fit-content;
-            box-shadow: 0 4px 16px var(--glass-shadow);
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
         }
-
-        .quantity-btn {
-            background: var(--accent);
-            border: none;
-            color: var(--text);
-            width: 40px;
-            height: 40px;
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .thumbnail.active {
+            border-color: #000;
+        }
+        .product-details {
+            flex: 1;
+            min-width: 320px;
+        }
+        .product-details h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .product-details .price {
+            font-size: 22px;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+        .product-details .description {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .options {
+            margin: 20px 0;
+        }
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .color-options, .storage-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .color-option, .storage-option {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .color-option.selected, .storage-option.selected {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+        .quantity-control {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-weight: bold;
+            gap: 10px;
+            margin: 15px 0;
         }
-
-        .quantity-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
-        }
-
-        .quantity-input {
-            background: transparent;
+        .quantity-control button {
+            padding: 6px 12px;
+            background: #000;
+            color: #fff;
             border: none;
-            color: var(--text);
-            font-size: 1.2rem;
-            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .quantity-control input {
+            width: 50px;
             text-align: center;
-            width: 60px;
-            outline: none;
+            font-size: 16px;
+            padding: 5px;
         }
-
-        /* Action Buttons - Black Glass Effect */
-        .action-buttons {
+        .actions {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            box-shadow: 0 4px 16px var(--glass-shadow);
+            gap: 15px;
+            margin-top: 20px;
         }
-
-        .btn {
+        .actions button {
             flex: 1;
-            padding: 1.2rem 2rem;
+            padding: 14px 0;
             border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
+            border-radius: 10px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px var(--glass-shadow);
+            transition: 0.3s;
         }
-
-        .btn-buy {
-            background: var(--accent);
-            color: var(--text);
-            border: 1px solid var(--accent);
+        .add-to-cart {
+            background: #000;
+            color: #fff;
         }
-
-        .btn-buy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(52, 152, 219, 0.6);
+        .buy-now {
+            background: #d32f2f;
+            color: #fff;
         }
-
-        .btn-cart {
-            background: rgba(26, 26, 26, 0.8);
-            border: 1px solid var(--glass-border);
-            color: var(--text);
+        .actions button:hover {
+            transform: scale(1.02);
         }
-
-        .btn-cart:hover {
-            background: rgba(52, 152, 219, 0.1);
-            border-color: var(--accent);
-            transform: translateY(-2px);
+        .specs {
+            margin-top: 30px;
         }
-
-        /* Product Details - Black Glass Effect */
-        .details-section {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px var(--glass-shadow);
-        }
-
-        .detail-item {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .detail-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .detail-label {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-
-        .detail-value {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Specs Table */
-        .specs-table {
+        .specs table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 0.5rem;
         }
-
-        .specs-table tr {
-            border-bottom: 1px solid var(--glass-border);
+        .specs th, .specs td {
+            border-bottom: 1px solid #eee;
+            padding: 10px;
+            text-align: left;
         }
-
-        .specs-table tr:last-child {
-            border-bottom: none;
-        }
-
-        .specs-table td {
-            padding: 0.8rem 0;
-        }
-
-        .specs-table .spec-name {
-            font-weight: 600;
+        .specs th {
             width: 40%;
-            color: rgba(255, 255, 255, 0.9);
+            color: #555;
         }
-
-        .specs-table .spec-value {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Success Message - Black Glass Effect */
         .success-message {
-            position: fixed;
-            top: 100px;
-            right: 2rem;
-            background: var(--accent);
-            color: var(--text);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
             display: none;
-            z-index: 1001;
-            animation: slideIn 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(52, 152, 219, 0.3);
-            font-weight: 600;
+            background: #4caf50;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 14px;
         }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Additional black glass effects */
-        .glass-effect {
-            background: rgba(26, 26, 26, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 8px 32px var(--glass-shadow);
-        }
-
-        /* Input focus effects */
-        .quantity-input:focus {
-            background: rgba(52, 152, 219, 0.1);
-            border-radius: 5px;
-        }
-
-        /* Smooth transitions for all interactive elements */
-        .icon-btn, .btn, .storage-option, .color-option, .thumbnail, .quantity-btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .header {
-                padding: 1rem;
-            }
-
-            .main-content {
-                margin-top: 70px;
-                padding: 1rem;
-            }
-
-            .product-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .product-images {
-                position: static;
-            }
-
-            .main-image {
-                height: 300px;
-            }
-
-            .product-title {
-                font-size: 2rem;
-            }
-
-            .action-buttons {
+            .container {
                 flex-direction: column;
+                padding: 20px;
             }
-
-            .image-thumbnails {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .thumbnail {
-                height: 60px;
-            }
-
-            .success-message {
-                top: 80px;
-                right: 1rem;
-                left: 1rem;
-                text-align: center;
-            }
-
-            .btn {
-                padding: 1rem 1.5rem;
-            }
-
-            .product-info {
-                padding: 1.5rem;
-            }
-
-            .color-section,
-            .storage-section,
-            .quantity-section,
-            .action-buttons {
-                padding: 1rem;
+            .product-details h2 {
+                font-size: 22px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <a href="index.html" class="logo">store<span class="logo-dot">.</span>in</a>
-        <div class="header-icons">
-            <a href="search.html" class="icon-btn">
-                <i class="fas fa-search"></i>
-            </a>
-            <a href="cart.html" class="icon-btn">
-                <i class="fas fa-shopping-bag"></i>
-                <span class="cart-badge" id="cartBadge">0</span>
-            </a>
+    <header>
+        <h1>store.in</h1>
+        <div class="cart-icon">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
         </div>
     </header>
 
-    <!-- Success Message -->
-    <div class="success-message" id="successMessage">
-        <i class="fas fa-check-circle"></i> Product added to cart!
-    </div>
-
-    <!-- Main Content -->
     <div class="container">
-        <div class="main-content">
-            <div class="product-container">
-                <!-- Product Images -->
-                <div class="product-images">
-                    <div class="main-image" id="mainImage">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="image-thumbnails" id="imageThumbnails">
-                        <!-- Thumbnails will be loaded here -->
-                    </div>
-                </div>
+        <div class="image-gallery">
+            <div id="mainImage" class="main-image">Loading...</div>
+            <div class="thumbnail-row" id="thumbnails"></div>
+        </div>
 
-                <!-- Product Info -->
-                <div class="product-info">
-                    <div class="product-category" id="productCategory">Smartphones</div>
-                    <h1 class="product-title" id="productTitle">Product Name</h1>
-                    <div class="product-price" id="productPrice">$0.00</div>
-                    
-                    <p class="product-description" id="productDescription">
-                        Product description will appear here...
-                    </p>
+        <div class="product-details">
+            <h2 id="productName"></h2>
+            <p class="price" id="productPrice"></p>
+            <p class="description" id="productDescription"></p>
 
-                    <!-- Color Selection -->
-                    <div class="color-section">
-                        <h3 class="section-title">Select Color</h3>
-                        <div class="color-options" id="colorOptions">
-                            <div class="color-option selected" style="background-color: #1a1a1a;" data-color="Space Black"></div>
-                            <div class="color-option" style="background-color: #f5f5f7;" data-color="Silver"></div>
-                            <div class="color-option" style="background-color: #d4af37;" data-color="Gold"></div>
-                            <div class="color-option" style="background-color: #2c3e50;" data-color="Midnight Blue"></div>
-                        </div>
-                    </div>
+            <div class="options">
+                <p class="option-title">Color</p>
+                <div class="color-options" id="colorOptions"></div>
 
-                    <!-- Storage Selection -->
-                    <div class="storage-section">
-                        <h3 class="section-title">Select Storage</h3>
-                        <div class="storage-options" id="storageOptions">
-                            <div class="storage-option" data-storage="128GB">128GB</div>
-                            <div class="storage-option selected" data-storage="256GB">256GB</div>
-                            <div class="storage-option" data-storage="512GB">512GB</div>
-                            <div class="storage-option" data-storage="1TB">1TB</div>
-                        </div>
-                    </div>
+                <p class="option-title">Storage</p>
+                <div class="storage-options" id="storageOptions"></div>
+            </div>
 
-                    <!-- Quantity Selector -->
-                    <div class="quantity-section">
-                        <h3 class="section-title">Quantity</h3>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
-                            <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="5">
-                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
-                        </div>
-                    </div>
+            <div class="quantity-control">
+                <button onclick="changeQuantity(-1)">-</button>
+                <input type="number" id="quantity" value="1" min="1" max="5" readonly>
+                <button onclick="changeQuantity(1)">+</button>
+            </div>
 
-                    <!-- Action Buttons -->
-                    <div class="action-buttons">
-                        <button class="btn btn-buy" onclick="buyNow()">
-                            <i class="fas fa-bolt"></i> Buy Now
-                        </button>
-                        <button class="btn btn-cart" onclick="addToCart()">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart
-                        </button>
-                    </div>
+            <div class="actions">
+                <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                <button class="buy-now" onclick="buyNow()">Buy Now</button>
+            </div>
+            <div class="success-message" id="successMessage">Added to Cart!</div>
 
-                    <!-- Product Details -->
-                    <div class="details-section">
-                        <div class="detail-item">
-                            <div class="detail-label">Product Details</div>
-                            <div class="detail-value" id="productDetails">
-                                High-performance device with cutting-edge technology and premium build quality.
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Key Specifications</div>
-                            <table class="specs-table" id="specsTable">
-                                <!-- Specs will be loaded here -->
-                            </table>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Warranty & Support</div>
-                            <div class="detail-value">1-year manufacturer warranty. 24/7 customer support available.</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Delivery & Returns</div>
-                            <div class="detail-value">Free delivery on orders over $50. 30-day return policy.</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="specs">
+                <h3>Specifications</h3>
+                <table id="specsTable"></table>
             </div>
         </div>
     </div>
 
     <script>
-        // Sample tech products data
-        const sampleTechProducts = [
-            {
-                id: 1,
-                name: "Quantum X Pro Smartphone",
-                category: "Smartphones",
-                price: 999.99,
-                description: "The ultimate smartphone experience with cutting-edge technology, stunning display, and professional-grade camera system.",
-                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                specs: {
-                    "Display": "6.7-inch Super AMOLED, 120Hz",
-                    "Processor": "Quantum X1 Octa-core",
-                    "RAM": "12GB",
-                    "Storage": "256GB (Expandable)",
-                    "Camera": "Triple 108MP + 12MP + 8MP",
-                    "Battery": "5000mAh, Fast Charging",
-                    "OS": "Android 13"
-                }
-            },
-            {
-                id: 2,
-                name: "NovaBook Pro Laptop",
-                category: "Laptops",
-                price: 1499.99,
-                description: "Powerful laptop for professionals and creators with exceptional performance and stunning Retina display.",
-                image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                specs: {
-                    "Display": "14-inch Retina, 2560x1600",
-                    "Processor": "Intel Core i7 12th Gen",
-                    "RAM": "16GB LPDDR5",
-                    "Storage": "512GB SSD",
-                    "Graphics": "Intel Iris Xe",
-                    "Battery": "Up to 18 hours",
-                    "OS": "Windows 11 Pro"
-                }
-            }
-        ];
-
-        // Initialize sample data if no products exist
-        if (!localStorage.getItem('storeProducts')) {
-            localStorage.setItem('storeProducts', JSON.stringify(sampleTechProducts));
-        }
-
-        // Get product ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = parseInt(urlParams.get('id')) || 1;
-
-        // Current product data
         let currentProduct = null;
-        let selectedColor = 'Space Black';
-        let selectedStorage = '256GB';
+        let selectedColor = '';
+        let selectedStorage = '';
         let quantity = 1;
 
-        // Load product details
+        const sampleProducts = {
+            "Quantum X Pro": {
+                id: 1,
+                name: "Quantum X Pro",
+                price: "₹1,19,999",
+                description: "The ultimate flagship smartphone with AI-enhanced performance and a 200MP camera system.",
+                colors: ["Black", "Silver", "Blue"],
+                storage: ["128GB", "256GB", "512GB"],
+                image: "https://images.unsplash.com/photo-1603808033192-082d6919d9ad?w=800",
+                thumbnails: [
+                    "https://images.unsplash.com/photo-1603808033192-082d6919d9ad?w=800",
+                    "https://images.unsplash.com/photo-1611152596955-8b21e9b28a65?w=800",
+                    "https://images.unsplash.com/photo-1604156789510-3f3e3b2c7e10?w=800"
+                ],
+                specs: {
+                    "Display": "6.8-inch AMOLED, 120Hz",
+                    "Processor": "Quantum AI Gen 3",
+                    "Camera": "200MP + 64MP + 32MP",
+                    "Battery": "5500mAh with 120W charging",
+                    "OS": "Android 14"
+                }
+            },
+            "NovaBook Pro": {
+                id: 2,
+                name: "NovaBook Pro",
+                price: "₹89,999",
+                description: "Powerful ultrabook designed for creators and professionals with AI optimization.",
+                colors: ["Gray", "Black"],
+                storage: ["512GB SSD", "1TB SSD"],
+                image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800",
+                thumbnails: [
+                    "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800",
+                    "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800",
+                    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800"
+                ],
+                specs: {
+                    "Display": "14-inch Retina IPS, 120Hz",
+                    "Processor": "Intel Evo i9 14th Gen",
+                    "RAM": "32GB DDR5",
+                    "Storage": "Up to 1TB NVMe SSD",
+                    "Battery": "90Wh, 16 hours backup"
+                }
+            }
+        };
+
         function loadProductDetails() {
-            const products = JSON.parse(localStorage.getItem('storeProducts')) || [];
-            currentProduct = products.find(product => product.id === productId);
+            const params = new URLSearchParams(window.location.search);
+            const productName = params.get('product');
+            currentProduct = sampleProducts[productName] || sampleProducts["Quantum X Pro"];
 
-            if (!currentProduct) {
-                // Product not found, redirect to home
-                window.location.href = 'index.html';
-                return;
-            }
-
-            // Update page content
-            document.getElementById('productCategory').textContent = currentProduct.category;
-            document.getElementById('productTitle').textContent = currentProduct.name;
-            document.getElementById('productPrice').textContent = `$${currentProduct.price}`;
+            document.getElementById('productName').textContent = currentProduct.name;
+            document.getElementById('productPrice').textContent = currentProduct.price;
             document.getElementById('productDescription').textContent = currentProduct.description;
-            
-            // Update main image
+
             const mainImage = document.getElementById('mainImage');
-            if (currentProduct.image) {
-                mainImage.style.backgroundImage = `url('${currentProduct.image}')`;
-                mainImage.innerHTML = '';
-            } else {
-                // Fallback if no image
-                mainImage.style.backgroundImage = 'none';
-                mainImage.innerHTML = '<i class="fas fa-mobile-alt"></i>';
-                mainImage.style.backgroundColor = 'transparent';
-            }
+            mainImage.style.backgroundImage = `url('${currentProduct.image}')`;
+            mainImage.textContent = '';
 
-            // Load thumbnails
-            const thumbnailsContainer = document.getElementById('imageThumbnails');
-            thumbnailsContainer.innerHTML = `
-                <div class="thumbnail active" style="background-image: url('${currentProduct.image}')" onclick="changeMainImage(this, '${currentProduct.image}')"></div>
-                <div class="thumbnail" style="background-image: url('${currentProduct.image}?angle=10')" onclick="changeMainImage(this, '${currentProduct.image}?angle=10')"></div>
-                <div class="thumbnail" style="background-image: url('${currentProduct.image}?angle=20')" onclick="changeMainImage(this, '${currentProduct.image}?angle=20')"></div>
-                <div class="thumbnail" style="background-image: url('${currentProduct.image}?angle=30')" onclick="changeMainImage(this, '${currentProduct.image}?angle=30')"></div>
-            `;
+            const thumbnailsDiv = document.getElementById('thumbnails');
+            thumbnailsDiv.innerHTML = '';
+            currentProduct.thumbnails.forEach((thumb, index) => {
+                const thumbDiv = document.createElement('div');
+                thumbDiv.classList.add('thumbnail');
+                if (index === 0) thumbDiv.classList.add('active');
+                thumbDiv.innerHTML = `<img src="${thumb}" onclick="changeMainImage(this, '${thumb}')">`;
+                thumbnailsDiv.appendChild(thumbDiv);
+            });
 
-            // Load specs table
+            const colorDiv = document.getElementById('colorOptions');
+            colorDiv.innerHTML = '';
+            currentProduct.colors.forEach(color => {
+                const colorBtn = document.createElement('div');
+                colorBtn.classList.add('color-option');
+                colorBtn.textContent = color;
+                colorBtn.onclick = () => selectColor(colorBtn, color);
+                colorDiv.appendChild(colorBtn);
+            });
+
+            const storageDiv = document.getElementById('storageOptions');
+            storageDiv.innerHTML = '';
+            currentProduct.storage.forEach(size => {
+                const storageBtn = document.createElement('div');
+                storageBtn.classList.add('storage-option');
+                storageBtn.textContent = size;
+                storageBtn.onclick = () => selectStorage(storageBtn, size);
+                storageDiv.appendChild(storageBtn);
+            });
+
             const specsTable = document.getElementById('specsTable');
-            if (currentProduct.specs) {
-                let specsHTML = '';
-                for (const [key, value] of Object.entries(currentProduct.specs)) {
-                    specsHTML += `
-                        <tr>
-                            <td class="spec-name">${key}</td>
-                            <td class="spec-value">${value}</td>
-                        </tr>
-                    `;
-                }
-                specsTable.innerHTML = specsHTML;
+            let specsHTML = '';
+            for (const [key, value] of Object.entries(currentProduct.specs)) {
+                specsHTML += `
+                    <tr>
+                        <th>${key}</th>
+                        <td>${value}</td>
+                    </tr>
+                `;
             }
-
-            // Update page title
-            document.title = `${currentProduct.name} - store.in`;
+            specsTable.innerHTML = specsHTML;
         }
 
-        // Change main image
-        function changeMainImage(thumbnailElement, image) {
+        function selectColor(element, color) {
+            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedColor = color;
+        }
+
+        function selectStorage(element, storage) {
+            document.querySelectorAll('.storage-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedStorage = storage;
+        }
+
+        function changeMainImage(element, imageUrl) {
             const mainImage = document.getElementById('mainImage');
-            const thumbnails = document.querySelectorAll('.thumbnail');
-            
-            // Remove active class from all thumbnails
-            thumbnails.forEach(thumb => thumb.classList.remove('active'));
-            
-            // Add active class to clicked thumbnail
-            thumbnailElement.classList.add('active');
-
-            // Update main image
-            mainImage.style.backgroundImage = `url('${image}')`;
-            mainImage.style.backgroundColor = 'transparent';
-            mainImage.innerHTML = '';
+            mainImage.style.backgroundImage = `url('${imageUrl}')`;
+            document.querySelectorAll('.thumbnail').forEach(th => th.classList.remove('active'));
+            element.parentElement.classList.add('active');
         }
 
-        // Color selection
-        document.querySelectorAll('.color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.color-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-                selectedColor = this.getAttribute('data-color');
-            });
-        });
-
-        // Storage selection
-        document.querySelectorAll('.storage-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.storage-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-                selectedStorage = this.getAttribute('data-storage');
-                
-                // Update price based on storage
-                if (currentProduct) {
-                    let priceMultiplier = 1;
-                    switch(selectedStorage) {
-                        case '128GB': priceMultiplier = 1; break;
-                        case '256GB': priceMultiplier = 1.2; break;
-                        case '512GB': priceMultiplier = 1.4; break;
-                        case '1TB': priceMultiplier = 1.6; break;
-                    }
-                    const basePrice = currentProduct.price;
-                    const newPrice = (basePrice * priceMultiplier).toFixed(2);
-                    document.getElementById('productPrice').textContent = `$${newPrice}`;
-                }
-            });
-        });
-
-        // Quantity functions
-        function changeQuantity(change) {
+        function changeQuantity(amount) {
             const quantityInput = document.getElementById('quantity');
-            let newQuantity = parseInt(quantityInput.value) + change;
-            
-            if (newQuantity >= 1 && newQuantity <= 5) {
-                quantityInput.value = newQuantity;
-                quantity = newQuantity;
-            }
+            let value = parseInt(quantityInput.value);
+            value = Math.max(1, Math.min(5, value + amount));
+            quantityInput.value = value;
+            quantity = value;
         }
 
-        document.getElementById('quantity').addEventListener('change', function() {
-            let value = parseInt(this.value);
-            if (value < 1) this.value = 1;
-            if (value > 5) this.value = 5;
-            quantity = parseInt(this.value);
-        });
-
-        // Add to cart function
         function addToCart() {
-            if (!currentProduct) {
-                showSuccessMessage('Product not found!');
-                return;
-            }
+            const cartBadge = document.getElementById('cartBadge');
+            const successMessage = document.getElementById('successMessage');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            try {
-                let cart = JSON.parse(localStorage.getItem('storeCart')) || [];
-                
-                // Calculate price based on storage
-                let priceMultiplier = 1;
-                switch(selectedStorage) {
-                    case '128GB': priceMultiplier = 1; break;
-                    case '256GB': priceMultiplier = 1.2; break;
-                    case '512GB': priceMultiplier = 1.4; break;
-                    case '1TB': priceMultiplier = 1.6; break;
-                }
-                const finalPrice = (currentProduct.price * priceMultiplier).toFixed(2);
-                
-                const cartItem = {
+            const existingItem = cart.find(
+                item => item.id === currentProduct.id && 
+                        item.color === selectedColor && 
+                        item.storage === selectedStorage
+            );
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
                     id: currentProduct.id,
                     name: currentProduct.name,
-                    category: currentProduct.category,
-                    price: parseFloat(finalPrice),
-                    description: currentProduct.description,
-                    image: currentProduct.image,
+                    price: currentProduct.price,
                     color: selectedColor,
                     storage: selectedStorage,
                     quantity: quantity,
-                    cartId: Date.now() // Unique ID for cart item
-                };
-
-                // Check if item with same ID, color and storage already exists
-                const existingItemIndex = cart.findIndex(item => 
-                    item.id === cartItem.id && 
-                    item.color === cartItem.color && 
-                    item.storage === cartItem.storage
-                );
-
-                if (existingItemIndex > -1) {
-                    // Update quantity if item exists
-                    cart[existingItemIndex].quantity += quantity;
-                } else {
-                    // Add new item
-                    cart.push(cartItem);
-                }
-
-                // Save to localStorage
-                localStorage.setItem('storeCart', JSON.stringify(cart));
-                
-                // Show success message
-                showSuccessMessage(`${currentProduct.name} added to cart!`);
-                
-                // Update cart badge
-                updateCartBadge();
-                
-                console.log('Cart updated successfully:', cart);
-                
-            } catch (error) {
-                console.error('Error adding to cart:', error);
-                showSuccessMessage('Error adding product to cart!');
+                    image: currentProduct.image
+                });
             }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            cartBadge.style.display = 'flex';
+            cartBadge.textContent = cart.length;
+
+            successMessage.style.display = 'block';
+            setTimeout(() => successMessage.style.display = 'none', 2000);
         }
 
-        // Buy now function
         function buyNow() {
             addToCart();
-            // Redirect to checkout page
-            setTimeout(() => {
-                window.location.href = 'checkout.html';
-            }, 1000);
+            window.location.href = "checkout.html";
         }
 
-        // Show success message
-        function showSuccessMessage(message) {
-            const successMsg = document.getElementById('successMessage');
-            successMsg.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-            successMsg.style.display = 'block';
-            
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-            }, 3000);
-        }
-
-        // Update cart badge
         function updateCartBadge() {
-            try {
-                const cart = JSON.parse(localStorage.getItem('storeCart')) || [];
-                const cartBadge = document.getElementById('cartBadge');
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                
-                if (totalItems > 0) {
-                    cartBadge.textContent = totalItems;
-                    cartBadge.style.display = 'flex';
-                } else {
-                    cartBadge.style.display = 'none';
-                }
-            } catch (error) {
-                console.error('Error updating cart badge:', error);
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartBadge = document.getElementById('cartBadge');
+            if (cart.length > 0) {
+                cartBadge.style.display = 'flex';
+                cartBadge.textContent = cart.length;
+            } else {
+                cartBadge.style.display = 'none';
             }
         }
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        window.onload = function() {
             loadProductDetails();
-            
-            // Update cart badge on load
             updateCartBadge();
-        });
+        };
     </script>
 </body>
 </html>
