@@ -16,7 +16,7 @@
         :root {
             --primary: #000000;
             --secondary: #1a1a1a;
-            --accent: #e74c3c;
+            --accent: #3498db;
             --text: #ffffff;
             --glass: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
@@ -135,7 +135,7 @@
             border: 1px solid var(--glass-border);
             border-radius: 15px;
             margin-bottom: 1rem;
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
@@ -174,7 +174,7 @@
         .thumbnail:hover, .thumbnail.active {
             border-color: var(--accent);
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
         }
 
         /* Product Info - Black Glass Effect */
@@ -217,8 +217,8 @@
             font-size: 1.1rem;
         }
 
-        /* Size Selection - Black Glass Effect */
-        .size-section {
+        /* Color Selection - Black Glass Effect */
+        .color-section {
             margin-bottom: 2rem;
             padding: 1.5rem;
             background: rgba(0, 0, 0, 0.8);
@@ -235,13 +235,61 @@
             color: var(--text);
         }
 
-        .size-options {
+        .color-options {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected {
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .color-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-shadow: 0 0 3px rgba(0,0,0,0.5);
+        }
+
+        /* Storage Selection - Black Glass Effect */
+        .storage-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px var(--glass-shadow);
+        }
+
+        .storage-options {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
         }
 
-        .size-option {
+        .storage-option {
             background: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(10px);
             border: 2px solid var(--glass-border);
@@ -250,22 +298,22 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
-            min-width: 60px;
+            min-width: 80px;
             text-align: center;
             color: var(--text);
             box-shadow: 0 4px 16px var(--glass-shadow);
         }
 
-        .size-option:hover {
+        .storage-option:hover {
             border-color: var(--accent);
             transform: translateY(-2px);
         }
 
-        .size-option.selected {
+        .storage-option.selected {
             background: var(--accent);
             border-color: var(--accent);
             color: var(--text);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
         }
 
         /* Quantity Selector - Black Glass Effect */
@@ -310,7 +358,7 @@
 
         .quantity-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
         }
 
         .quantity-input {
@@ -362,7 +410,7 @@
 
         .btn-buy:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(231, 76, 60, 0.6);
+            box-shadow: 0 12px 40px rgba(52, 152, 219, 0.6);
         }
 
         .btn-cart {
@@ -372,7 +420,7 @@
         }
 
         .btn-cart:hover {
-            background: rgba(231, 76, 60, 0.1);
+            background: rgba(52, 152, 219, 0.1);
             border-color: var(--accent);
             transform: translateY(-2px);
         }
@@ -409,6 +457,35 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .specs-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .specs-table td {
+            padding: 0.8rem 0;
+        }
+
+        .specs-table .spec-name {
+            font-weight: 600;
+            width: 40%;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .specs-table .spec-value {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         /* Success Message - Black Glass Effect */
         .success-message {
             position: fixed;
@@ -418,12 +495,12 @@
             color: var(--text);
             padding: 1rem 2rem;
             border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
             display: none;
             z-index: 1001;
             animation: slideIn 0.3s ease;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(231, 76, 60, 0.3);
+            border: 1px solid rgba(52, 152, 219, 0.3);
             font-weight: 600;
         }
 
@@ -454,12 +531,12 @@
 
         /* Input focus effects */
         .quantity-input:focus {
-            background: rgba(231, 76, 60, 0.1);
+            background: rgba(52, 152, 219, 0.1);
             border-radius: 5px;
         }
 
         /* Smooth transitions for all interactive elements */
-        .icon-btn, .btn, .size-option, .thumbnail, .quantity-btn {
+        .icon-btn, .btn, .storage-option, .color-option, .thumbnail, .quantity-btn {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -518,7 +595,8 @@
                 padding: 1.5rem;
             }
 
-            .size-section,
+            .color-section,
+            .storage-section,
             .quantity-section,
             .action-buttons {
                 padding: 1rem;
@@ -553,7 +631,7 @@
                 <!-- Product Images -->
                 <div class="product-images">
                     <div class="main-image" id="mainImage">
-                        <i class="fas fa-tshirt"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="image-thumbnails" id="imageThumbnails">
                         <!-- Thumbnails will be loaded here -->
@@ -562,7 +640,7 @@
 
                 <!-- Product Info -->
                 <div class="product-info">
-                    <div class="product-category" id="productCategory">Men</div>
+                    <div class="product-category" id="productCategory">Smartphones</div>
                     <h1 class="product-title" id="productTitle">Product Name</h1>
                     <div class="product-price" id="productPrice">$0.00</div>
                     
@@ -570,15 +648,25 @@
                         Product description will appear here...
                     </p>
 
-                    <!-- Size Selection -->
-                    <div class="size-section">
-                        <h3 class="section-title">Select Size</h3>
-                        <div class="size-options" id="sizeOptions">
-                            <div class="size-option" data-size="S">S</div>
-                            <div class="size-option" data-size="M">M</div>
-                            <div class="size-option" data-size="L">L</div>
-                            <div class="size-option" data-size="XL">XL</div>
-                            <div class="size-option" data-size="XXL">XXL</div>
+                    <!-- Color Selection -->
+                    <div class="color-section">
+                        <h3 class="section-title">Select Color</h3>
+                        <div class="color-options" id="colorOptions">
+                            <div class="color-option selected" style="background-color: #1a1a1a;" data-color="Space Black"></div>
+                            <div class="color-option" style="background-color: #f5f5f7;" data-color="Silver"></div>
+                            <div class="color-option" style="background-color: #d4af37;" data-color="Gold"></div>
+                            <div class="color-option" style="background-color: #2c3e50;" data-color="Midnight Blue"></div>
+                        </div>
+                    </div>
+
+                    <!-- Storage Selection -->
+                    <div class="storage-section">
+                        <h3 class="section-title">Select Storage</h3>
+                        <div class="storage-options" id="storageOptions">
+                            <div class="storage-option" data-storage="128GB">128GB</div>
+                            <div class="storage-option selected" data-storage="256GB">256GB</div>
+                            <div class="storage-option" data-storage="512GB">512GB</div>
+                            <div class="storage-option" data-storage="1TB">1TB</div>
                         </div>
                     </div>
 
@@ -587,7 +675,7 @@
                         <h3 class="section-title">Quantity</h3>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
-                            <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
+                            <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="5">
                             <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
                         </div>
                     </div>
@@ -607,12 +695,18 @@
                         <div class="detail-item">
                             <div class="detail-label">Product Details</div>
                             <div class="detail-value" id="productDetails">
-                                High-quality material, comfortable fit, perfect for everyday wear.
+                                High-performance device with cutting-edge technology and premium build quality.
                             </div>
                         </div>
                         <div class="detail-item">
-                            <div class="detail-label">Care Instructions</div>
-                            <div class="detail-value">Machine wash cold, tumble dry low, do not bleach</div>
+                            <div class="detail-label">Key Specifications</div>
+                            <table class="specs-table" id="specsTable">
+                                <!-- Specs will be loaded here -->
+                            </table>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Warranty & Support</div>
+                            <div class="detail-value">1-year manufacturer warranty. 24/7 customer support available.</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Delivery & Returns</div>
@@ -625,29 +719,47 @@
     </div>
 
     <script>
-        // Sample product data for testing
-        const sampleProducts = [
+        // Sample tech products data
+        const sampleTechProducts = [
             {
                 id: 1,
-                name: "Premium Cotton T-Shirt",
-                category: "Men",
-                price: 29.99,
-                description: "High-quality cotton t-shirt with a comfortable fit. Perfect for everyday wear.",
-                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                name: "Quantum X Pro Smartphone",
+                category: "Smartphones",
+                price: 999.99,
+                description: "The ultimate smartphone experience with cutting-edge technology, stunning display, and professional-grade camera system.",
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                specs: {
+                    "Display": "6.7-inch Super AMOLED, 120Hz",
+                    "Processor": "Quantum X1 Octa-core",
+                    "RAM": "12GB",
+                    "Storage": "256GB (Expandable)",
+                    "Camera": "Triple 108MP + 12MP + 8MP",
+                    "Battery": "5000mAh, Fast Charging",
+                    "OS": "Android 13"
+                }
             },
             {
                 id: 2,
-                name: "Classic Denim Jacket",
-                category: "Women",
-                price: 79.99,
-                description: "Stylish denim jacket with a modern fit. Perfect for layering in any season.",
-                image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                name: "NovaBook Pro Laptop",
+                category: "Laptops",
+                price: 1499.99,
+                description: "Powerful laptop for professionals and creators with exceptional performance and stunning Retina display.",
+                image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                specs: {
+                    "Display": "14-inch Retina, 2560x1600",
+                    "Processor": "Intel Core i7 12th Gen",
+                    "RAM": "16GB LPDDR5",
+                    "Storage": "512GB SSD",
+                    "Graphics": "Intel Iris Xe",
+                    "Battery": "Up to 18 hours",
+                    "OS": "Windows 11 Pro"
+                }
             }
         ];
 
         // Initialize sample data if no products exist
         if (!localStorage.getItem('storeProducts')) {
-            localStorage.setItem('storeProducts', JSON.stringify(sampleProducts));
+            localStorage.setItem('storeProducts', JSON.stringify(sampleTechProducts));
         }
 
         // Get product ID from URL
@@ -656,7 +768,8 @@
 
         // Current product data
         let currentProduct = null;
-        let selectedSize = 'M';
+        let selectedColor = 'Space Black';
+        let selectedStorage = '256GB';
         let quantity = 1;
 
         // Load product details
@@ -676,7 +789,7 @@
             document.getElementById('productPrice').textContent = `$${currentProduct.price}`;
             document.getElementById('productDescription').textContent = currentProduct.description;
             
-            // Update main image - FIXED VERSION
+            // Update main image
             const mainImage = document.getElementById('mainImage');
             if (currentProduct.image) {
                 mainImage.style.backgroundImage = `url('${currentProduct.image}')`;
@@ -684,7 +797,7 @@
             } else {
                 // Fallback if no image
                 mainImage.style.backgroundImage = 'none';
-                mainImage.innerHTML = '<i class="fas fa-tshirt"></i>';
+                mainImage.innerHTML = '<i class="fas fa-mobile-alt"></i>';
                 mainImage.style.backgroundColor = 'transparent';
             }
 
@@ -692,16 +805,31 @@
             const thumbnailsContainer = document.getElementById('imageThumbnails');
             thumbnailsContainer.innerHTML = `
                 <div class="thumbnail active" style="background-image: url('${currentProduct.image}')" onclick="changeMainImage(this, '${currentProduct.image}')"></div>
-                <div class="thumbnail" style="background-color: #000000" onclick="changeMainImage(this, 'color1')"></div>
-                <div class="thumbnail" style="background-color: #1a1a1a" onclick="changeMainImage(this, 'color2')"></div>
-                <div class="thumbnail" style="background-color: #333333" onclick="changeMainImage(this, 'color3')"></div>
+                <div class="thumbnail" style="background-image: url('${currentProduct.image}?angle=10')" onclick="changeMainImage(this, '${currentProduct.image}?angle=10')"></div>
+                <div class="thumbnail" style="background-image: url('${currentProduct.image}?angle=20')" onclick="changeMainImage(this, '${currentProduct.image}?angle=20')"></div>
+                <div class="thumbnail" style="background-image: url('${currentProduct.image}?angle=30')" onclick="changeMainImage(this, '${currentProduct.image}?angle=30')"></div>
             `;
+
+            // Load specs table
+            const specsTable = document.getElementById('specsTable');
+            if (currentProduct.specs) {
+                let specsHTML = '';
+                for (const [key, value] of Object.entries(currentProduct.specs)) {
+                    specsHTML += `
+                        <tr>
+                            <td class="spec-name">${key}</td>
+                            <td class="spec-value">${value}</td>
+                        </tr>
+                    `;
+                }
+                specsTable.innerHTML = specsHTML;
+            }
 
             // Update page title
             document.title = `${currentProduct.name} - store.in`;
         }
 
-        // Change main image - FIXED VERSION
+        // Change main image
         function changeMainImage(thumbnailElement, image) {
             const mainImage = document.getElementById('mainImage');
             const thumbnails = document.querySelectorAll('.thumbnail');
@@ -712,30 +840,45 @@
             // Add active class to clicked thumbnail
             thumbnailElement.classList.add('active');
 
-            if (image === 'color1' || image === 'color2' || image === 'color3') {
-                // Handle color swatches
-                mainImage.style.backgroundImage = 'none';
-                mainImage.innerHTML = '<i class="fas fa-tshirt"></i>';
-                
-                // Set background color based on the thumbnail
-                const bgColor = getComputedStyle(thumbnailElement).backgroundColor;
-                mainImage.style.backgroundColor = bgColor;
-            } else {
-                // Handle actual product images
-                mainImage.style.backgroundImage = `url('${image}')`;
-                mainImage.style.backgroundColor = 'transparent';
-                mainImage.innerHTML = '';
-            }
+            // Update main image
+            mainImage.style.backgroundImage = `url('${image}')`;
+            mainImage.style.backgroundColor = 'transparent';
+            mainImage.innerHTML = '';
         }
 
-        // Size selection
-        document.querySelectorAll('.size-option').forEach(option => {
+        // Color selection
+        document.querySelectorAll('.color-option').forEach(option => {
             option.addEventListener('click', function() {
-                document.querySelectorAll('.size-option').forEach(opt => {
+                document.querySelectorAll('.color-option').forEach(opt => {
                     opt.classList.remove('selected');
                 });
                 this.classList.add('selected');
-                selectedSize = this.getAttribute('data-size');
+                selectedColor = this.getAttribute('data-color');
+            });
+        });
+
+        // Storage selection
+        document.querySelectorAll('.storage-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.storage-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                selectedStorage = this.getAttribute('data-storage');
+                
+                // Update price based on storage
+                if (currentProduct) {
+                    let priceMultiplier = 1;
+                    switch(selectedStorage) {
+                        case '128GB': priceMultiplier = 1; break;
+                        case '256GB': priceMultiplier = 1.2; break;
+                        case '512GB': priceMultiplier = 1.4; break;
+                        case '1TB': priceMultiplier = 1.6; break;
+                    }
+                    const basePrice = currentProduct.price;
+                    const newPrice = (basePrice * priceMultiplier).toFixed(2);
+                    document.getElementById('productPrice').textContent = `$${newPrice}`;
+                }
             });
         });
 
@@ -744,7 +887,7 @@
             const quantityInput = document.getElementById('quantity');
             let newQuantity = parseInt(quantityInput.value) + change;
             
-            if (newQuantity >= 1 && newQuantity <= 10) {
+            if (newQuantity >= 1 && newQuantity <= 5) {
                 quantityInput.value = newQuantity;
                 quantity = newQuantity;
             }
@@ -753,7 +896,7 @@
         document.getElementById('quantity').addEventListener('change', function() {
             let value = parseInt(this.value);
             if (value < 1) this.value = 1;
-            if (value > 10) this.value = 10;
+            if (value > 5) this.value = 5;
             quantity = parseInt(this.value);
         });
 
@@ -767,21 +910,34 @@
             try {
                 let cart = JSON.parse(localStorage.getItem('storeCart')) || [];
                 
+                // Calculate price based on storage
+                let priceMultiplier = 1;
+                switch(selectedStorage) {
+                    case '128GB': priceMultiplier = 1; break;
+                    case '256GB': priceMultiplier = 1.2; break;
+                    case '512GB': priceMultiplier = 1.4; break;
+                    case '1TB': priceMultiplier = 1.6; break;
+                }
+                const finalPrice = (currentProduct.price * priceMultiplier).toFixed(2);
+                
                 const cartItem = {
                     id: currentProduct.id,
                     name: currentProduct.name,
                     category: currentProduct.category,
-                    price: currentProduct.price,
+                    price: parseFloat(finalPrice),
                     description: currentProduct.description,
                     image: currentProduct.image,
-                    size: selectedSize,
+                    color: selectedColor,
+                    storage: selectedStorage,
                     quantity: quantity,
                     cartId: Date.now() // Unique ID for cart item
                 };
 
-                // Check if item with same ID and size already exists
+                // Check if item with same ID, color and storage already exists
                 const existingItemIndex = cart.findIndex(item => 
-                    item.id === cartItem.id && item.size === cartItem.size
+                    item.id === cartItem.id && 
+                    item.color === cartItem.color && 
+                    item.storage === cartItem.storage
                 );
 
                 if (existingItemIndex > -1) {
@@ -850,9 +1006,6 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadProductDetails();
-
-            // Set default selected size
-            document.querySelector('.size-option[data-size="M"]').classList.add('selected');
             
             // Update cart badge on load
             updateCartBadge();
