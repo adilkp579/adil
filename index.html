@@ -151,17 +151,13 @@
             min-height: calc(100vh - 150px);
         }
 
-        /* Hero Section */
+        /* Hero Section - Updated with Video Background */
         .hero-section {
             position: relative;
             height: 300px;
             border-radius: 16px;
             overflow: hidden;
             margin-bottom: 2rem;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://media.istockphoto.com/id/1059156958/photo/pure-feelings.jpg?s=612x612&w=0&k=20&c=8ibLVgOxzUwY_ndxReY0BWY68iEzpyIoeU-TwzWyvTw=');
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -169,8 +165,29 @@
             border: 1px solid var(--glass-border);
         }
 
-        .hero-content {
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
             z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
             padding: 2rem;
         }
 
@@ -981,8 +998,14 @@
     <!-- Main Content -->
     <div class="container">
         <div class="main-content">
-            <!-- Hero Section -->
+            <!-- Hero Section with Video Background -->
             <section class="hero-section">
+                <video class="hero-video" autoplay muted loop playsinline>
+                    <source src="video1.mp4" type="video/mp4">
+                    <!-- Fallback image if video doesn't load -->
+                    Your browser does not support the video tag.
+                </video>
+                <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h1 class="hero-title">FASHION REDEFINED</h1>
                     <p class="hero-subtitle">exclusive designs for every occasion.</p>
@@ -1451,6 +1474,19 @@
             
             // Initialize cart badge
             updateCartBadge();
+            
+            // Video handling
+            const heroVideo = document.querySelector('.hero-video');
+            if (heroVideo) {
+                heroVideo.play().catch(error => {
+                    console.log('Video autoplay failed:', error);
+                    // Fallback: show a static image if video fails to load
+                    heroVideo.style.display = 'none';
+                    heroVideo.parentElement.style.background = 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://media.istockphoto.com/id/1059156958/photo/pure-feelings.jpg?s=612x612&w=0&k=20&c=8ibLVgOxzUwY_ndxReY0BWY68iEzpyIoeU-TwzWyvTw=")';
+                    heroVideo.parentElement.style.backgroundSize = 'cover';
+                    heroVideo.parentElement.style.backgroundPosition = 'center';
+                });
+            }
         });
 
         // Navigation functions
