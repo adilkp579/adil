@@ -250,7 +250,7 @@
             left: 100%;
         }
 
-        /* Featured Brands Section */
+        /* Featured Brands Section - Updated */
         .featured-slider-container {
             margin: 2rem 0;
         }
@@ -320,43 +320,7 @@
             transform: scale(1.05);
         }
 
-        .product-info {
-            padding: 12px 15px 15px;
-            text-align: center;
-        }
-
-        .brand-name {
-            font-size: 11px;
-            color: #c0a957;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .product-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #f1f1f1;
-            margin-bottom: 8px;
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .product-description {
-            font-size: 11px;
-            color: #bbb;
-            line-height: 1.3;
-            margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
+        /* Removed product info styles as we're only showing images */
         .slider-nav {
             display: flex;
             justify-content: center;
@@ -1013,7 +977,7 @@
                 </div>
             </section>
 
-            <!-- Featured Brands Section -->
+            <!-- Featured Brands Section - Updated to show only images -->
             <section class="featured-slider-container" id="featured">
                 <div class="featured-header">
                     <h2 class="featured-title">FEATURED BRANDS</h2>
@@ -1027,63 +991,39 @@
                     <div class="slider">
                         <!-- Product 1 - Peter England -->
                         <div class="product-card" onclick="navigateToBrand('1.html')">
-                    <div class="product-image">
-                        <img src="peterengland.jpeg" alt="Western Wear">
-                    </div>
-                    <div class="product-info">
-                        <div class="brand-name">Peter England</div>
-                        <h3 class="product-title">Classic Western Collection</h3>
-                        <p class="product-description">Premium affordable formal</p>
-                    </div>
-                </div>
+                            <div class="product-image">
+                                <img src="peterengland.jpeg" alt="Peter England">
+                            </div>
+                        </div>
 
-                <!-- Product 2 - Armani -->
-                <div class="product-card" onclick="navigateToBrand('2.html')">
-                    <div class="product-image">
-                        <img src="armaani.jpeg" alt="Construct">
-                    </div>
-                    <div class="product-info">
-                        <div class="brand-name">ARMANI</div>
-                        <h3 class="product-title">Emporio Armani</h3>
-                        <p class="product-description">The difference between style and fashion is quality</p>
-                    </div>
-                </div>
-                    <!-- Product 3 - Adidas -->
-                       <div class="product-card" onclick="navigateToBrand('3.html')">
-                    <div class="product-image">
-                        <img src="adidas.jpeg" alt="Denim Collection">
-                    </div>
-                    <div class="product-info">
-                        <div class="brand-name">adidas</div>
-                        <h3 class="product-title">Impossible is Nothing</h3>
-                        <p class="product-description">Stylish and collection</p>
-                    </div>
-                </div>
+                        <!-- Product 2 - Armani -->
+                        <div class="product-card" onclick="navigateToBrand('2.html')">
+                            <div class="product-image">
+                                <img src="armaani.jpeg" alt="Armani">
+                            </div>
+                        </div>
+                        
+                        <!-- Product 3 - Adidas -->
+                        <div class="product-card" onclick="navigateToBrand('3.html')">
+                            <div class="product-image">
+                                <img src="adidas.jpeg" alt="Adidas">
+                            </div>
+                        </div>
 
-                <!-- Product 4 - H&M -->
-                <div class="product-card" onclick="navigateToBrand('4.html')">
-                    <div class="product-image">
-                        <img src="h&m.jpeg" alt="Utility Gear">
-                    </div>
-                    <div class="product-info">
-                        <div class="brand-name">H&M</div>
-                        <h3 class="product-title">Utility Work Gear</h3>
-                        <p class="product-description">Highly Effective Yet Gentle utility clothing</p>
-                    </div>
-                </div>
+                        <!-- Product 4 - H&M -->
+                        <div class="product-card" onclick="navigateToBrand('4.html')">
+                            <div class="product-image">
+                                <img src="h&m.jpeg" alt="H&M">
+                            </div>
+                        </div>
 
-                <!-- Product 5 - Nike -->
-                <div class="product-card" onclick="navigateToBrand('5.html')">
-                    <div class="product-image">
-                        <img src="nike.jpeg" alt="Western Style">
+                        <!-- Product 5 - Nike -->
+                        <div class="product-card" onclick="navigateToBrand('5.html')">
+                            <div class="product-image">
+                                <img src="nike.jpeg" alt="Nike">
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <div class="brand-name">NIKE</div>
-                        <h3 class="product-title">Western Accessories</h3>
-                        <p class="product-description">Complete your western look</p>
-                    </div>
-                </div>
-            </div>
                     
                     <div class="slider-arrow next">
                         <i class="fas fa-chevron-right"></i>
